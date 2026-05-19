@@ -84,13 +84,41 @@ const servicesData = [
    PARTNERS DATA
    ============================================================ */
 const partnersData = [
-  { name: 'FRIMPS OIL',        sector: 'Oil & Gas',         initial: 'F' },
-  { name: 'FUELTRADE',         sector: 'Energy Trading',    initial: 'F' },
-  { name: 'GASO PETROLEUM',    sector: 'Petroleum',         initial: 'G' },
-  { name: 'TEMA FUEL COMPANY', sector: 'Energy Sector',     initial: 'T' },
-  { name: 'USUYYA GH',         sector: 'Ghana',             initial: 'U' },
-  { name: 'GOETHE INSTITUT',   sector: 'Cultural Institute',initial: 'G' },
-  { name: 'WPG GHANA',         sector: 'Ghana',             initial: 'W' },
+  {
+    name: 'FRIMPS OIL', sector: 'Oil & Gas', initial: 'F',
+    images: [
+      'images/portfolio/frimps-oil/frimps-oil-flask-white.jpeg',
+      'images/portfolio/frimps-oil/frimps-oil-flask-black.jpeg',
+      'images/portfolio/frimps-oil/frimps-oil-flask-red.jpeg',
+      'images/portfolio/frimps-oil/frimps-oil-packaging-box.jpeg',
+    ],
+    story: 'From flask to shelf — we built a complete branded merchandise suite for Frimps Oil, turning everyday items into powerful brand ambassadors across their entire network.',
+    work: ['Branded Flasks', 'Packaging Design', 'Brand Merchandise'],
+  },
+  {
+    name: 'FUELTRADE', sector: 'Energy Trading', initial: 'F',
+    images: [
+      'images/portfolio/fueltrade/fueltrade-branded-tshirt-1.jpeg',
+      'images/portfolio/fueltrade/fueltrade-branded-tshirt-2.jpeg',
+      'images/portfolio/fueltrade/fueltrade-workers-day-tshirt-1.jpeg',
+      'images/portfolio/fueltrade/fueltrade-workers-day-tshirt-2.jpeg',
+    ],
+    story: "Uniting a workforce through design — Fueltrade's corporate apparel and Workers' Day collection gave every team member a shared sense of pride and identity.",
+    work: ['Corporate Uniforms', "Workers' Day Apparel", 'Staff Branding'],
+  },
+  {
+    name: 'USUYYA GH', sector: 'Ghana', initial: 'U',
+    images: [
+      'images/portfolio/usuyya-gh/usuyya-hard-hat-1.jpeg',
+      'images/portfolio/usuyya-gh/usuyya-hard-hat-2.jpeg',
+    ],
+    story: 'Where safety meets brand power — custom branded hard hats that carry the Usuyya GH identity on every job site, turning protective gear into a statement of professionalism.',
+    work: ['Safety Equipment Branding', 'Corporate Identity'],
+  },
+  { name: 'GASO PETROLEUM',    sector: 'Petroleum',          initial: 'G' },
+  { name: 'TEMA FUEL COMPANY', sector: 'Energy Sector',      initial: 'T' },
+  { name: 'GOETHE INSTITUT',   sector: 'Cultural Institute', initial: 'G' },
+  { name: 'WPG GHANA',         sector: 'Ghana',              initial: 'W' },
 ];
 
 /* ============================================================
@@ -208,32 +236,108 @@ function buildPortfolio() {
   });
 }
 
-/* ─── Build Partners (marquee + grid) ─────────────────────── */
+/* ─── Build Partners (marquee + storytelling blocks) ──────── */
 function buildPartners() {
-  const track = document.getElementById('partnersTrack');
-  const grid  = document.getElementById('partnersGrid');
+  const track        = document.getElementById('partnersTrack');
+  const storyBlocksEl = document.getElementById('storyBlocks');
+  const storyAlsoEl   = document.getElementById('storyAlso');
 
+  // Marquee — all partners
   if (track) {
-    // Build marquee chips — duplicated for seamless loop
     const chips = partnersData.map(p =>
-      `<span class="partners__chip">${p.initial} &nbsp;${p.name}</span>`
+      `<span class="partners__chip">${p.initial}&nbsp;${p.name}</span>`
     ).join('');
     track.innerHTML = chips + chips;
   }
 
-  if (grid) {
-    partnersData.forEach((p, i) => {
-      const card = document.createElement('div');
-      card.className = 'partner-card reveal';
-      card.style.transitionDelay = `${i * 0.07}s`;
-      card.innerHTML = `
-        <div class="partner-card__avatar" aria-hidden="true">${p.initial}</div>
-        <p class="partner-card__name">${p.name}</p>
-        <p class="partner-card__sector">${p.sector}</p>
+  const withImages    = partnersData.filter(p => p.images?.length);
+  const withoutImages = partnersData.filter(p => !p.images?.length);
+
+  // ── Story blocks for partners with images ─────────────────
+  if (storyBlocksEl) {
+    withImages.forEach((p, i) => {
+      const isReverse = i % 2 !== 0;
+      const [mainSrc, ...thumbSrcs] = p.images;
+
+      const block = document.createElement('div');
+      block.className = 'story-block' + (isReverse ? ' story-block--reverse' : '');
+
+      const thumbsHTML = thumbSrcs.map(t =>
+        `<button class="story-block__thumb" aria-label="View ${p.name}">
+           <img src="${t}" alt="${p.name}" loading="lazy" />
+         </button>`
+      ).join('');
+
+      const tagsHTML = p.work.map(w =>
+        `<span class="story-block__tag">${w}</span>`
+      ).join('');
+
+      block.innerHTML = `
+        <div class="story-block__img-side">
+          <div class="story-block__img-main-wrap">
+            <img src="${mainSrc}" alt="${p.name}" loading="lazy" class="story-block__img-main" />
+          </div>
+          ${thumbSrcs.length ? `<div class="story-block__thumbs">${thumbsHTML}</div>` : ''}
+        </div>
+        <div class="story-block__text-side">
+          <span class="story-block__num" aria-hidden="true">0${i + 1}</span>
+          <h3 class="story-block__name">${p.name}</h3>
+          <p class="story-block__sector">${p.sector}</p>
+          <div class="story-block__divider"></div>
+          <p class="story-block__story">${p.story}</p>
+          <div class="story-block__tags">${tagsHTML}</div>
+        </div>
       `;
-      grid.appendChild(card);
+
+      // Thumb click swaps main image with a crossfade
+      block.querySelectorAll('.story-block__thumb').forEach(thumb => {
+        thumb.addEventListener('click', () => {
+          const mainImg  = block.querySelector('.story-block__img-main');
+          const thumbImg = thumb.querySelector('img');
+          const prevSrc  = mainImg.src;
+          mainImg.style.opacity   = '0';
+          mainImg.style.transform = 'scale(1.06)';
+          setTimeout(() => {
+            mainImg.src             = thumbImg.src;
+            thumbImg.src            = prevSrc;
+            mainImg.style.opacity   = '1';
+            mainImg.style.transform = 'scale(1)';
+          }, 220);
+        });
+      });
+
+      storyBlocksEl.appendChild(block);
     });
-    observeReveal(grid.querySelectorAll('.reveal'));
+
+    // Reveal each block as it enters the viewport
+    const storyObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('story-revealed');
+          storyObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    storyBlocksEl.querySelectorAll('.story-block').forEach(el => storyObserver.observe(el));
+  }
+
+  // ── "Also in our network" for partners without images ─────
+  if (storyAlsoEl && withoutImages.length) {
+    storyAlsoEl.innerHTML = `
+      <p class="story-also__label">Also in our network</p>
+      <div class="story-also__grid">
+        ${withoutImages.map(p => `
+          <div class="story-also__card reveal">
+            <div class="story-also__initial">${p.initial}</div>
+            <div>
+              <p class="story-also__info-name">${p.name}</p>
+              <p class="story-also__info-sector">${p.sector}</p>
+            </div>
+          </div>`).join('')}
+      </div>
+    `;
+    observeReveal(storyAlsoEl.querySelectorAll('.reveal'));
   }
 }
 
