@@ -86,6 +86,7 @@ const servicesData = [
 const partnersData = [
   {
     name: 'FRIMPS OIL', sector: 'Oil & Gas', initial: 'F',
+    logo: 'images/individual designs/frimps.png',
     images: [
       'images/portfolio/frimps-oil/frimps-oil-flask-white.jpeg',
       'images/portfolio/frimps-oil/frimps-oil-flask-black.jpeg',
@@ -97,6 +98,7 @@ const partnersData = [
   },
   {
     name: 'FUELTRADE', sector: 'Energy Trading', initial: 'F',
+    logo: 'images/individual designs/fuel-trade.png',
     images: [
       'images/portfolio/fueltrade/fueltrade-branded-tshirt-1.jpeg',
       'images/portfolio/fueltrade/fueltrade-branded-tshirt-2.jpeg',
@@ -107,18 +109,48 @@ const partnersData = [
     work: ['Corporate Uniforms', "Workers' Day Apparel", 'Staff Branding'],
   },
   {
-    name: 'USUYYA GH', sector: 'Ghana', initial: 'U',
+    name: 'EAGLE PETROLEUM', sector: 'Petroleum', initial: 'E',
+    logo: 'images/individual designs/Eagle petroleum.png',
+    images: [
+      'images/portfolio/individual/eagle-petroleum-mugs.jpeg',
+      'images/portfolio/individual/eagle-petroleum-flasks.jpeg',
+    ],
+    story: "From branded mugs to custom flasks — Eagle Petroleum's merchandise programme puts their identity in the hands of staff and clients alike, reinforcing trust and pride across every level of their operations.",
+    work: ['Branded Mugs', 'Branded Flasks', 'Corporate Merchandise'],
+  },
+  {
+    name: 'USUYYA GH', sector: 'Construction & Safety', initial: 'U',
     images: [
       'images/portfolio/usuyya-gh/usuyya-hard-hat-1.jpeg',
       'images/portfolio/usuyya-gh/usuyya-hard-hat-2.jpeg',
     ],
-    story: 'Where safety meets brand power — custom branded hard hats that carry the Usuyya GH identity on every job site, turning protective gear into a statement of professionalism.',
+    story: 'Where safety meets brand power — custom branded hard hats that carry the Usuyya GH identity on every job site, turning protective gear into a bold statement of professionalism.',
     work: ['Safety Equipment Branding', 'Corporate Identity'],
   },
-  { name: 'GASO PETROLEUM',    sector: 'Petroleum',          initial: 'G' },
-  { name: 'TEMA FUEL COMPANY', sector: 'Energy Sector',      initial: 'T' },
-  { name: 'GOETHE INSTITUT',   sector: 'Cultural Institute', initial: 'G' },
-  { name: 'WPG GHANA',         sector: 'Ghana',              initial: 'W' },
+  {
+    name: 'GASO PETROLEUM', sector: 'Petroleum', initial: 'G',
+    logo: 'images/individual designs/Gaso-petroleum.png',
+    story: 'A trusted name in Ghana\'s petroleum sector — Hazelnart has partnered with Gaso Petroleum to deliver sharp, consistent brand materials that reinforce their authority and reliability across every touchpoint.',
+    work: ['Brand Identity', 'Print Collateral', 'Corporate Stationery'],
+  },
+  {
+    name: 'TEMA FUEL COMPANY', sector: 'Energy Sector', initial: 'T',
+    logo: 'images/individual designs/tema-fuel-company.png',
+    story: 'Powering Tema\'s energy identity — we work with Tema Fuel Company to ensure every piece of branded material reflects the strength, precision, and professionalism that their clients have come to expect.',
+    work: ['Branded Materials', 'Corporate Branding', 'Print Design'],
+  },
+  {
+    name: 'GOETHE INSTITUT', sector: 'Cultural Institute', initial: 'G',
+    logo: 'images/individual designs/Goethe.png',
+    story: 'Bridging cultures through design — Hazelnart has proudly supported the Goethe Institut in Ghana, producing high-quality print and visual materials that honour the institute\'s global standard of cultural excellence.',
+    work: ['Event Materials', 'Print Production', 'Exhibition Graphics'],
+  },
+  {
+    name: 'WPG GHANA', sector: 'Business & Trade', initial: 'W',
+    logo: 'images/individual designs/WPG.png',
+    story: 'A partnership built on precision — WPG Ghana relies on Hazelnart to deliver branded materials and design solutions that project confidence and credibility in Ghana\'s competitive business landscape.',
+    work: ['Corporate Branding', 'Branded Merchandise', 'Stationery Design'],
+  },
 ];
 
 /* ============================================================
@@ -153,6 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initBackToTop();
   setFooterYear();
+  initHeroVideos();
 });
 
 /* ─── Build Services Grid ──────────────────────────────────── */
@@ -238,49 +271,61 @@ function buildPortfolio() {
 
 /* ─── Build Partners (marquee + storytelling blocks) ──────── */
 function buildPartners() {
-  const track        = document.getElementById('partnersTrack');
+  const track         = document.getElementById('partnersTrack');
   const storyBlocksEl = document.getElementById('storyBlocks');
-  const storyAlsoEl   = document.getElementById('storyAlso');
 
   // Marquee — all partners
   if (track) {
     const chips = partnersData.map(p =>
-      `<span class="partners__chip">${p.initial}&nbsp;${p.name}</span>`
+      p.logo
+        ? `<span class="partners__chip partners__chip--logo"><img src="${p.logo}" alt="${p.name}" class="partners__chip-logo" /></span>`
+        : `<span class="partners__chip">${p.initial}&nbsp;${p.name}</span>`
     ).join('');
     track.innerHTML = chips + chips;
   }
 
-  const withImages    = partnersData.filter(p => p.images?.length);
-  const withoutImages = partnersData.filter(p => !p.images?.length);
-
-  // ── Story blocks for partners with images ─────────────────
+  // ── Story blocks for ALL partners ─────────────────────────
   if (storyBlocksEl) {
-    withImages.forEach((p, i) => {
+    partnersData.forEach((p, i) => {
       const isReverse = i % 2 !== 0;
-      const [mainSrc, ...thumbSrcs] = p.images;
+      const hasPhotos = p.images?.length;
 
       const block = document.createElement('div');
       block.className = 'story-block' + (isReverse ? ' story-block--reverse' : '');
-
-      const thumbsHTML = thumbSrcs.map(t =>
-        `<button class="story-block__thumb" aria-label="View ${p.name}">
-           <img src="${t}" alt="${p.name}" loading="lazy" />
-         </button>`
-      ).join('');
 
       const tagsHTML = p.work.map(w =>
         `<span class="story-block__tag">${w}</span>`
       ).join('');
 
+      let imgSideHTML;
+      if (hasPhotos) {
+        const [mainSrc, ...thumbSrcs] = p.images;
+        const thumbsHTML = thumbSrcs.map(t =>
+          `<button class="story-block__thumb" aria-label="View ${p.name}">
+             <img src="${t}" alt="${p.name}" loading="lazy" />
+           </button>`
+        ).join('');
+        imgSideHTML = `
+          <div class="story-block__img-side">
+            <div class="story-block__img-main-wrap">
+              <img src="${mainSrc}" alt="${p.name}" loading="lazy" class="story-block__img-main" />
+            </div>
+            ${thumbSrcs.length ? `<div class="story-block__thumbs">${thumbsHTML}</div>` : ''}
+          </div>`;
+      } else {
+        imgSideHTML = `
+          <div class="story-block__img-side story-block__img-side--logo-only">
+            <div class="story-block__logo-hero">
+              <img src="${p.logo}" alt="${p.name}" class="story-block__logo-hero-img" loading="lazy" />
+            </div>
+          </div>`;
+      }
+
       block.innerHTML = `
-        <div class="story-block__img-side">
-          <div class="story-block__img-main-wrap">
-            <img src="${mainSrc}" alt="${p.name}" loading="lazy" class="story-block__img-main" />
-          </div>
-          ${thumbSrcs.length ? `<div class="story-block__thumbs">${thumbsHTML}</div>` : ''}
-        </div>
+        ${imgSideHTML}
         <div class="story-block__text-side">
-          <span class="story-block__num" aria-hidden="true">0${i + 1}</span>
+          <span class="story-block__num" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span>
+          ${p.logo && hasPhotos ? `<img src="${p.logo}" alt="${p.name} logo" class="story-block__inline-logo" loading="lazy" />` : ''}
           <h3 class="story-block__name">${p.name}</h3>
           <p class="story-block__sector">${p.sector}</p>
           <div class="story-block__divider"></div>
@@ -320,24 +365,6 @@ function buildPartners() {
     }, { threshold: 0.12 });
 
     storyBlocksEl.querySelectorAll('.story-block').forEach(el => storyObserver.observe(el));
-  }
-
-  // ── "Also in our network" for partners without images ─────
-  if (storyAlsoEl && withoutImages.length) {
-    storyAlsoEl.innerHTML = `
-      <p class="story-also__label">Also in our network</p>
-      <div class="story-also__grid">
-        ${withoutImages.map(p => `
-          <div class="story-also__card reveal">
-            <div class="story-also__initial">${p.initial}</div>
-            <div>
-              <p class="story-also__info-name">${p.name}</p>
-              <p class="story-also__info-sector">${p.sector}</p>
-            </div>
-          </div>`).join('')}
-      </div>
-    `;
-    observeReveal(storyAlsoEl.querySelectorAll('.reveal'));
   }
 }
 
@@ -665,4 +692,65 @@ function initBackToTop() {
 function setFooterYear() {
   const el = document.getElementById('yr');
   if (el) el.textContent = new Date().getFullYear();
+}
+
+/* ─── Hero Background Videos ───────────────────────────────── */
+function initHeroVideos() {
+  const videos = Array.from(document.querySelectorAll('.hero__video'));
+  if (!videos.length) return;
+
+  let current  = 0;
+  let transitioning = false;
+
+  // Prepare all videos
+  videos.forEach(v => {
+    v.muted      = true;
+    v.playsInline = true;
+    v.loop       = false;
+  });
+
+  // Activate and play the first video
+  videos[0].classList.add('active');
+  videos[0].play().catch(() => {});
+
+  function goNext() {
+    if (transitioning) return;
+    transitioning = true;
+
+    const prev = current;
+    current = (current + 1) % videos.length;
+
+    // Reset & start the incoming video before fading it in
+    videos[current].currentTime = 0;
+    videos[current].play().catch(() => {});
+
+    // Crossfade: incoming fades in immediately
+    videos[current].classList.add('active');
+
+    // Outgoing fades out after a short overlap (matches CSS transition of 1.4s)
+    setTimeout(() => {
+      videos[prev].classList.remove('active');
+      videos[prev].pause();
+      videos[prev].currentTime = 0;
+      transitioning = false;
+    }, 1500);
+  }
+
+  // Switch on natural end of each video
+  videos.forEach(v => v.addEventListener('ended', goNext));
+
+  // Fallback: if a video stalls or is very short, force switch after 12s
+  let fallback = setInterval(() => {
+    const active = videos[current];
+    if (active && active.paused && !transitioning) goNext();
+  }, 12000);
+
+  // Clean up interval if user leaves page
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      videos.forEach(v => v.pause());
+    } else {
+      videos[current]?.play().catch(() => {});
+    }
+  });
 }
