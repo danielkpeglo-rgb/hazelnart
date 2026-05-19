@@ -1125,26 +1125,31 @@ select.form-input { cursor: pointer; }
   .services { padding: 0 !important; }
   .footer__grid  { grid-template-columns: 1fr; }
   .wave-divider svg { height: 50px; }
-  /* Storybook → native horizontal scroll on mobile */
-  .svc-storybook { height: auto !important; }
+  /* Storybook mobile: JS-driven vertical page-flip, one card at a time */
   .svc-storybook__sticky {
-    position: relative; height: auto; min-height: 0; overflow: visible;
+    position: sticky !important;
+    height: 100svh !important;
+    min-height: 580px !important;
+    overflow: hidden !important;
   }
   .svc-storybook__header { padding: 3rem 1.5rem 1.5rem; }
-  .svc-storybook__viewport {
-    overflow-x: auto; overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 1.5rem;
-  }
+  .svc-storybook__viewport { overflow: hidden; padding-bottom: 0; }
   .svc-storybook__track {
-    padding: 0 1.5rem; height: auto;
+    position: relative;
+    display: block;
+    padding: 0;
+    height: 100%;
     transform: none !important;
   }
   .svc-story-card {
-    width: min(270px, 78vw);
-    height: 360px;
-    scroll-snap-align: start;
+    position: absolute;
+    left: 1.5rem; right: 1.5rem;
+    top: 0; bottom: 1.5rem;
+    width: auto; height: auto;
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.45s var(--ease), transform 0.45s var(--ease) !important;
+    scroll-snap-align: none;
   }
   .footer__bottom { flex-direction: column; text-align: center; }
   .form-row      { grid-template-columns: 1fr; }
@@ -1171,7 +1176,7 @@ select.form-input { cursor: pointer; }
   .about, .portfolio, .partners, .contact { padding: 5rem 0; }
   .services { padding: 0 !important; }
   .svc-storybook__header { padding: 2.5rem 1.25rem 1.25rem; flex-direction: column; align-items: flex-start; }
-  .svc-story-card { width: min(255px, 84vw); }
+  .svc-story-card { left: 1.25rem; right: 1.25rem; }
   .lightbox__nav { display: none; }
   .contact__card { padding: 1.75rem 1.25rem; }
   .hero__ghost-text { display: none; }

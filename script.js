@@ -224,40 +224,59 @@ function initServicesStorybook() {
   const label     = document.getElementById('svcProgressLabel');
   if (!storybook || !sticky || !track) return;
 
-  // Mobile: rely on native scroll-snap, no JS needed
-  if (window.matchMedia('(max-width: 767px)').matches) return;
-
+  const cards = Array.from(track.querySelectorAll('.svc-story-card'));
+  const MOBILE_PX_PER_CARD = 140; // scroll distance per card on mobile
   let raf;
 
-  function getMax() {
-    return Math.max(0, track.scrollWidth - sticky.clientWidth);
-  }
+  const isMobile = () => window.innerWidth <= 767;
 
   function setup() {
-    storybook.style.height = (sticky.offsetHeight + getMax()) + 'px';
+    if (isMobile()) {
+      storybook.style.height = (sticky.offsetHeight + cards.length * MOBILE_PX_PER_CARD) + 'px';
+      track.style.transform  = '';
+    } else {
+      const maxTrans = Math.max(0, track.scrollWidth - sticky.clientWidth);
+      storybook.style.height = (sticky.offsetHeight + maxTrans) + 'px';
+      // Clear any mobile inline styles
+      cards.forEach(c => { c.style.opacity = ''; c.style.transform = ''; });
+    }
   }
 
   function tick() {
     const rect     = storybook.getBoundingClientRect();
     const stickyH  = sticky.offsetHeight;
     const range    = storybook.offsetHeight - stickyH;
-    const maxTrans = getMax();
-    const progress = range > 0
-      ? Math.min(1, Math.max(0, -rect.top / range))
-      : 0;
-
-    track.style.transform = `translateX(${-(progress * maxTrans)}px)`;
+    const progress = range > 0 ? Math.min(1, Math.max(0, -rect.top / range)) : 0;
 
     if (fill) fill.style.width = (progress * 100) + '%';
 
-    if (label) {
-      const firstCard = track.querySelector('.svc-story-card');
-      const cardStep  = firstCard ? firstCard.offsetWidth + 20 : 320;
-      const idx = Math.min(
-        servicesData.length - 1,
-        Math.floor((progress * maxTrans) / cardStep)
-      );
-      label.textContent = `${String(idx + 1).padStart(2, '0')} / ${String(servicesData.length).padStart(2, '0')}`;
+    if (isMobile()) {
+      // One card at a time — vertical page-flip
+      const activeIdx = Math.min(cards.length - 1, Math.floor(progress * cards.length));
+      cards.forEach((card, i) => {
+        if (i === activeIdx) {
+          card.style.opacity   = '1';
+          card.style.transform = 'translateY(0)';
+        } else if (i < activeIdx) {
+          card.style.opacity   = '0';
+          card.style.transform = 'translateY(-28px)';
+        } else {
+          card.style.opacity   = '0';
+          card.style.transform = 'translateY(32px)';
+        }
+      });
+      if (label) label.textContent =
+        `${String(activeIdx + 1).padStart(2, '0')} / ${String(cards.length).padStart(2, '0')}`;
+    } else {
+      // Desktop — horizontal track translation
+      const maxTrans = Math.max(0, track.scrollWidth - sticky.clientWidth);
+      track.style.transform = `translateX(${-(progress * maxTrans)}px)`;
+      if (label) {
+        const cardStep = cards[0] ? cards[0].offsetWidth + 20 : 320;
+        const idx = Math.min(cards.length - 1, Math.floor((progress * maxTrans) / cardStep));
+        label.textContent =
+          `${String(idx + 1).padStart(2, '0')} / ${String(cards.length).padStart(2, '0')}`;
+      }
     }
   }
 
