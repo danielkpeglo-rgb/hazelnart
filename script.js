@@ -389,31 +389,59 @@ function initCursor() {
   });
 }
 
-/* ─── Portfolio Filter ──────────────────────────────────────── */
+/* ─── Portfolio Filter + Pagination ────────────────────────── */
+const ITEMS_PER_PAGE = 12;
+let currentFilter = 'all';
+let shownCount = ITEMS_PER_PAGE;
+
 function initFilters() {
-  const buttons = document.querySelectorAll('.pf-btn');
+  const buttons     = document.querySelectorAll('.pf-btn');
+  const loadMoreBtn = document.getElementById('pfLoadMore');
+  const loadMoreWrap = document.getElementById('pfLoadMoreWrap');
+
+  function getMatchingItems() {
+    return [...document.querySelectorAll('.pf-item:not(.pf-item--ph)')].filter(item =>
+      currentFilter === 'all' || item.dataset.filter === currentFilter
+    );
+  }
+
+  function applyDisplay(animateFrom = 0) {
+    const allItems = document.querySelectorAll('.pf-item');
+    const matching = getMatchingItems();
+
+    allItems.forEach(item => item.classList.add('hidden'));
+
+    matching.slice(0, shownCount).forEach((item, i) => {
+      item.classList.remove('hidden');
+      if (i >= animateFrom) {
+        item.style.animation = 'fadeUp 0.4s var(--ease) forwards';
+        setTimeout(() => { item.style.animation = ''; }, 450);
+      }
+    });
+
+    if (loadMoreWrap) {
+      loadMoreWrap.style.display = shownCount < matching.length ? 'flex' : 'none';
+    }
+  }
 
   buttons.forEach(btn => {
     btn.addEventListener('click', () => {
       buttons.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
       btn.classList.add('active');
       btn.setAttribute('aria-selected', 'true');
-
-      const filter = btn.dataset.filter;
-      const items  = document.querySelectorAll('.pf-item');
-
-      items.forEach(item => {
-        const match = filter === 'all' || item.dataset.filter === filter;
-        if (match) {
-          item.classList.remove('hidden');
-          item.style.animation = 'fadeUp 0.4s var(--ease) forwards';
-          setTimeout(() => { item.style.animation = ''; }, 450);
-        } else {
-          item.classList.add('hidden');
-        }
-      });
+      currentFilter = btn.dataset.filter;
+      shownCount = ITEMS_PER_PAGE;
+      applyDisplay(0);
     });
   });
+
+  loadMoreBtn?.addEventListener('click', () => {
+    const prev = shownCount;
+    shownCount += ITEMS_PER_PAGE;
+    applyDisplay(prev);
+  });
+
+  applyDisplay(0);
 }
 
 /* ─── Lightbox ──────────────────────────────────────────────── */

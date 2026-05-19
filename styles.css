@@ -512,6 +512,7 @@ body   { background: var(--bg); color: var(--text); font-family: var(--body); li
 .pf-item.hidden { display: none; }
 .pf-note { text-align: center; color: var(--text-3); font-size: 0.875rem; margin-top: 2.5rem; font-style: italic; }
 .pf-note code { color: var(--gold); }
+.pf-load-more-wrap { display: none; justify-content: center; margin-top: 3rem; }
 
 /* ════════════════════════════════════════════════════════════
    PARTNERS
