@@ -423,11 +423,13 @@ function initSidebarScroll() {
 
   sections.forEach(s => observer.observe(s));
 
-  // Smooth scroll for sidebar links
+  // Smooth scroll for sidebar links (skip page navigation links)
   sidebarLinks.forEach(link => {
     link.addEventListener('click', e => {
+      const href = link.getAttribute('href');
+      if (!href || !href.startsWith('#')) return;
       e.preventDefault();
-      const target = document.querySelector(link.getAttribute('href'));
+      const target = document.querySelector(href);
       target?.scrollIntoView({ behavior: 'smooth' });
     });
   });

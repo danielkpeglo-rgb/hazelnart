@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design Studio — Sketch Your Idea | Hazelnart</title>
+  <meta name="description" content="Sketch your design idea using Hazelnart's creative studio and send it directly to our team for a free consultation and quote." />
+  <meta name="robots" content="index, follow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="icon" type="image/png" href="images/individual%20designs/Hazelnart-Logo.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="design-studio.css" />
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- ═══════════════════════════════════════════════════
+       SIDEBAR
+  ════════════════════════════════════════════════════ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__logo-wrap">
+      <a href="index.html#home" class="sidebar__logo">
+        <img src="images/individual%20designs/Hazelnart-Logo.png" alt="Hazelnart" onerror="this.style.display='none'" />
+      </a>
+      <p class="sidebar__tagline">Your one stop shop<br>for everything printing</p>
+    </div>
+    <div class="sidebar__divider"></div>
+    <nav class="sidebar__nav" aria-label="Primary">
+      <a href="index.html#home"      class="sidebar__link" data-section="home">
+        <span class="sidebar__link-dot"></span>Home
+      </a>
+      <a href="index.html#about"     class="sidebar__link" data-section="about">
+        <span class="sidebar__link-dot"></span>About
+      </a>
+      <a href="index.html#services"  class="sidebar__link" data-section="services">
+        <span class="sidebar__link-dot"></span>Services
+      </a>
+      <a href="index.html#portfolio" class="sidebar__link" data-section="portfolio">
+        <span class="sidebar__link-dot"></span>Portfolio
+      </a>
+      <a href="index.html#partners"  class="sidebar__link" data-section="partners">
+        <span class="sidebar__link-dot"></span>Partners
+      </a>
+      <a href="index.html#contact"   class="sidebar__link" data-section="contact">
+        <span class="sidebar__link-dot"></span>Contact
+      </a>
+      <a href="design-studio.html"   class="sidebar__link active" data-section="studio">
+        <span class="sidebar__link-dot"></span>Design Studio
+      </a>
+    </nav>
+    <div class="sidebar__spacer"></div>
+    <div class="sidebar__bottom">
+      <div class="sidebar__divider"></div>
+      <div class="sidebar__info">
+        <p class="sidebar__info-label">Location</p>
+        <p class="sidebar__info-text">Accra Newtown, Raaco Down</p>
+      </div>
+      <div class="sidebar__info">
+        <p class="sidebar__info-label">Call / WhatsApp</p>
+        <a href="tel:+233266575930" class="sidebar__info-text sidebar__info-link">0266 575 930</a>
+        <a href="tel:+233544055060" class="sidebar__info-text sidebar__info-link">0544 055 060</a>
+      </div>
+      <a href="https://wa.me/233266575930" class="sidebar__wa-btn" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp Us
+      </a>
+    </div>
+  </aside>
+
+  <!-- ═══════════════════════════════════════════════════
+       MOBILE TOP BAR
+  ════════════════════════════════════════════════════ -->
+  <header class="mobile-topbar" id="mobileTopbar">
+    <a href="index.html#home" class="mobile-topbar__logo">
+      <img src="images/individual%20designs/Hazelnart-Logo.png" alt="Hazelnart" class="mobile-topbar__logo-img" />
+    </a>
+    <button class="mobile-topbar__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════
+       MOBILE MENU
+  ════════════════════════════════════════════════════ -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobile menu">
+    <button class="mobile-menu__close" id="mobileClose" aria-label="Close">✕</button>
+    <div class="mobile-menu__logo">
+      <img src="images/individual%20designs/Hazelnart-Logo.png" alt="Hazelnart" />
+    </div>
+    <nav class="mobile-menu__nav">
+      <a href="index.html#home"      class="mobile-menu__link">Home</a>
+      <a href="index.html#about"     class="mobile-menu__link">About</a>
+      <a href="index.html#services"  class="mobile-menu__link">Services</a>
+      <a href="index.html#portfolio" class="mobile-menu__link">Portfolio</a>
+      <a href="index.html#partners"  class="mobile-menu__link">Partners</a>
+      <a href="index.html#contact"   class="mobile-menu__link">Contact</a>
+      <a href="design-studio.html"   class="mobile-menu__link" style="color:var(--gold)">✦ Design Studio</a>
+    </nav>
+    <div class="mobile-menu__footer">
+      <p>Accra Newtown, Raaco Down</p>
+      <a href="tel:+233266575930">0266 575 930</a>
+      <a href="https://wa.me/233266575930" target="_blank" rel="noopener">WhatsApp Us →</a>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════
+       MAIN CONTENT
+  ════════════════════════════════════════════════════ -->
+  <main class="main-content">
+
+    <!-- ─── STUDIO HERO ──────────────────────────────── -->
+    <section class="studio-hero-section">
+      <div class="section-wrap">
+        <div class="studio-hero-inner reveal">
+          <span class="label">Creative Studio</span>
+          <h1 class="h2">Sketch Your <em>Vision</em></h1>
+          <p class="subtitle">Draw a rough sketch of what you have in mind — logos, layouts, product designs, anything. Then fill in a quick brief and send it straight to our team. We'll bring it to life.</p>
+          <div class="studio-steps">
+            <div class="studio-step"><span>1</span>Draw your concept on the canvas</div>
+            <div class="studio-step-arrow">→</div>
+            <div class="studio-step"><span>2</span>Fill in your project brief</div>
+            <div class="studio-step-arrow">→</div>
+            <div class="studio-step"><span>3</span>Send to Hazelnart via WhatsApp or Email</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── THE APP ───────────────────────────────────── -->
+    <section class="studio-section">
+      <div class="studio-wrap">
+        <div class="app-window" id="appWindow">
+
+          <!-- Title Bar -->
+          <div class="app-titlebar">
+            <div class="app-titlebar__dots">
+              <span class="dot dot--red"></span>
+              <span class="dot dot--yellow"></span>
+              <span class="dot dot--green"></span>
+            </div>
+            <div class="app-titlebar__center">
+              <svg class="app-titlebar__icon" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+              <span class="app-titlebar__name">Hazelnart Studio — my-idea.png</span>
+            </div>
+            <div class="app-titlebar__end"></div>
+          </div>
+
+          <!-- Menu Bar -->
+          <div class="app-menubar">
+            <span class="app-menu-item app-menu-item--active">File</span>
+            <span class="app-menu-item">Edit</span>
+            <span class="app-menu-item">View</span>
+            <span class="app-menu-item">Image</span>
+            <span class="app-menu-item">Layer</span>
+            <span class="app-menu-item">Filter</span>
+            <span class="app-menu-item">Window</span>
+            <span class="app-menu-item">Help</span>
+          </div>
+
+          <!-- Options Bar -->
+          <div class="app-optionsbar" id="optionsBar">
+            <div class="opt-group">
+              <label>Size</label>
+              <input type="range" class="opt-slider" id="optBrushSize" min="1" max="80" value="4" />
+              <span class="opt-val" id="optBrushSizeVal">4px</span>
+            </div>
+            <div class="opt-sep"></div>
+            <div class="opt-group">
+              <label>Opacity</label>
+              <input type="range" class="opt-slider" id="optOpacity" min="10" max="100" value="100" />
+              <span class="opt-val" id="optOpacityVal">100%</span>
+            </div>
+            <div class="opt-sep"></div>
+            <div class="opt-shape-mode" id="shapeModeGroup" style="display:none;">
+              <button class="opt-mode-btn active" data-mode="stroke" title="Outline">⬜</button>
+              <button class="opt-mode-btn" data-mode="fill" title="Filled">⬛</button>
+            </div>
+            <div class="opt-sep" id="shapeModeSeperator" style="display:none;"></div>
+            <button class="opt-btn" id="optUndo">↩ Undo</button>
+            <button class="opt-btn" id="optRedo">↪ Redo</button>
+            <button class="opt-btn opt-btn--danger" id="optClear">🗑 Clear</button>
+            <div class="opt-sep"></div>
+            <select class="opt-select" id="optCanvasBg">
+              <option value="white">White</option>
+              <option value="cream">Cream</option>
+              <option value="dark">Dark</option>
+              <option value="grid">Grid Paper</option>
+              <option value="dots">Dot Grid</option>
+            </select>
+          </div>
+
+          <!-- App Body -->
+          <div class="app-body" id="appBody">
+
+            <!-- Left Toolbar -->
+            <div class="app-toolbar" id="appToolbar">
+
+              <div class="tool-group">
+                <!-- Pencil -->
+                <button class="tool-btn active" data-tool="pencil" data-tip="Pencil (P)">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                </button>
+                <!-- Brush -->
+                <button class="tool-btn" data-tool="brush" data-tip="Soft Brush (B)">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.06 11.9l8.07-8.06a2.85 2.85 0 114.03 4.03l-8.06 8.08"/><path d="M7.07 14.94C5.79 17.09 3 17.5 2.25 19c-.65 1.37.55 2.64 2 2 1.37-.6 1.5-3.5 3.75-4.75"/></svg>
+                </button>
+                <!-- Marker -->
+                <button class="tool-btn" data-tool="marker" data-tip="Marker (M)">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 13.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1v-6.5"/><path d="M8 13V4.5a2.5 2.5 0 015 0V13"/><path d="M16 13V7.5a2.5 2.5 0 00-5 0"/></svg>
+                </button>
+              </div>
+
+              <div class="tool-sep"></div>
+
+              <div class="tool-group">
+                <!-- Line -->
+                <button class="tool-btn" data-tool="line" data-tip="Line (L)">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="19" x2="19" y2="5"/></svg>
+                </button>
+                <!-- Arrow -->
+                <button class="tool-btn" data-tool="arrow" data-tip="Arrow">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="19" x2="19" y2="5"/><polyline points="10 5 19 5 19 14"/></svg>
+                </button>
+                <!-- Rectangle -->
+                <button class="tool-btn" data-tool="rect" data-tip="Rectangle (R)">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg>
+                </button>
+                <!-- Circle -->
+                <button class="tool-btn" data-tool="circle" data-tip="Ellipse (E)">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
+                </button>
+              </div>
+
+              <div class="tool-sep"></div>
+
+              <div class="tool-group">
+                <!-- Text -->
+                <button class="tool-btn" data-tool="text" data-tip="Text (T)">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+                </button>
+                <!-- Fill -->
+                <button class="tool-btn" data-tool="fill" data-tip="Fill (F)">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 11L8.93 21.07a2.5 2.5 0 01-3.5-3.5L15.56 7.44M19 11l1.5-1.5a2.5 2.5 0 000-3.5L19 4.5a2.5 2.5 0 00-3.5 0L14 6M19 11l-7.5-7.5"/><path d="M3.5 21.5s1.5-1 3-1 3 1 3 1"/></svg>
+                </button>
+              </div>
+
+              <div class="tool-sep"></div>
+
+              <div class="tool-group">
+                <!-- Eraser -->
+                <button class="tool-btn" data-tool="eraser" data-tip="Eraser (X)">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 20H7L3 16l10-10 7 7-2.5 2.5"/><path d="M6.0 11.0l7 7"/></svg>
+                </button>
+              </div>
+
+              <div class="tool-sep"></div>
+
+              <!-- Color swatches -->
+              <div class="tool-colors">
+                <div class="tool-color-stack" title="Click foreground to change color">
+                  <div class="color-swatch--bg" id="toolBgSwatch" style="background:#ffffff;"></div>
+                  <div class="color-swatch--fg" id="toolFgSwatch" style="background:#000000;" onclick="document.getElementById('toolColorInput').click()"></div>
+                </div>
+                <input type="color" id="toolColorInput" class="tool-color-input" value="#000000" title="Pick color" />
+              </div>
+
+            </div>
+
+            <!-- Canvas Area -->
+            <div class="app-canvas-outer" id="canvasOuter">
+              <div class="canvas-bg-dots"></div>
+              <div class="app-canvas-shadow" id="canvasShadow">
+                <canvas id="sketchCanvas"></canvas>
+              </div>
+            </div>
+
+            <!-- Right Panel -->
+            <div class="app-panel" id="appPanel">
+
+              <!-- Color -->
+              <div class="panel-section">
+                <div class="panel-title">Color</div>
+                <div class="panel-color-row">
+                  <div class="panel-color-preview" id="panelColorPreview" style="background:#000000;" title="Click to pick color" onclick="document.getElementById('panelColorPicker').click()"></div>
+                  <label class="panel-color-label">Foreground</label>
+                </div>
+                <input type="color" id="panelColorPicker" class="panel-color-input" value="#000000" />
+                <div class="panel-swatches" id="panelSwatches">
+                  <div class="panel-swatch selected" data-color="#000000" style="background:#000000;" title="Black"></div>
+                  <div class="panel-swatch" data-color="#ffffff" style="background:#ffffff;border-color:rgba(255,255,255,0.3)" title="White"></div>
+                  <div class="panel-swatch" data-color="#ef4444" style="background:#ef4444;" title="Red"></div>
+                  <div class="panel-swatch" data-color="#f97316" style="background:#f97316;" title="Orange"></div>
+                  <div class="panel-swatch" data-color="#eab308" style="background:#eab308;" title="Yellow"></div>
+                  <div class="panel-swatch" data-color="#22c55e" style="background:#22c55e;" title="Green"></div>
+                  <div class="panel-swatch" data-color="#0ea5e9" style="background:#0ea5e9;" title="Sky Blue"></div>
+                  <div class="panel-swatch" data-color="#3b82f6" style="background:#3b82f6;" title="Blue"></div>
+                  <div class="panel-swatch" data-color="#8b5cf6" style="background:#8b5cf6;" title="Purple"></div>
+                  <div class="panel-swatch" data-color="#ec4899" style="background:#ec4899;" title="Pink"></div>
+                  <div class="panel-swatch" data-color="#6b7280" style="background:#6b7280;" title="Gray"></div>
+                  <div class="panel-swatch" data-color="#92400e" style="background:#92400e;" title="Brown"></div>
+                </div>
+              </div>
+
+              <!-- Brush -->
+              <div class="panel-section">
+                <div class="panel-title">Brush</div>
+                <div class="panel-row">
+                  <label>Size</label>
+                  <input type="range" class="panel-slider" id="panelBrushSize" min="1" max="80" value="4" />
+                  <span class="panel-num" id="panelBrushSizeVal">4</span>
+                </div>
+                <div class="panel-row">
+                  <label>Opacity</label>
+                  <input type="range" class="panel-slider" id="panelOpacity" min="10" max="100" value="100" />
+                  <span class="panel-num" id="panelOpacityVal">100%</span>
+                </div>
+                <div class="panel-brush-preview">
+                  <canvas id="brushPreview" width="156" height="32"></canvas>
+                </div>
+              </div>
+
+              <!-- Actions -->
+              <div class="panel-section">
+                <div class="panel-title">History</div>
+                <div class="panel-actions-grid">
+                  <button class="panel-action-btn" id="panelUndo">↩ Undo</button>
+                  <button class="panel-action-btn" id="panelRedo">↪ Redo</button>
+                  <button class="panel-action-btn panel-action-btn--full" id="panelClear">🗑 Clear Canvas</button>
+                </div>
+              </div>
+
+              <!-- Layers (decorative) -->
+              <div class="panel-section">
+                <div class="panel-title">Layers</div>
+                <div class="panel-layer active-layer">
+                  <span class="layer-icon">🎨</span>
+                  <span class="layer-name">Sketch Layer</span>
+                  <span class="layer-visibility">👁</span>
+                </div>
+                <div class="panel-layer">
+                  <span class="layer-icon">⬜</span>
+                  <span class="layer-name">Background</span>
+                  <span class="layer-visibility">👁</span>
+                </div>
+              </div>
+
+            </div>
+
+          </div><!-- /app-body -->
+
+          <!-- Status Bar -->
+          <div class="app-statusbar">
+            <span id="statusTool">Tool: Pencil</span>
+            <span class="status-sep">|</span>
+            <span id="statusCoords">X: 0  Y: 0</span>
+            <span class="status-sep">|</span>
+            <span id="statusZoom">Zoom: 100%</span>
+            <span class="status-sep">|</span>
+            <span id="statusSize">Canvas: — × —</span>
+          </div>
+
+        </div><!-- /app-window -->
+      </div>
+    </section>
+
+    <!-- ─── BRIEF FORM ─────────────────────────────────── -->
+    <section class="studio-brief-section">
+      <div class="section-wrap">
+        <div class="studio-brief-inner">
+
+          <div class="brief-header reveal">
+            <span class="label">Design Brief</span>
+            <h2 class="h2">Tell Us About Your <em>Project</em></h2>
+            <p class="subtitle">Add a few details about your vision. Our team will reach out within 24 hours via WhatsApp or phone to discuss your project and provide a free quote.</p>
+            <div style="margin-top:2rem;display:flex;flex-direction:column;gap:1rem;">
+              <div style="display:flex;align-items:center;gap:0.75rem;">
+                <div style="width:36px;height:36px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                  <svg width="16" height="16" fill="white" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <p style="font-size:0.875rem;color:var(--text-2);">Free consultation — no commitment required</p>
+              </div>
+              <div style="display:flex;align-items:center;gap:0.75rem;">
+                <div style="width:36px;height:36px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                  <svg width="16" height="16" fill="white" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                </div>
+                <p style="font-size:0.875rem;color:var(--text-2);">Fast response — usually within a few hours</p>
+              </div>
+              <div style="display:flex;align-items:center;gap:0.75rem;">
+                <div style="width:36px;height:36px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                  <svg width="16" height="16" fill="white" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                </div>
+                <p style="font-size:0.875rem;color:var(--text-2);">20+ years of experience bringing ideas to life</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="brief-form-wrap reveal reveal-d1">
+            <form id="studioForm" class="brief-form" novalidate>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="sName">Full Name <span style="color:var(--gold)">*</span></label>
+                  <input class="form-input" type="text" id="sName" placeholder="Your name" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="sPhone">WhatsApp Number <span style="color:var(--gold)">*</span></label>
+                  <input class="form-input" type="tel" id="sPhone" placeholder="+233 …" required />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="sEmail">Email Address <span style="color:var(--text-3);font-weight:400;">(optional)</span></label>
+                <input class="form-input" type="email" id="sEmail" placeholder="your@email.com" />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="sService">What Do You Need? <span style="color:var(--gold)">*</span></label>
+                <select class="form-input" id="sService" required>
+                  <option value="">Select a service…</option>
+                  <option>Brand Identity &amp; Logo Design</option>
+                  <option>Digital Paper Prints (Flyers, Brochures, Posters)</option>
+                  <option>Large Format Prints (Banners, Billboards)</option>
+                  <option>3D Design &amp; Renders</option>
+                  <option>T-Shirt &amp; Apparel Printing</option>
+                  <option>Souvenirs &amp; Gift Items</option>
+                  <option>Vehicle Branding</option>
+                  <option>Corporate Stationery</option>
+                  <option>Packaging Design</option>
+                  <option>Exhibition &amp; Events</option>
+                  <option>Outdoor Advertising / Signage</option>
+                  <option>Other / Not Sure Yet</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="sDesc">Describe Your Idea <span style="color:var(--gold)">*</span></label>
+                <textarea class="form-input form-textarea" id="sDesc" rows="5" required
+                  placeholder="Tell us more about your vision — colours, style, purpose, target audience, any references… the more detail, the better!"></textarea>
+              </div>
+
+              <!-- Sketch preview thumbnail -->
+              <div class="brief-sketch-preview" id="briefSketchPreview">
+                <div class="sketch-preview-label">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                  Your sketch will be attached to the message
+                </div>
+                <canvas id="previewCanvas" width="120" height="75"></canvas>
+              </div>
+
+              <!-- Buttons -->
+              <div class="brief-actions">
+                <button type="button" class="btn btn--ghost" id="downloadBtn">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  Download Sketch
+                </button>
+                <button type="button" class="btn btn--whatsapp" id="sendWhatsappBtn">
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  Send to WhatsApp
+                </button>
+                <button type="button" class="btn btn--ghost" id="sendEmailBtn">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  Send via Email
+                </button>
+              </div>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── HOW IT WORKS ──────────────────────────────── -->
+    <section class="studio-how-section">
+      <div class="section-wrap">
+        <div style="text-align:center;">
+          <span class="label">How It Works</span>
+          <h2 class="h2" style="margin:0 auto 1rem;">From Rough Sketch to <em>Real Design</em></h2>
+          <p style="color:var(--text-2);max-width:560px;margin:0 auto;">You don't need to be an artist — just give us a direction and our team will craft the perfect design for you.</p>
+        </div>
+        <div class="how-grid">
+          <div class="how-card reveal">
+            <div class="how-card__num">1</div>
+            <div class="how-card__title">Draw Your Concept</div>
+            <p class="how-card__desc">Use the canvas above like a digital notepad. Sketch shapes, write labels, add arrows — rough ideas are perfectly fine. Our designers are experts at reading concept sketches.</p>
+          </div>
+          <div class="how-card reveal reveal-d1">
+            <div class="how-card__num">2</div>
+            <div class="how-card__title">Describe Your Vision</div>
+            <p class="how-card__desc">Fill in the brief form with your name, contact, service needed, and a description. The more detail you share about colours, style, and purpose, the better we can serve you.</p>
+          </div>
+          <div class="how-card reveal reveal-d2">
+            <div class="how-card__num">3</div>
+            <div class="how-card__title">We Bring It to Life</div>
+            <p class="how-card__desc">Your sketch and brief land directly in our hands. We'll respond within 24 hours with a quote and initial ideas. From there, we refine together until it's perfect.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="section-wrap">
+        <div class="footer__grid">
+          <div class="footer__brand">
+            <p class="footer__name">Hazelnart</p>
+            <p class="footer__slogan">"Your one stop shop for everything printing"</p>
+            <p class="footer__about">20+ years of design excellence in Accra, Ghana — crafting brands that command attention.</p>
+          </div>
+          <div>
+            <p class="footer__col-title">Quick Links</p>
+            <ul class="footer__links">
+              <li><a href="index.html#about">About</a></li>
+              <li><a href="index.html#services">Services</a></li>
+              <li><a href="index.html#portfolio">Portfolio</a></li>
+              <li><a href="index.html#partners">Partners</a></li>
+              <li><a href="index.html#contact">Contact</a></li>
+              <li><a href="design-studio.html">Design Studio</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="footer__col-title">Services</p>
+            <ul class="footer__links">
+              <li><a href="index.html#services">Digital Printing</a></li>
+              <li><a href="index.html#services">Large Format</a></li>
+              <li><a href="index.html#services">3D Design</a></li>
+              <li><a href="index.html#services">T-Shirt Printing</a></li>
+              <li><a href="index.html#services">Branding &amp; Identity</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="footer__col-title">Contact</p>
+            <ul class="footer__links">
+              <li><a href="tel:+233266575930">0266 575 930</a></li>
+              <li><a href="tel:+233544055060">0544 055 060</a></li>
+              <li><a href="https://wa.me/233266575930" target="_blank" rel="noopener">WhatsApp Us</a></li>
+              <li>Accra Newtown, Raaco Down</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <p>&copy; <span id="yr">2024</span> <strong>Hazelnart</strong>. All rights reserved.</p>
+          <p>Designed with passion in Accra, Ghana 🇬🇭</p>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/233266575930" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="white" width="26" height="26"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span class="wa-float__tip">Chat with us!</span>
+  </a>
+
+  <!-- Toast notification -->
+  <div class="studio-toast" id="studioToast"></div>
+
+  <!-- Text Tool Modal -->
+  <div class="text-tool-modal" id="textModal" style="display:none;">
+    <div class="text-tool-modal__box">
+      <div class="text-tool-modal__title">ADD TEXT TO CANVAS</div>
+      <input type="text" class="text-tool-modal__input" id="textInput" placeholder="Type your text here…" />
+      <div class="text-tool-modal__actions">
+        <button class="btn btn--ghost" id="textCancelBtn" style="padding:0.5rem 1.2rem;font-size:0.8rem;">Cancel</button>
+        <button class="btn btn--gold" id="textConfirmBtn" style="padding:0.5rem 1.2rem;font-size:0.8rem;">Place Text</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back to top -->
+  <button class="back-top" id="backTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <script>
+  /* ============================================================
+     HAZELNART DESIGN STUDIO — Canvas Drawing Engine
+     ============================================================ */
+
+  // ── Config ─────────────────────────────────────────────────
+  const HAZELNART_PHONE = '233266575930';
+  // UPDATE: replace with actual business email when set up
+  const HAZELNART_EMAIL = 'hazelnart.studio@gmail.com';
+
+  // ── DOM refs ────────────────────────────────────────────────
+  const canvas     = document.getElementById('sketchCanvas');
+  const ctx        = canvas.getContext('2d');
+  const previewCvs = document.getElementById('previewCanvas');
+  const previewCtx = previewCvs.getContext('2d');
+  const brushPrevCvs = document.getElementById('brushPreview');
+  const brushPrevCtx = brushPrevCvs.getContext('2d');
+
+  // ── State ───────────────────────────────────────────────────
+  let dpr = window.devicePixelRatio || 1;
+  let logW = 0, logH = 0;
+
+  const S = {
+    tool:      'pencil',
+    color:     '#000000',
+    size:      4,
+    opacity:   1.0,
+    shapeMode: 'stroke',
+    drawing:   false,
+    startX:    0, startY: 0,
+    lastX:     0, lastY:  0,
+    snapshot:  null,
+    textX:     0, textY:  0,
+    canvasBg:  'white',
+  };
+
+  const undoStack = [];
+  const redoStack = [];
+  const MAX_UNDO  = 25;
+
+  // ── Canvas BG colours/patterns ──────────────────────────────
+  const BG = {
+    white: '#ffffff',
+    cream: '#fdf8f0',
+    dark:  '#1a1a2e',
+  };
+
+  // ── Init Canvas ─────────────────────────────────────────────
+  function initCanvas() {
+    const outer = document.getElementById('canvasOuter');
+    const W = Math.max(outer.clientWidth  - 64, 300);
+    const H = Math.max(outer.clientHeight - 32, 300);
+
+    logW = W; logH = H;
+    canvas.style.width  = W + 'px';
+    canvas.style.height = H + 'px';
+    canvas.width  = W * dpr;
+    canvas.height = H * dpr;
+    ctx.scale(dpr, dpr);
+
+    fillBg();
+    document.getElementById('statusSize').textContent = `Canvas: ${W} × ${H} px`;
+  }
+
+  function fillBg() {
+    ctx.save();
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+
+    if (S.canvasBg === 'grid') {
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.strokeStyle = '#e5e7eb';
+      ctx.lineWidth = 1;
+      const step = 20 * dpr;
+      for (let x = 0; x < canvas.width; x += step) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke();
+      }
+      for (let y = 0; y < canvas.height; y += step) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
+      }
+    } else if (S.canvasBg === 'dots') {
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#d1d5db';
+      const step = 20 * dpr;
+      for (let x = step; x < canvas.width; x += step) {
+        for (let y = step; y < canvas.height; y += step) {
+          ctx.beginPath(); ctx.arc(x, y, 1.5 * dpr, 0, Math.PI * 2); ctx.fill();
+        }
+      }
+    } else {
+      ctx.fillStyle = BG[S.canvasBg] || '#ffffff';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
+    ctx.restore();
+  }
+
+  // ── Undo / Redo ─────────────────────────────────────────────
+  function saveSnapshot() {
+    undoStack.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
+    if (undoStack.length > MAX_UNDO) undoStack.shift();
+    redoStack.length = 0;
+  }
+
+  function undo() {
+    if (!undoStack.length) return;
+    redoStack.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
+    ctx.putImageData(undoStack.pop(), 0, 0);
+    updatePreview();
+  }
+
+  function redo() {
+    if (!redoStack.length) return;
+    undoStack.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
+    ctx.putImageData(redoStack.pop(), 0, 0);
+    updatePreview();
+  }
+
+  function clearCanvas() {
+    if (!confirm('Clear the canvas? This cannot be undone.')) return;
+    saveSnapshot();
+    fillBg();
+    updatePreview();
+  }
+
+  // ── Coordinates ─────────────────────────────────────────────
+  function getPos(e) {
+    const rect = canvas.getBoundingClientRect();
+    let cx, cy;
+    if (e.touches && e.touches.length > 0) {
+      cx = e.touches[0].clientX; cy = e.touches[0].clientY;
+    } else if (e.changedTouches && e.changedTouches.length > 0) {
+      cx = e.changedTouches[0].clientX; cy = e.changedTouches[0].clientY;
+    } else {
+      cx = e.clientX; cy = e.clientY;
+    }
+    return {
+      x: (cx - rect.left) * (logW / rect.width),
+      y: (cy - rect.top)  * (logH / rect.height),
+    };
+  }
+
+  // ── Draw Setup ───────────────────────────────────────────────
+  function applyDrawStyle() {
+    ctx.globalAlpha     = S.opacity;
+    ctx.strokeStyle     = S.color;
+    ctx.fillStyle       = S.color;
+    ctx.lineWidth       = S.size;
+    ctx.lineCap         = 'round';
+    ctx.lineJoin        = 'round';
+    ctx.globalCompositeOperation = 'source-over';
+  }
+
+  // ── Freehand Drawing ─────────────────────────────────────────
+  function drawFreehand(pos) {
+    applyDrawStyle();
+
+    if (S.tool === 'brush') {
+      ctx.lineWidth = S.size * 3;
+      ctx.globalAlpha = S.opacity * 0.55;
+    } else if (S.tool === 'marker') {
+      ctx.lineWidth = S.size * 2.5;
+      ctx.lineCap   = 'square';
+    }
+
+    ctx.beginPath();
+    ctx.moveTo(S.lastX, S.lastY);
+    ctx.lineTo(pos.x, pos.y);
+    ctx.stroke();
+
+    S.lastX = pos.x; S.lastY = pos.y;
+    ctx.globalAlpha = 1;
+  }
+
+  // ── Eraser ───────────────────────────────────────────────────
+  function drawEraser(pos) {
+    ctx.save();
+    ctx.globalCompositeOperation = 'destination-out';
+    ctx.globalAlpha = 1;
+    ctx.lineWidth   = S.size * 3;
+    ctx.lineCap     = 'round';
+    ctx.beginPath();
+    ctx.moveTo(S.lastX, S.lastY);
+    ctx.lineTo(pos.x, pos.y);
+    ctx.stroke();
+    ctx.restore();
+    S.lastX = pos.x; S.lastY = pos.y;
+  }
+
+  // ── Shape Preview (restore snapshot then draw) ───────────────
+  function previewShape(pos) {
+    if (S.snapshot) ctx.putImageData(S.snapshot, 0, 0);
+    applyDrawStyle();
+
+    const dx = pos.x - S.startX;
+    const dy = pos.y - S.startY;
+
+    if (S.tool === 'line') {
+      ctx.beginPath();
+      ctx.moveTo(S.startX, S.startY);
+      ctx.lineTo(pos.x, pos.y);
+      ctx.stroke();
+
+    } else if (S.tool === 'arrow') {
+      drawArrow(S.startX, S.startY, pos.x, pos.y);
+
+    } else if (S.tool === 'rect') {
+      if (S.shapeMode === 'fill') {
+        ctx.fillRect(S.startX, S.startY, dx, dy);
+      } else {
+        ctx.strokeRect(S.startX, S.startY, dx, dy);
+      }
+
+    } else if (S.tool === 'circle') {
+      const rx = Math.abs(dx) / 2;
+      const ry = Math.abs(dy) / 2;
+      const cx = S.startX + dx / 2;
+      const cy = S.startY + dy / 2;
+      ctx.beginPath();
+      ctx.ellipse(cx, cy, rx || 1, ry || 1, 0, 0, Math.PI * 2);
+      if (S.shapeMode === 'fill') ctx.fill();
+      else ctx.stroke();
+    }
+
+    ctx.globalAlpha = 1;
+  }
+
+  function drawArrow(x1, y1, x2, y2) {
+    const headLen = Math.max(10, S.size * 3);
+    const angle   = Math.atan2(y2 - y1, x2 - x1);
+    ctx.beginPath();
+    ctx.moveTo(x1, y1);
+    ctx.lineTo(x2, y2);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(x2, y2);
+    ctx.lineTo(x2 - headLen * Math.cos(angle - Math.PI / 6), y2 - headLen * Math.sin(angle - Math.PI / 6));
+    ctx.moveTo(x2, y2);
+    ctx.lineTo(x2 - headLen * Math.cos(angle + Math.PI / 6), y2 - headLen * Math.sin(angle + Math.PI / 6));
+    ctx.stroke();
+  }
+
+  // ── Flood Fill ───────────────────────────────────────────────
+  function floodFill(logX, logY, fillHex) {
+    const physX = Math.round(logX * dpr);
+    const physY = Math.round(logY * dpr);
+    const W = canvas.width;
+    const H = canvas.height;
+    const imageData = ctx.getImageData(0, 0, W, H);
+    const data = imageData.data;
+
+    const r = parseInt(fillHex.slice(1,3), 16);
+    const g = parseInt(fillHex.slice(3,5), 16);
+    const b = parseInt(fillHex.slice(5,7), 16);
+    const a = Math.round(S.opacity * 255);
+
+    const baseIdx = (physY * W + physX) * 4;
+    const tR = data[baseIdx], tG = data[baseIdx+1], tB = data[baseIdx+2], tA = data[baseIdx+3];
+
+    if (tR === r && tG === g && tB === b && tA === a) return;
+
+    const tolerance = 30;
+    function matchTarget(idx) {
+      return Math.abs(data[idx]-tR) <= tolerance &&
+             Math.abs(data[idx+1]-tG) <= tolerance &&
+             Math.abs(data[idx+2]-tB) <= tolerance &&
+             Math.abs(data[idx+3]-tA) <= tolerance;
+    }
+
+    const visited = new Uint8Array(W * H);
+    const stack   = [physX + physY * W];
+
+    while (stack.length) {
+      const p = stack.pop();
+      if (visited[p]) continue;
+      const px = p % W, py = Math.floor(p / W);
+      if (px < 0 || px >= W || py < 0 || py >= H) continue;
+      const idx = p * 4;
+      if (!matchTarget(idx)) continue;
+
+      visited[p] = 1;
+      data[idx] = r; data[idx+1] = g; data[idx+2] = b; data[idx+3] = a;
+
+      if (px + 1 < W) stack.push(p + 1);
+      if (px - 1 >= 0) stack.push(p - 1);
+      if (py + 1 < H) stack.push(p + W);
+      if (py - 1 >= 0) stack.push(p - W);
+    }
+
+    ctx.putImageData(imageData, 0, 0);
+  }
+
+  // ── Text Tool ────────────────────────────────────────────────
+  function openTextModal(x, y) {
+    S.textX = x; S.textY = y;
+    document.getElementById('textModal').style.display = 'flex';
+    document.getElementById('textInput').value = '';
+    setTimeout(() => document.getElementById('textInput').focus(), 50);
+  }
+
+  function placeText(text) {
+    if (!text.trim()) return;
+    applyDrawStyle();
+    ctx.font = `${Math.max(S.size * 4, 12)}px ${S.color === '#ffffff' ? 'monospace' : 'Inter, sans-serif'}`;
+    ctx.fillText(text, S.textX, S.textY);
+    ctx.globalAlpha = 1;
+    updatePreview();
+  }
+
+  // ── Events ───────────────────────────────────────────────────
+  function onStart(e) {
+    e.preventDefault();
+    if (e.type === 'mousedown' && e.button !== 0) return;
+    const pos = getPos(e);
+    S.drawing = true;
+    S.startX  = pos.x; S.startY = pos.y;
+    S.lastX   = pos.x; S.lastY  = pos.y;
+
+    if (S.tool === 'fill') {
+      saveSnapshot();
+      floodFill(pos.x, pos.y, S.color);
+      S.drawing = false;
+      updatePreview();
+      return;
+    }
+    if (S.tool === 'text') {
+      saveSnapshot();
+      openTextModal(pos.x, pos.y);
+      S.drawing = false;
+      return;
+    }
+
+    saveSnapshot();
+    S.snapshot = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+    if (['pencil', 'brush', 'marker', 'eraser'].includes(S.tool)) {
+      applyDrawStyle();
+      ctx.beginPath();
+      ctx.arc(pos.x, pos.y, (S.tool === 'eraser' ? S.size*1.5 : S.size/2), 0, Math.PI*2);
+      if (S.tool === 'eraser') {
+        ctx.save();
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.globalAlpha = 1;
+        ctx.fill();
+        ctx.restore();
+      } else {
+        ctx.fill();
+      }
+    }
+  }
+
+  function onMove(e) {
+    e.preventDefault();
+    const pos = getPos(e);
+
+    document.getElementById('statusCoords').textContent = `X: ${Math.round(pos.x)}  Y: ${Math.round(pos.y)}`;
+
+    if (!S.drawing) return;
+
+    if (S.tool === 'pencil' || S.tool === 'brush' || S.tool === 'marker') {
+      drawFreehand(pos);
+    } else if (S.tool === 'eraser') {
+      drawEraser(pos);
+    } else if (['line','arrow','rect','circle'].includes(S.tool)) {
+      previewShape(pos);
+    }
+  }
+
+  function onEnd(e) {
+    if (!S.drawing) return;
+    S.drawing  = false;
+    S.snapshot = null;
+    ctx.globalAlpha = 1;
+    updatePreview();
+  }
+
+  canvas.addEventListener('mousedown', onStart);
+  canvas.addEventListener('mousemove', onMove);
+  canvas.addEventListener('mouseup',   onEnd);
+  canvas.addEventListener('mouseleave', onEnd);
+  canvas.addEventListener('touchstart', onStart, { passive: false });
+  canvas.addEventListener('touchmove',  onMove,  { passive: false });
+  canvas.addEventListener('touchend',   onEnd,   { passive: false });
+
+  // ── Keyboard Shortcuts ───────────────────────────────────────
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT') return;
+
+    const key = e.key.toLowerCase();
+    const toolMap = { p:'pencil', b:'brush', m:'marker', x:'eraser', l:'line', r:'rect', e:'circle', t:'text', f:'fill' };
+
+    if (toolMap[key]) { setTool(toolMap[key]); return; }
+
+    if ((e.ctrlKey || e.metaKey) && key === 'z') { e.preventDefault(); if (e.shiftKey) redo(); else undo(); }
+    if ((e.ctrlKey || e.metaKey) && key === 'y') { e.preventDefault(); redo(); }
+  });
+
+  // ── Tool Selection ───────────────────────────────────────────
+  const shapeTools = new Set(['line','arrow','rect','circle']);
+  const toolNames  = { pencil:'Pencil', brush:'Soft Brush', marker:'Marker', eraser:'Eraser', line:'Line', arrow:'Arrow', rect:'Rectangle', circle:'Ellipse', text:'Text', fill:'Fill' };
+
+  function setTool(name) {
+    S.tool = name;
+    document.querySelectorAll('.tool-btn').forEach(b => b.classList.toggle('active', b.dataset.tool === name));
+    document.getElementById('statusTool').textContent = `Tool: ${toolNames[name] || name}`;
+    const showShape = shapeTools.has(name) && name !== 'line' && name !== 'arrow';
+    document.getElementById('shapeModeGroup').style.display = showShape ? 'flex' : 'none';
+    document.getElementById('shapeModeSeperator').style.display = showShape ? 'block' : 'none';
+    canvas.style.cursor = name === 'eraser' ? 'cell' : name === 'text' ? 'text' : name === 'fill' ? 'crosshair' : 'crosshair';
+    updateBrushPreview();
+  }
+
+  document.querySelectorAll('.tool-btn').forEach(btn => {
+    btn.addEventListener('click', () => setTool(btn.dataset.tool));
+  });
+
+  // ── Shape Mode ───────────────────────────────────────────────
+  document.querySelectorAll('.opt-mode-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      S.shapeMode = btn.dataset.mode;
+      document.querySelectorAll('.opt-mode-btn').forEach(b => b.classList.toggle('active', b === btn));
+    });
+  });
+
+  // ── Color ────────────────────────────────────────────────────
+  function setColor(hex) {
+    S.color = hex;
+    document.getElementById('toolColorInput').value     = hex;
+    document.getElementById('toolFgSwatch').style.background  = hex;
+    document.getElementById('panelColorPicker').value   = hex;
+    document.getElementById('panelColorPreview').style.background = hex;
+    document.querySelectorAll('.panel-swatch').forEach(s => s.classList.toggle('selected', s.dataset.color === hex));
+    updateBrushPreview();
+  }
+
+  ['toolColorInput', 'panelColorPicker'].forEach(id => {
+    document.getElementById(id).addEventListener('input', e => setColor(e.target.value));
+  });
+
+  document.querySelectorAll('.panel-swatch').forEach(sw => {
+    sw.addEventListener('click', () => setColor(sw.dataset.color));
+  });
+
+  // ── Brush Size & Opacity ─────────────────────────────────────
+  function setSize(v) {
+    S.size = parseInt(v);
+    document.getElementById('optBrushSize').value       = v;
+    document.getElementById('optBrushSizeVal').textContent = v + 'px';
+    document.getElementById('panelBrushSize').value     = v;
+    document.getElementById('panelBrushSizeVal').textContent = v;
+    updateBrushPreview();
+  }
+
+  function setOpacity(v) {
+    S.opacity = parseInt(v) / 100;
+    document.getElementById('optOpacity').value         = v;
+    document.getElementById('optOpacityVal').textContent = v + '%';
+    document.getElementById('panelOpacity').value       = v;
+    document.getElementById('panelOpacityVal').textContent = v + '%';
+    updateBrushPreview();
+  }
+
+  document.getElementById('optBrushSize').addEventListener('input', e => setSize(e.target.value));
+  document.getElementById('panelBrushSize').addEventListener('input', e => setSize(e.target.value));
+  document.getElementById('optOpacity').addEventListener('input', e => setOpacity(e.target.value));
+  document.getElementById('panelOpacity').addEventListener('input', e => setOpacity(e.target.value));
+
+  // ── Brush Preview ────────────────────────────────────────────
+  function updateBrushPreview() {
+    const bCtx = brushPrevCtx;
+    const W = brushPrevCvs.width, H = brushPrevCvs.height;
+    bCtx.clearRect(0, 0, W, H);
+    bCtx.fillStyle = '#1e1e2e';
+    bCtx.fillRect(0, 0, W, H);
+
+    bCtx.globalAlpha  = S.opacity;
+    bCtx.strokeStyle  = S.color || '#ffffff';
+    bCtx.fillStyle    = S.color || '#ffffff';
+    bCtx.lineCap      = 'round';
+
+    let size = S.size;
+    if (S.tool === 'brush')  size = S.size * 3;
+    if (S.tool === 'marker') size = S.size * 2.5;
+    if (S.tool === 'eraser') size = S.size * 3;
+
+    size = Math.min(size, H * 0.8);
+    bCtx.lineWidth = size;
+    bCtx.beginPath();
+    bCtx.moveTo(10, H / 2);
+    bCtx.lineTo(W - 10, H / 2);
+    bCtx.stroke();
+    bCtx.globalAlpha = 1;
+  }
+
+  // ── Canvas Background ─────────────────────────────────────────
+  document.getElementById('optCanvasBg').addEventListener('change', (e) => {
+    const saved = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    S.canvasBg = e.target.value;
+    fillBg();
+    ctx.putImageData(saved, 0, 0);
+  });
+
+  // ── Undo / Redo / Clear buttons ───────────────────────────────
+  ['optUndo','panelUndo'].forEach(id => document.getElementById(id)?.addEventListener('click', undo));
+  ['optRedo','panelRedo'].forEach(id => document.getElementById(id)?.addEventListener('click', redo));
+  ['optClear','panelClear'].forEach(id => document.getElementById(id)?.addEventListener('click', clearCanvas));
+
+  // ── Text Modal ────────────────────────────────────────────────
+  document.getElementById('textConfirmBtn').addEventListener('click', () => {
+    placeText(document.getElementById('textInput').value);
+    document.getElementById('textModal').style.display = 'none';
+  });
+  document.getElementById('textCancelBtn').addEventListener('click', () => {
+    document.getElementById('textModal').style.display = 'none';
+  });
+  document.getElementById('textInput').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') document.getElementById('textConfirmBtn').click();
+    if (e.key === 'Escape') document.getElementById('textCancelBtn').click();
+  });
+
+  // ── Sketch Preview Thumbnail ──────────────────────────────────
+  let previewTimeout;
+  function updatePreview() {
+    clearTimeout(previewTimeout);
+    previewTimeout = setTimeout(() => {
+      const pW = previewCvs.width, pH = previewCvs.height;
+      previewCtx.clearRect(0, 0, pW, pH);
+      previewCtx.fillStyle = BG[S.canvasBg] || '#fff';
+      previewCtx.fillRect(0, 0, pW, pH);
+      previewCtx.drawImage(canvas, 0, 0, pW, pH);
+    }, 200);
+  }
+
+  // ── Download Sketch ──────────────────────────────────────────
+  function downloadSketch() {
+    const flat = document.createElement('canvas');
+    flat.width  = canvas.width;
+    flat.height = canvas.height;
+    const fCtx = flat.getContext('2d');
+    fCtx.fillStyle = BG[S.canvasBg] || '#ffffff';
+    fCtx.fillRect(0, 0, flat.width, flat.height);
+    fCtx.drawImage(canvas, 0, 0);
+    const link = document.createElement('a');
+    link.download = 'hazelnart-idea-sketch.png';
+    link.href = flat.toDataURL('image/png');
+    link.click();
+  }
+
+  document.getElementById('downloadBtn').addEventListener('click', downloadSketch);
+
+  // ── Form Validation ──────────────────────────────────────────
+  function validateForm() {
+    const name    = document.getElementById('sName').value.trim();
+    const phone   = document.getElementById('sPhone').value.trim();
+    const service = document.getElementById('sService').value;
+    const desc    = document.getElementById('sDesc').value.trim();
+
+    if (!name)    { showToast('Please enter your name.', true); document.getElementById('sName').focus(); return null; }
+    if (!phone)   { showToast('Please enter your WhatsApp number.', true); document.getElementById('sPhone').focus(); return null; }
+    if (!service) { showToast('Please select a service.', true); document.getElementById('sService').focus(); return null; }
+    if (!desc)    { showToast('Please describe your idea.', true); document.getElementById('sDesc').focus(); return null; }
+
+    return { name, phone, service, desc, email: document.getElementById('sEmail').value.trim() };
+  }
+
+  // ── Send to WhatsApp ─────────────────────────────────────────
+  document.getElementById('sendWhatsappBtn').addEventListener('click', async () => {
+    const data = validateForm(); if (!data) return;
+
+    const msg = [
+      `Hi Hazelnart! 👋 I've sketched my design idea and I'd love a quote.`,
+      ``,
+      `*Name:* ${data.name}`,
+      `*Phone:* ${data.phone}`,
+      data.email ? `*Email:* ${data.email}` : '',
+      `*Service:* ${data.service}`,
+      ``,
+      `*My Idea:*`,
+      data.desc,
+      ``,
+      `_(Sketch attached below — please see image)_`
+    ].filter(l => l !== undefined).join('\n');
+
+    // Try Web Share API (mobile — can share image directly to WhatsApp)
+    const flat = document.createElement('canvas');
+    flat.width  = canvas.width;
+    flat.height = canvas.height;
+    const fCtx = flat.getContext('2d');
+    fCtx.fillStyle = BG[S.canvasBg] || '#ffffff';
+    fCtx.fillRect(0, 0, flat.width, flat.height);
+    fCtx.drawImage(canvas, 0, 0);
+
+    flat.toBlob(async (blob) => {
+      const file = new File([blob], 'hazelnart-sketch.png', { type: 'image/png' });
+
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        try {
+          await navigator.share({ files: [file], text: msg, title: 'My Design Idea for Hazelnart' });
+          showToast('Sketch shared! ✓');
+          return;
+        } catch (err) {
+          if (err.name === 'AbortError') return;
+        }
+      }
+
+      // Fallback: download sketch + open WhatsApp
+      downloadSketch();
+      showToast('Sketch downloaded! Opening WhatsApp…');
+      setTimeout(() => {
+        window.open(`https://wa.me/${HAZELNART_PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
+      }, 800);
+    }, 'image/png');
+  });
+
+  // ── Send via Email ───────────────────────────────────────────
+  document.getElementById('sendEmailBtn').addEventListener('click', () => {
+    const data = validateForm(); if (!data) return;
+
+    downloadSketch();
+
+    const subject = `Design Brief — ${data.service} | ${data.name}`;
+    const body = [
+      `Hi Hazelnart,`,
+      ``,
+      `I've sketched my design idea and would love to discuss it with you.`,
+      ``,
+      `Name: ${data.name}`,
+      `Phone / WhatsApp: ${data.phone}`,
+      data.email ? `Email: ${data.email}` : '',
+      `Service Needed: ${data.service}`,
+      ``,
+      `My Idea:`,
+      data.desc,
+      ``,
+      `I have downloaded my sketch (hazelnart-idea-sketch.png) and will attach it to this email.`,
+      ``,
+      `Looking forward to hearing from you!`,
+      `${data.name}`
+    ].filter(l => l !== undefined).join('\n');
+
+    showToast('Sketch downloaded! Opening your email client…');
+    setTimeout(() => {
+      window.location.href = `mailto:${HAZELNART_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    }, 600);
+  });
+
+  // ── Toast ─────────────────────────────────────────────────────
+  function showToast(msg, isError = false) {
+    const t = document.getElementById('studioToast');
+    t.textContent = msg;
+    t.className   = 'studio-toast' + (isError ? ' error' : '');
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+
+  // ── Mobile Nav (same script as main site) ────────────────────
+  const hamburger  = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileClose = document.getElementById('mobileClose');
+
+  function openMenu() { mobileMenu.classList.add('open'); document.body.style.overflow = 'hidden'; hamburger.setAttribute('aria-expanded','true'); }
+  function closeMenu(){ mobileMenu.classList.remove('open'); document.body.style.overflow = ''; hamburger.setAttribute('aria-expanded','false'); }
+
+  hamburger?.addEventListener('click', openMenu);
+  mobileClose?.addEventListener('click', closeMenu);
+  mobileMenu?.querySelectorAll('.mobile-menu__link').forEach(l => l.addEventListener('click', closeMenu));
+
+  // ── Cursor ───────────────────────────────────────────────────
+  const cursor     = document.getElementById('cursor');
+  const cursorRing = document.getElementById('cursorRing');
+  document.addEventListener('mousemove', (e) => {
+    cursor.style.left     = e.clientX + 'px';
+    cursor.style.top      = e.clientY + 'px';
+    cursorRing.style.left = e.clientX + 'px';
+    cursorRing.style.top  = e.clientY + 'px';
+  });
+
+  // ── Back to top ───────────────────────────────────────────────
+  const backTop = document.getElementById('backTop');
+  window.addEventListener('scroll', () => backTop.classList.toggle('show', window.scrollY > 400));
+  backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // ── Scroll reveal ─────────────────────────────────────────────
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('revealed'); revealObs.unobserve(en.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+  // ── Year ──────────────────────────────────────────────────────
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // ── Init ──────────────────────────────────────────────────────
+  window.addEventListener('load', () => {
+    initCanvas();
+    updateBrushPreview();
+    updatePreview();
+    setColor('#000000');
+    setSize(4);
+    setOpacity(100);
+  });
+
+  // Debounced resize
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      const saved = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const oldW = canvas.width, oldH = canvas.height;
+
+      const outer = document.getElementById('canvasOuter');
+      const newLogW = Math.max(outer.clientWidth - 64, 300);
+      const newLogH = Math.max(outer.clientHeight - 32, 300);
+
+      if (newLogW === logW && newLogH === logH) return;
+
+      logW = newLogW; logH = newLogH;
+      canvas.style.width  = newLogW + 'px';
+      canvas.style.height = newLogH + 'px';
+      canvas.width  = newLogW * dpr;
+      canvas.height = newLogH * dpr;
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.scale(dpr, dpr);
+
+      fillBg();
+      const tmp = document.createElement('canvas');
+      tmp.width = oldW; tmp.height = oldH;
+      tmp.getContext('2d').putImageData(saved, 0, 0);
+      ctx.drawImage(tmp, 0, 0, newLogW, newLogH);
+
+      document.getElementById('statusSize').textContent = `Canvas: ${newLogW} × ${newLogH} px`;
+      updatePreview();
+    }, 200);
+  });
+  </script>
+
+</body>
+</html>
