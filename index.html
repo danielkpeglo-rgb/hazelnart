@@ -242,13 +242,40 @@
       </div>
     </section>
 
+    <!-- ─── ABOUT → SERVICES WAVE ─────────────────────── -->
+    <div class="wave-divider" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 90" preserveAspectRatio="none">
+        <path class="wave-back"  d="M0,55 C360,20 720,80 1080,40 C1260,18 1380,55 1440,45 L1440,90 L0,90 Z"/>
+        <path class="wave-front" d="M0,65 C240,30 560,82 900,52 C1100,30 1300,68 1440,58 L1440,90 L0,90 Z"/>
+      </svg>
+    </div>
+
     <!-- ─── SERVICES ───────────────────────────────────── -->
     <section class="services" id="services">
-      <div class="section-wrap">
-        <span class="label">What We Do</span>
-        <h2 class="h2">Our Services</h2>
-        <p class="subtitle">Everything print and design under one roof — crafted with precision.</p>
-        <div class="services__grid" id="servicesGrid"></div>
+      <div class="svc-storybook" id="svcStorybook">
+        <div class="svc-storybook__sticky" id="svcSticky">
+
+          <!-- Header -->
+          <div class="svc-storybook__header">
+            <div class="svc-storybook__titles">
+              <span class="label reveal">What We Do</span>
+              <h2 class="h2 reveal reveal-d1">Our <em>Services</em></h2>
+              <p class="svc-storybook__tagline reveal reveal-d2">Everything print and design under one roof — crafted with precision.</p>
+            </div>
+            <div class="svc-progress">
+              <div class="svc-progress__bar">
+                <div class="svc-progress__fill" id="svcProgressFill"></div>
+              </div>
+              <span class="svc-progress__label" id="svcProgressLabel">01 / 12</span>
+            </div>
+          </div>
+
+          <!-- Cards track — populated by JS -->
+          <div class="svc-storybook__viewport">
+            <div class="svc-storybook__track" id="svcTrack"></div>
+          </div>
+
+        </div>
       </div>
     </section>
 

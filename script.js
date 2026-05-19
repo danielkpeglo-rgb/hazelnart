@@ -188,26 +188,85 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroVideos();
 });
 
-/* ─── Build Services Grid ──────────────────────────────────── */
+/* ─── Build Services Storybook ─────────────────────────────── */
 function buildServices() {
-  const grid = document.getElementById('servicesGrid');
-  if (!grid) return;
+  const track = document.getElementById('svcTrack');
+  if (!track) return;
 
   servicesData.forEach((s, i) => {
+    const num  = String(i + 1).padStart(2, '0');
     const card = document.createElement('div');
-    card.className = 'svc-card reveal' + (i === 0 ? ' svc-card--gold' : '');
-    card.style.transitionDelay = `${(i % 4) * 0.08}s`;
-    card.setAttribute('data-num', String(i + 1).padStart(2, '0'));
+    card.className = 'svc-story-card' + (i === 0 ? ' svc-story-card--featured' : '');
+    card.setAttribute('data-num', num);
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('role', 'button');
+    card.setAttribute('aria-label', `${s.title} — Enquire`);
     card.innerHTML = `
-      <div class="svc-card__icon-wrap"><span class="svc-card__icon" aria-hidden="true">${s.icon}</span></div>
-      <h3 class="svc-card__title">${s.title}</h3>
-      <p class="svc-card__desc">${s.desc}</p>
-      <span class="svc-card__arrow">Enquire &#8594;</span>
+      <span class="svc-story-card__number">${num}</span>
+      <div class="svc-story-card__icon" aria-hidden="true">${s.icon}</div>
+      <h3 class="svc-story-card__title">${s.title}</h3>
+      <p class="svc-story-card__desc">${s.desc}</p>
+      <a href="#contact" class="svc-story-card__cta">Enquire &#8594;</a>
     `;
-    grid.appendChild(card);
+    card.addEventListener('click', () => { window.location.href = '#contact'; });
+    track.appendChild(card);
   });
 
-  observeReveal(grid.querySelectorAll('.reveal'));
+  requestAnimationFrame(initServicesStorybook);
+}
+
+/* ─── Services Storybook Scroll Engine ─────────────────────── */
+function initServicesStorybook() {
+  const storybook = document.getElementById('svcStorybook');
+  const sticky    = document.getElementById('svcSticky');
+  const track     = document.getElementById('svcTrack');
+  const fill      = document.getElementById('svcProgressFill');
+  const label     = document.getElementById('svcProgressLabel');
+  if (!storybook || !sticky || !track) return;
+
+  // Mobile: rely on native scroll-snap, no JS needed
+  if (window.matchMedia('(max-width: 767px)').matches) return;
+
+  let raf;
+
+  function getMax() {
+    return Math.max(0, track.scrollWidth - sticky.clientWidth);
+  }
+
+  function setup() {
+    storybook.style.height = (sticky.offsetHeight + getMax()) + 'px';
+  }
+
+  function tick() {
+    const rect     = storybook.getBoundingClientRect();
+    const stickyH  = sticky.offsetHeight;
+    const range    = storybook.offsetHeight - stickyH;
+    const maxTrans = getMax();
+    const progress = range > 0
+      ? Math.min(1, Math.max(0, -rect.top / range))
+      : 0;
+
+    track.style.transform = `translateX(${-(progress * maxTrans)}px)`;
+
+    if (fill) fill.style.width = (progress * 100) + '%';
+
+    if (label) {
+      const firstCard = track.querySelector('.svc-story-card');
+      const cardStep  = firstCard ? firstCard.offsetWidth + 20 : 320;
+      const idx = Math.min(
+        servicesData.length - 1,
+        Math.floor((progress * maxTrans) / cardStep)
+      );
+      label.textContent = `${String(idx + 1).padStart(2, '0')} / ${String(servicesData.length).padStart(2, '0')}`;
+    }
+  }
+
+  const onScroll = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(tick); };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', () => { setup(); tick(); });
+
+  setup();
+  tick();
 }
 
 /* ─── Build Portfolio Grid ─────────────────────────────────── */
@@ -507,7 +566,7 @@ function initCursor() {
     requestAnimationFrame(animateRing);
   })();
 
-  const interactables = 'a, button, .pf-item, .svc-card, .partner-card, .pf-btn';
+  const interactables = 'a, button, .pf-item, .svc-card, .svc-story-card, .partner-card, .pf-btn';
   document.querySelectorAll(interactables).forEach(el => {
     el.addEventListener('mouseenter', () => {
       ring.style.width   = '56px';
