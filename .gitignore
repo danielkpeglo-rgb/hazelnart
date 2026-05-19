@@ -1,0 +1,14 @@
+# Claude Code
+.claude/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+.vscode/
+*.swp
+
+# Unused raw WhatsApp exports (not referenced in the website)
+images/individual designs/
