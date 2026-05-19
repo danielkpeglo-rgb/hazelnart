@@ -10,5 +10,5 @@ desktop.ini
 .vscode/
 *.swp
 
-# Unused raw WhatsApp exports (not referenced in the website)
-images/individual designs/
+# Raw WhatsApp exports (large files not used by the website)
+images/individual designs/WhatsApp*
