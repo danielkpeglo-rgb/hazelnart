@@ -19,6 +19,8 @@ images/
     ├── usuyya-gh/                 ← Work done for USUYYA GH
     ├── goethe-institut/           ← Work done for GOETHE INSTITUT
     ├── wpg-ghana/                 ← Work done for WPG GHANA
+    ├── okanta-medical-centre/     ← Pylon signage for OKANTA MEDICAL CENTRE (photos + videos)
+    ├── nastygirlwrld/             ← 3D wall lettering for NASTYGIRLWRLD.CO (photo + video)
     └── individual/                ← Any individual / personal works
 ```
 
@@ -44,6 +46,18 @@ Or copy this template and fill in your own values:
 ```js
 { src: 'images/portfolio/FOLDER/YOUR-FILENAME.jpg', title: 'Your Title', company: 'COMPANY NAME', filter: 'folder-name' },
 ```
+
+### Adding a video
+
+Videos (`.mp4`) go in the same client folders. Register them with `type: 'video'` and a `poster` image
+(a still frame shown before the video loads). For portrait/phone-shot work, add `shape: 'tall'` so the
+whole piece is shown. Add `tags: ['signage']` or `tags: ['video']` to show it under those filter buttons.
+
+```js
+{ type: 'video', src: 'images/portfolio/FOLDER/clip.mp4', poster: 'images/portfolio/FOLDER/clip-poster.jpg', title: 'Your Title', company: 'COMPANY NAME', filter: 'folder-name', shape: 'tall', tags: ['video'] },
+```
+
+The dark **Latest Projects** strip at the top of the Portfolio section is controlled by `showcaseData` in `script.js`.
 
 ### 3. Supported image formats
 
@@ -76,6 +90,23 @@ studio.jpg
 This appears in the "About" section of the website.
 
 ---
+
+## Website Pages
+
+The site is now split into separate pages, each with its own banner and a "Next stop" link to the following page:
+
+| Page | File |
+|---|---|
+| Home | `index.html` |
+| About | `about.html` |
+| Services | `services.html` |
+| Portfolio | `portfolio.html` |
+| Partners | `partners.html` |
+| Contact | `contact.html` |
+| Design Studio | `design-studio.html` |
+
+The sidebar, mobile menu and footer are copied into every page — if you change a menu link or phone number, update it in **all** the files above.
+All pages share `styles.css` and `script.js`, so portfolio, services and partner data still live in one place (`script.js`).
 
 ## Opening the Website
 

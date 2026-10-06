@@ -8,9 +8,25 @@
    To add a new image, copy the format below and add a new line.
    Format:
    { src: 'images/portfolio/FOLDER/filename.jpg', title: 'Work Title', company: 'COMPANY NAME', filter: 'folder-name' }
+
+   Optional extras:
+   type:   'video'  → src is an .mp4; add poster: 'path/to/frame.jpg'
+   shape:  'tall'   → portrait shots/videos are shown whole over a blurred backdrop
+   tags:   ['signage', ...] → also shown under that filter button
    ============================================================ */
 
 const portfolioData = [
+
+  // ── NASTYGIRLWRLD.CO ───────────────────────────────────────
+  { src: 'images/portfolio/nastygirlwrld/nastygirlwrld-3d-wall-letters.jpeg', title: '3D Wall Lettering', company: 'NastyGirlWrld.co', filter: 'nastygirlwrld', tags: ['signage'] },
+
+  // ── OKANTA MEDICAL CENTRE ──────────────────────────────────
+  { type: 'video', src: 'images/portfolio/okanta-medical-centre/okanta-medical-centre-pylon-sign-closeup.mp4', poster: 'images/portfolio/okanta-medical-centre/okanta-medical-centre-pylon-sign-closeup-poster.jpg', title: 'Pylon Signage — Video', company: 'Okanta Medical Centre', filter: 'okanta-medical-centre', shape: 'tall', tags: ['signage', 'video'] },
+  { src: 'images/portfolio/okanta-medical-centre/okanta-medical-centre-pylon-sign-1.jpeg', title: '24/7 Pylon Signage', company: 'Okanta Medical Centre', filter: 'okanta-medical-centre', shape: 'tall', tags: ['signage'] },
+  { type: 'video', src: 'images/portfolio/nastygirlwrld/nastygirlwrld-3d-wall-letters.mp4', poster: 'images/portfolio/nastygirlwrld/nastygirlwrld-3d-wall-letters-poster.jpg', title: '3D Wall Lettering — Video', company: 'NastyGirlWrld.co', filter: 'nastygirlwrld', tags: ['signage', 'video'] },
+  { type: 'video', src: 'images/portfolio/individual/pa-gya-festival-tote-bags.mp4', poster: 'images/portfolio/individual/pa-gya-festival-tote-bags-poster.jpg', title: '10th Anniversary Tote Bags', company: 'Pa Gya! Literary Festival', filter: 'individual', shape: 'tall', tags: ['video'] },
+  { src: 'images/portfolio/okanta-medical-centre/okanta-medical-centre-pylon-sign-2.jpeg', title: '24/7 Pylon Signage', company: 'Okanta Medical Centre', filter: 'okanta-medical-centre', shape: 'tall', tags: ['signage'] },
+  { type: 'video', src: 'images/portfolio/okanta-medical-centre/okanta-medical-centre-pylon-sign-site.mp4', poster: 'images/portfolio/okanta-medical-centre/okanta-medical-centre-pylon-sign-site-poster.jpg', title: 'Pylon Signage — On Site', company: 'Okanta Medical Centre', filter: 'okanta-medical-centre', shape: 'tall', tags: ['signage', 'video'] },
 
   // ── FRIMPS OIL ─────────────────────────────────────────────
   { src: 'images/portfolio/frimps-oil/frimps-oil-flask-white.jpeg',    title: 'Branded Flask — White',  company: 'FRIMPS OIL', filter: 'frimps-oil' },
@@ -29,7 +45,7 @@ const portfolioData = [
   { src: 'images/portfolio/usuyya-gh/usuyya-hard-hat-2.jpeg', title: 'Branded Hard Hat', company: 'USUYYA GH', filter: 'usuyya-gh' },
 
   // ── INDIVIDUAL WORKS ───────────────────────────────────────
-  { src: 'images/portfolio/individual/eys-glam-studio-signage.jpeg',        title: 'Studio Signage',             company: 'EYS Glam Studio',          filter: 'individual' },
+  { src: 'images/portfolio/individual/eys-glam-studio-signage.jpeg',        title: 'Studio Signage',             company: 'EYS Glam Studio',          filter: 'individual', tags: ['signage'] },
   { src: 'images/portfolio/individual/jozzy-kidz-tshirts.jpeg',             title: 'Branded T-Shirts',           company: 'Jozzy Kidz',               filter: 'individual' },
   { src: 'images/portfolio/individual/eagle-petroleum-mugs.jpeg',           title: 'Branded Mugs',               company: 'Eagle Petroleum',          filter: 'individual' },
   { src: 'images/portfolio/individual/eagle-petroleum-flasks.jpeg',         title: 'Branded Flasks',             company: 'Eagle Petroleum',          filter: 'individual' },
@@ -54,30 +70,41 @@ const portfolioData = [
   { src: 'images/portfolio/individual/dna-paper-bag-2.jpeg',                title: 'Branded Paper Bag',          company: 'DNA',                      filter: 'individual' },
   { src: 'images/portfolio/individual/kasani-lux-pouch-red.jpeg',           title: 'Luxury Pouch — Red',         company: 'Kasani Lux',               filter: 'individual' },
   { src: 'images/portfolio/individual/kasani-lux-pouches.jpeg',             title: 'Luxury Pouches',             company: 'Kasani Lux',               filter: 'individual' },
-  { src: 'images/portfolio/individual/emergency-assembly-signs.jpeg',       title: 'Emergency Assembly Signs',   company: 'Signage',                  filter: 'individual' },
+  { src: 'images/portfolio/individual/emergency-assembly-signs.jpeg',       title: 'Emergency Assembly Signs',   company: 'Signage',                  filter: 'individual', tags: ['signage'] },
   { src: 'images/portfolio/individual/legal-aid-commission-award.jpeg',     title: 'Award Design',               company: 'Legal Aid Commission',     filter: 'individual' },
   { src: 'images/portfolio/individual/goodgoods-banner.jpeg',               title: 'Promotional Banner',         company: 'Good Goods',               filter: 'individual' },
   { src: 'images/portfolio/individual/exhibition-mirror-panels.jpeg',       title: 'Exhibition Mirror Panels',   company: 'Exhibition',               filter: 'individual' },
-  { src: 'images/portfolio/individual/despite-automobile-museum-sign.jpeg', title: 'Museum Signage',             company: 'Despite Automobile Museum',filter: 'individual' },
+  { src: 'images/portfolio/individual/despite-automobile-museum-sign.jpeg', title: 'Museum Signage',             company: 'Despite Automobile Museum',filter: 'individual', tags: ['signage'] },
 
+];
+
+/* ============================================================
+   LATEST PROJECTS SHOWCASE
+   area: a = left tall · b = centre top · c = right tall · d = centre bottom
+   ============================================================ */
+const showcaseData = [
+  { area: 'a', type: 'video', src: 'images/portfolio/okanta-medical-centre/okanta-medical-centre-pylon-sign-closeup.mp4', poster: 'images/portfolio/okanta-medical-centre/okanta-medical-centre-pylon-sign-closeup-poster.jpg', title: '24/7 Pylon Signage', company: 'Okanta Medical Centre', tag: 'Outdoor Signage' },
+  { area: 'b', type: 'video', src: 'images/portfolio/nastygirlwrld/nastygirlwrld-3d-wall-letters.mp4', poster: 'images/portfolio/nastygirlwrld/nastygirlwrld-3d-wall-letters-poster.jpg', title: '3D Wall Lettering', company: 'NastyGirlWrld.co', tag: '3D Signage' },
+  { area: 'c', type: 'video', src: 'images/portfolio/individual/pa-gya-festival-tote-bags.mp4', poster: 'images/portfolio/individual/pa-gya-festival-tote-bags-poster.jpg', title: '10th Anniversary Tote Bags', company: 'Pa Gya! Literary Festival', tag: 'Branded Merchandise' },
+  { area: 'd', type: 'image', src: 'images/portfolio/nastygirlwrld/nastygirlwrld-3d-wall-letters.jpeg', title: '3D Wall Lettering — Detail', company: 'NastyGirlWrld.co', tag: '3D Signage' },
 ];
 
 /* ============================================================
    SERVICES DATA
    ============================================================ */
 const servicesData = [
-  { icon: '🖨️', title: 'Digital Paper Prints',    desc: 'Flyers, brochures, business cards, catalogues, posters, and every paper-based print material crafted with precision and premium quality.' },
-  { icon: '📐', title: 'Large Format Prints',      desc: 'Banners, billboards, flex prints, roll-up stands, and monumental graphics that command attention and stop people in their tracks.' },
-  { icon: '🎯', title: '3D Design & Renders',      desc: 'Stunning 3D mockups, product visualisations, architectural renders, and dimensional brand materials that bring concepts to life.' },
-  { icon: '👕', title: 'T-Shirt & Apparel',        desc: 'DTF printing, screen printing, embroidery, and sublimation for corporate uniforms, branded merchandise, and event apparel.' },
-  { icon: '🎁', title: 'Souvenirs & Gift Items',   desc: 'Branded mugs, pens, notebooks, keychains, tote bags, phone cases, and custom corporate gifts that leave lasting impressions.' },
-  { icon: '🎨', title: 'Brand Identity & Logo',    desc: 'Complete brand identity design — logos, colour systems, typography, and brand guidelines that define and distinguish your business.' },
-  { icon: '📋', title: 'Corporate Stationery',     desc: 'Letterheads, envelopes, compliment slips, invoice templates, and full stationery packages that project professionalism.' },
-  { icon: '🚗', title: 'Vehicle Branding',         desc: 'Car wraps, truck graphics, fleet vehicle branding, and mobile advertising that carries your brand wherever the road goes.' },
-  { icon: '🎪', title: 'Exhibition & Events',      desc: 'Trade show booths, pop-up displays, step-and-repeat backdrops, and event branding that makes your brand unforgettable.' },
-  { icon: '📦', title: 'Packaging Design',         desc: 'Product box design, labels, stickers, and packaging that protects your product while elevating your brand on the shelf.' },
-  { icon: '🏗️', title: 'Outdoor Advertising',     desc: 'Billboard designs, shop frontage signage, wayfinding systems, and outdoor advertising that drives footfall and brand recall.' },
-  { icon: '📱', title: 'Digital Marketing Assets', desc: 'Social media graphics, email templates, digital banners, and all visual content your brand needs for a powerful online presence.' },
+  { icon: '🖨️', title: 'Digital Paper Prints',    img: 'images/services/digital-paper-prints.jpg', desc: 'Flyers, brochures, business cards, catalogues, posters, and every paper-based print material crafted with precision and premium quality.' },
+  { icon: '📐', title: 'Large Format Prints',      img: 'images/services/large-format-prints.jpg', desc: 'Banners, billboards, flex prints, roll-up stands, and monumental graphics that command attention and stop people in their tracks.' },
+  { icon: '🎯', title: '3D Design & Renders',      img: 'images/services/3d-design-renders.jpg', desc: 'Stunning 3D mockups, product visualisations, architectural renders, and dimensional brand materials that bring concepts to life.' },
+  { icon: '👕', title: 'T-Shirt & Apparel',        img: 'images/services/tshirt-apparel.jpg', desc: 'DTF printing, screen printing, embroidery, and sublimation for corporate uniforms, branded merchandise, and event apparel.' },
+  { icon: '🎁', title: 'Souvenirs & Gift Items',   img: 'images/services/souvenirs-gifts.jpg', desc: 'Branded mugs, pens, notebooks, keychains, tote bags, phone cases, and custom corporate gifts that leave lasting impressions.' },
+  { icon: '🎨', title: 'Brand Identity & Logo',    img: 'images/services/brand-identity.jpg', desc: 'Complete brand identity design — logos, colour systems, typography, and brand guidelines that define and distinguish your business.' },
+  { icon: '📋', title: 'Corporate Stationery',     img: 'images/services/corporate-stationery.jpg', desc: 'Letterheads, envelopes, compliment slips, invoice templates, and full stationery packages that project professionalism.' },
+  { icon: '🚗', title: 'Vehicle Branding',         img: 'images/services/vehicle-branding.jpg', desc: 'Car wraps, truck graphics, fleet vehicle branding, and mobile advertising that carries your brand wherever the road goes.' },
+  { icon: '🎪', title: 'Exhibition & Events',      img: 'images/services/exhibition-events.jpg', desc: 'Trade show booths, pop-up displays, step-and-repeat backdrops, and event branding that makes your brand unforgettable.' },
+  { icon: '📦', title: 'Packaging Design',         img: 'images/services/packaging-design.jpg', desc: 'Product box design, labels, stickers, and packaging that protects your product while elevating your brand on the shelf.' },
+  { icon: '🏗️', title: 'Outdoor Advertising',     img: 'images/services/outdoor-advertising.jpg', desc: 'Billboard designs, shop frontage signage, wayfinding systems, and outdoor advertising that drives footfall and brand recall.' },
+  { icon: '📱', title: 'Digital Marketing Assets', img: 'images/services/digital-marketing.jpg', desc: 'Social media graphics, email templates, digital banners, and all visual content your brand needs for a powerful online presence.' },
 ];
 
 /* ============================================================
@@ -171,7 +198,10 @@ const companySlugs = [
    INIT
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
+  initPageTransitions();
   buildServices();
+  buildServicePreview();
+  buildShowcase();
   buildPortfolio();
   buildPartners();
   initMobileMenu();
@@ -186,7 +216,79 @@ document.addEventListener('DOMContentLoaded', () => {
   initBackToTop();
   setFooterYear();
   initHeroVideos();
+  initInViewVideos();
 });
+
+/* ─── Build Latest Projects Showcase ───────────────────────── */
+function buildShowcase() {
+  const grid = document.getElementById('showcaseGrid');
+  if (!grid) return;
+
+  showcaseData.forEach((item, idx) => {
+    const isVideo = item.type === 'video';
+    const card = document.createElement('div');
+    card.className = `sc-card sc-card--${item.area} reveal`;
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('role', 'button');
+    card.setAttribute('aria-label', `${isVideo ? 'Play' : 'View'} ${item.title} — ${item.company}`);
+
+    card.innerHTML = `
+      ${isVideo
+        ? `<video class="sc-card__media" src="${item.src}" poster="${item.poster}" muted loop playsinline preload="metadata" data-autoplay></video>`
+        : `<img class="sc-card__media" src="${item.src}" alt="${item.title} — ${item.company}" loading="lazy" />`}
+      <span class="sc-card__badge">${isVideo ? '&#9654; Watch in HD' : '&#10530; View in HD'}</span>
+      <div class="sc-card__cap">
+        <span class="sc-card__tag">${item.tag}</span>
+        <p class="sc-card__title">${item.title}</p>
+        <p class="sc-card__co">${item.company}</p>
+      </div>
+    `;
+
+    const open = () => openMediaLightbox(showcaseData, idx);
+    card.addEventListener('click', open);
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }
+    });
+    grid.appendChild(card);
+  });
+}
+
+/* ─── Play muted previews only while on screen ─────────────── */
+function initInViewVideos() {
+  const videos = document.querySelectorAll('video[data-autoplay]');
+  if (!videos.length) return;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(({ target, isIntersecting }) => {
+      if (isIntersecting && !reduceMotion) target.play().catch(() => {});
+      else target.pause();
+    });
+  }, { threshold: 0.35 });
+
+  videos.forEach(v => io.observe(v));
+}
+
+const enquireUrl = title => `contact.html?service=${encodeURIComponent(title)}`;
+
+/* ─── Home: Services Preview (first six) ───────────────────── */
+function buildServicePreview() {
+  const grid = document.getElementById('svcPreview');
+  if (!grid) return;
+  servicesData.slice(0, 6).forEach((s, i) => {
+    const a = document.createElement('a');
+    a.href = 'services.html';
+    a.className = 'svc-tile reveal' + (i % 3 ? ` reveal-d${i % 3}` : '');
+    a.innerHTML = `
+      <img class="svc-tile__img" src="${s.img}" alt="" loading="lazy" />
+      <span class="svc-tile__shade" aria-hidden="true"></span>
+      <span class="svc-tile__icon" aria-hidden="true">${s.icon}</span>
+      <span class="svc-tile__title">${s.title}</span>
+      <span class="svc-tile__more">Explore &#8594;</span>
+    `;
+    grid.appendChild(a);
+  });
+}
 
 /* ─── Build Services Storybook ─────────────────────────────── */
 function buildServices() {
@@ -202,13 +304,18 @@ function buildServices() {
     card.setAttribute('role', 'button');
     card.setAttribute('aria-label', `${s.title} — Enquire`);
     card.innerHTML = `
+      <img class="svc-story-card__bg" src="${s.img}" alt="" loading="lazy" aria-hidden="true" />
+      <span class="svc-story-card__shade" aria-hidden="true"></span>
       <span class="svc-story-card__number">${num}</span>
       <div class="svc-story-card__icon" aria-hidden="true">${s.icon}</div>
       <h3 class="svc-story-card__title">${s.title}</h3>
       <p class="svc-story-card__desc">${s.desc}</p>
-      <a href="#contact" class="svc-story-card__cta">Enquire &#8594;</a>
+      <a href="${enquireUrl(s.title)}" class="svc-story-card__cta">Enquire &#8594;</a>
     `;
-    card.addEventListener('click', () => { window.location.href = '#contact'; });
+    card.addEventListener('click', e => {
+      if (e.target.closest('a')) return;
+      card.querySelector('.svc-story-card__cta').click();
+    });
     track.appendChild(card);
   });
 
@@ -315,24 +422,32 @@ function buildPortfolio() {
   if (note) note.style.display = 'none';
 
   portfolioData.forEach((item, idx) => {
+    const isVideo = item.type === 'video';
     const el = document.createElement('div');
-    el.className = 'pf-item';
+    el.className = 'pf-item' + (item.shape === 'tall' ? ' pf-item--tall' : '') + (isVideo ? ' pf-item--video' : '');
     el.dataset.filter = item.filter;
+    el.dataset.tags = (item.tags || []).join(' ');
     el.dataset.idx = idx;
     const col = idx % 3;
     el.setAttribute('tabindex', '0');
     el.setAttribute('role', 'button');
-    el.setAttribute('aria-label', `View ${item.title} — ${item.company}`);
+    el.setAttribute('aria-label', `${isVideo ? 'Play' : 'View'} ${item.title} — ${item.company}`);
 
     el.style.transitionDelay = `${col * 0.1}s`;
 
     el.innerHTML = `
-      <img
+      ${item.shape === 'tall'
+        ? `<span class="pf-item__backdrop" style="background-image:url('${isVideo ? item.poster : item.src}')" aria-hidden="true"></span>`
+        : ''}
+      ${isVideo
+        ? `<video src="${item.src}" poster="${item.poster}" muted loop playsinline preload="none" data-autoplay></video>
+           <span class="pf-item__play" aria-hidden="true">&#9654; Video</span>`
+        : `<img
         src="${item.src}"
         alt="${item.title} — ${item.company}"
         loading="lazy"
         onerror="this.closest('.pf-item').classList.add('pf-item--ph'); this.remove();"
-      />
+      />`}
       <div class="pf-item__overlay">
         <p class="pf-item__title">${item.title}</p>
         <p class="pf-item__co">${item.company}</p>
@@ -481,35 +596,41 @@ function initMobileMenu() {
   });
 }
 
-/* ─── Sidebar Active Link Tracking ─────────────────────────── */
+/* ─── Sidebar: in-page #links scroll smoothly ──────────────── */
 function initSidebarScroll() {
-  const sidebarLinks = document.querySelectorAll('.sidebar__link');
-  const sections     = document.querySelectorAll('main section[id]');
-
-  const setActive = (id) => {
-    sidebarLinks.forEach(link => {
-      const matches = link.getAttribute('href') === `#${id}`;
-      link.classList.toggle('active', matches);
-    });
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) setActive(entry.target.id);
-    });
-  }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
-
-  sections.forEach(s => observer.observe(s));
-
-  // Smooth scroll for sidebar links (skip page navigation links)
-  sidebarLinks.forEach(link => {
+  document.querySelectorAll('.sidebar__link').forEach(link => {
     link.addEventListener('click', e => {
       const href = link.getAttribute('href');
       if (!href || !href.startsWith('#')) return;
       e.preventDefault();
-      const target = document.querySelector(href);
-      target?.scrollIntoView({ behavior: 'smooth' });
+      document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
     });
+  });
+}
+
+/* ─── Page Transitions (curtain wipe between pages) ────────── */
+function initPageTransitions() {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Returning via the back button can restore a page mid-transition
+  window.addEventListener('pageshow', e => {
+    if (e.persisted) document.body.classList.remove('is-leaving');
+  });
+
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href]');
+    if (!a || reduceMotion) return;
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    if (a.target && a.target !== '_self') return;
+    if (a.hasAttribute('download')) return;
+
+    const url = new URL(a.href, location.href);
+    if (url.origin !== location.origin || !/\.html$|\/$/.test(url.pathname)) return;
+    if (url.pathname === location.pathname && url.search === location.search) return; // same page / #anchor
+
+    e.preventDefault();
+    document.body.classList.add('is-leaving');
+    setTimeout(() => { location.href = url.href; }, 420);
   });
 }
 
@@ -585,7 +706,7 @@ function initCursor() {
     requestAnimationFrame(animateRing);
   })();
 
-  const interactables = 'a, button, .pf-item, .svc-card, .svc-story-card, .partner-card, .pf-btn';
+  const interactables = 'a, button, .pf-item, .sc-card, .svc-tile, .next-stop, .svc-card, .svc-story-card, .partner-card, .pf-btn';
   document.querySelectorAll(interactables).forEach(el => {
     el.addEventListener('mouseenter', () => {
       ring.style.width   = '56px';
@@ -612,7 +733,8 @@ function initFilters() {
 
   function getMatchingItems() {
     return [...document.querySelectorAll('.pf-item:not(.pf-item--ph)')].filter(item =>
-      currentFilter === 'all' || item.dataset.filter === currentFilter
+      currentFilter === 'all' || item.dataset.filter === currentFilter ||
+      (item.dataset.tags || '').split(' ').includes(currentFilter)
     );
   }
 
@@ -656,8 +778,8 @@ function initFilters() {
 }
 
 /* ─── Lightbox ──────────────────────────────────────────────── */
-let currentIdx   = 0;
-let visibleItems = [];
+let currentIdx = 0;
+let lbItems    = [];
 
 function initLightbox() {
   const lbBg   = document.getElementById('lbBg');
@@ -679,14 +801,21 @@ function initLightbox() {
   });
 }
 
+// Opened from the portfolio grid — browse whatever is currently visible
 function openLightbox(dataIdx) {
-  const lb = document.getElementById('lightbox');
-  visibleItems = [...document.querySelectorAll('.pf-item:not(.pf-item--ph):not(.hidden)')];
-  currentIdx   = visibleItems.findIndex(el => parseInt(el.dataset.idx, 10) === dataIdx);
-  if (currentIdx === -1) return;
+  const visible = [...document.querySelectorAll('.pf-item:not(.pf-item--ph):not(.hidden)')]
+    .map(el => parseInt(el.dataset.idx, 10));
+  const start = visible.indexOf(dataIdx);
+  if (start === -1) return;
+  openMediaLightbox(visible.map(i => portfolioData[i]), start);
+}
 
+// items: [{ type?, src, poster?, title, company }]
+function openMediaLightbox(items, start) {
+  lbItems    = items;
+  currentIdx = start;
   renderLightboxImage();
-  lb.classList.add('active');
+  document.getElementById('lightbox')?.classList.add('active');
   document.body.style.overflow = 'hidden';
   document.getElementById('lbClose')?.focus();
 }
@@ -694,29 +823,56 @@ function openLightbox(dataIdx) {
 function closeLightbox() {
   document.getElementById('lightbox')?.classList.remove('active');
   document.body.style.overflow = '';
+  const lbVideo = document.getElementById('lbVideo');
+  if (lbVideo) { lbVideo.pause(); lbVideo.removeAttribute('src'); lbVideo.load(); }
 }
 
 function navigateLightbox(dir) {
-  currentIdx = (currentIdx + dir + visibleItems.length) % visibleItems.length;
+  currentIdx = (currentIdx + dir + lbItems.length) % lbItems.length;
   renderLightboxImage();
 }
 
 function renderLightboxImage() {
-  const item    = visibleItems[currentIdx];
-  const img     = item?.querySelector('img');
+  const item    = lbItems[currentIdx];
   const lbImg   = document.getElementById('lbImg');
+  const lbVideo = document.getElementById('lbVideo');
   const lbTitle = document.getElementById('lbTitle');
   const lbCo    = document.getElementById('lbCo');
+  if (!item) return;
 
-  if (lbImg && img) { lbImg.src = img.src; lbImg.alt = img.alt; }
-  if (lbTitle) lbTitle.textContent = item?.querySelector('.pf-item__title')?.textContent || '';
-  if (lbCo)    lbCo.textContent    = item?.querySelector('.pf-item__co')?.textContent    || '';
+  const isVideo = item.type === 'video';
+  if (lbImg) {
+    lbImg.hidden = isVideo;
+    if (!isVideo) { lbImg.src = item.src; lbImg.alt = `${item.title} — ${item.company}`; }
+  }
+  if (lbVideo) {
+    lbVideo.hidden = !isVideo;
+    if (isVideo) {
+      lbVideo.poster = item.poster || '';
+      lbVideo.src    = item.src;
+      lbVideo.muted  = false;
+      lbVideo.play().catch(() => {});
+    } else {
+      lbVideo.pause();
+    }
+  }
+  if (lbTitle) lbTitle.textContent = item.title;
+  if (lbCo)    lbCo.textContent    = item.company;
 }
 
 /* ─── Contact Form (WhatsApp) ──────────────────────────────── */
 function initContactForm() {
   const form = document.getElementById('contactForm');
   if (!form) return;
+
+  const wanted = new URLSearchParams(location.search).get('service');
+  const select = document.getElementById('cService');
+  if (wanted && select) {
+    const key = wanted.toLowerCase().split(/[\s&]+/).filter(Boolean).slice(0, 2).join(' ');
+    const match = [...select.options].find(o =>
+      o.value && o.text.toLowerCase().replace(/&/g, ' ').replace(/\s+/g, ' ').includes(key));
+    if (match) select.value = match.text;
+  }
 
   form.addEventListener('submit', e => {
     e.preventDefault();

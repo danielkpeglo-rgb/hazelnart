@@ -15,7 +15,13 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="design-studio.css" />
 </head>
-<body>
+<body data-page="studio">
+
+  <!-- Page transition curtain -->
+  <div class="page-transition" aria-hidden="true">
+    <img src="images/individual%20designs/Hazelnart-Logo.png" alt="" class="page-transition__logo" />
+  </div>
+
 
   <div class="cursor" id="cursor"></div>
   <div class="cursor-ring" id="cursorRing"></div>
@@ -25,29 +31,29 @@
   ════════════════════════════════════════════════════ -->
   <aside class="sidebar" id="sidebar">
     <div class="sidebar__logo-wrap">
-      <a href="index.html#home" class="sidebar__logo">
+      <a href="index.html" class="sidebar__logo">
         <img src="images/individual%20designs/Hazelnart-Logo.png" alt="Hazelnart" onerror="this.style.display='none'" />
       </a>
       <p class="sidebar__tagline">Your one stop shop<br>for everything printing</p>
     </div>
     <div class="sidebar__divider"></div>
     <nav class="sidebar__nav" aria-label="Primary">
-      <a href="index.html#home"      class="sidebar__link" data-section="home">
+      <a href="index.html"      class="sidebar__link" data-section="home">
         <span class="sidebar__link-dot"></span>Home
       </a>
-      <a href="index.html#about"     class="sidebar__link" data-section="about">
+      <a href="about.html"     class="sidebar__link" data-section="about">
         <span class="sidebar__link-dot"></span>About
       </a>
-      <a href="index.html#services"  class="sidebar__link" data-section="services">
+      <a href="services.html"  class="sidebar__link" data-section="services">
         <span class="sidebar__link-dot"></span>Services
       </a>
-      <a href="index.html#portfolio" class="sidebar__link" data-section="portfolio">
+      <a href="portfolio.html" class="sidebar__link" data-section="portfolio">
         <span class="sidebar__link-dot"></span>Portfolio
       </a>
-      <a href="index.html#partners"  class="sidebar__link" data-section="partners">
+      <a href="partners.html"  class="sidebar__link" data-section="partners">
         <span class="sidebar__link-dot"></span>Partners
       </a>
-      <a href="index.html#contact"   class="sidebar__link" data-section="contact">
+      <a href="contact.html"   class="sidebar__link" data-section="contact">
         <span class="sidebar__link-dot"></span>Contact
       </a>
       <a href="design-studio.html"   class="sidebar__link active" data-section="studio">
@@ -77,7 +83,7 @@
        MOBILE TOP BAR
   ════════════════════════════════════════════════════ -->
   <header class="mobile-topbar" id="mobileTopbar">
-    <a href="index.html#home" class="mobile-topbar__logo">
+    <a href="index.html" class="mobile-topbar__logo">
       <img src="images/individual%20designs/Hazelnart-Logo.png" alt="Hazelnart" class="mobile-topbar__logo-img" />
     </a>
     <button class="mobile-topbar__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
@@ -94,12 +100,12 @@
       <img src="images/individual%20designs/Hazelnart-Logo.png" alt="Hazelnart" />
     </div>
     <nav class="mobile-menu__nav">
-      <a href="index.html#home"      class="mobile-menu__link">Home</a>
-      <a href="index.html#about"     class="mobile-menu__link">About</a>
-      <a href="index.html#services"  class="mobile-menu__link">Services</a>
-      <a href="index.html#portfolio" class="mobile-menu__link">Portfolio</a>
-      <a href="index.html#partners"  class="mobile-menu__link">Partners</a>
-      <a href="index.html#contact"   class="mobile-menu__link">Contact</a>
+      <a href="index.html"      class="mobile-menu__link">Home</a>
+      <a href="about.html"     class="mobile-menu__link">About</a>
+      <a href="services.html"  class="mobile-menu__link">Services</a>
+      <a href="portfolio.html" class="mobile-menu__link">Portfolio</a>
+      <a href="partners.html"  class="mobile-menu__link">Partners</a>
+      <a href="contact.html"   class="mobile-menu__link">Contact</a>
       <a href="design-studio.html"   class="mobile-menu__link" style="color:var(--gold)">✦ Design Studio</a>
     </nav>
     <div class="mobile-menu__footer">
@@ -193,6 +199,24 @@
               <option value="grid">Grid Paper</option>
               <option value="dots">Dot Grid</option>
             </select>
+          </div>
+
+          <!-- Template Bar -->
+          <div class="app-templatebar" id="templateBar">
+            <span class="tpl-label">Start from</span>
+            <button type="button" class="tpl-chip active" data-template="blank">▢ Blank</button>
+            <button type="button" class="tpl-chip" data-template="tshirt">👕 T-Shirt</button>
+            <button type="button" class="tpl-chip" data-template="mug">☕ Mug</button>
+            <button type="button" class="tpl-chip" data-template="tote">👜 Tote Bag</button>
+            <button type="button" class="tpl-chip" data-template="card">💳 Business Card</button>
+            <button type="button" class="tpl-chip" data-template="flyer">📄 A5 Flyer</button>
+            <button type="button" class="tpl-chip" data-template="rollup">🏳️ Roll-up Banner</button>
+            <button type="button" class="tpl-chip" data-template="vehicle">🚐 Vehicle</button>
+            <button type="button" class="tpl-chip" data-template="sign">🪧 Signboard</button>
+            <button type="button" class="tpl-chip" data-template="logo">⭕ Logo / Badge</button>
+            <span class="opt-sep"></span>
+            <button type="button" class="tpl-chip tpl-chip--photo" id="refPhotoBtn">📷 Add Reference Photo</button>
+            <input type="file" id="refPhotoInput" accept="image/*" hidden />
           </div>
 
           <!-- App Body -->
@@ -439,6 +463,15 @@
               </div>
 
               <div class="form-group">
+                <label class="form-label">Brand Colours <span style="color:var(--text-3);font-weight:400;">(optional)</span></label>
+                <div class="brand-colors" id="brandColors">
+                  <button type="button" class="brand-color-add" id="brandColorAdd">+ Add colour</button>
+                </div>
+                <input type="color" id="brandColorInput" class="brand-color-input" value="#0ea5e9" tabindex="-1" aria-hidden="true" />
+                <p class="form-hint">Add up to 5. Tap a colour to draw with it on the canvas.</p>
+              </div>
+
+              <div class="form-group">
                 <label class="form-label" for="sDesc">Describe Your Idea <span style="color:var(--gold)">*</span></label>
                 <textarea class="form-input form-textarea" id="sDesc" rows="5" required
                   placeholder="Tell us more about your vision — colours, style, purpose, target audience, any references… the more detail, the better!"></textarea>
@@ -448,7 +481,7 @@
               <div class="brief-sketch-preview" id="briefSketchPreview">
                 <div class="sketch-preview-label">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-                  Your sketch will be attached to the message
+                  Your sketch is sent as a brief card with your name, service &amp; colours. Your work autosaves on this device.
                 </div>
                 <canvas id="previewCanvas" width="120" height="75"></canvas>
               </div>
@@ -516,22 +549,22 @@
           <div>
             <p class="footer__col-title">Quick Links</p>
             <ul class="footer__links">
-              <li><a href="index.html#about">About</a></li>
-              <li><a href="index.html#services">Services</a></li>
-              <li><a href="index.html#portfolio">Portfolio</a></li>
-              <li><a href="index.html#partners">Partners</a></li>
-              <li><a href="index.html#contact">Contact</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="portfolio.html">Portfolio</a></li>
+              <li><a href="partners.html">Partners</a></li>
+              <li><a href="contact.html">Contact</a></li>
               <li><a href="design-studio.html">Design Studio</a></li>
             </ul>
           </div>
           <div>
             <p class="footer__col-title">Services</p>
             <ul class="footer__links">
-              <li><a href="index.html#services">Digital Printing</a></li>
-              <li><a href="index.html#services">Large Format</a></li>
-              <li><a href="index.html#services">3D Design</a></li>
-              <li><a href="index.html#services">T-Shirt Printing</a></li>
-              <li><a href="index.html#services">Branding &amp; Identity</a></li>
+              <li><a href="services.html">Digital Printing</a></li>
+              <li><a href="services.html">Large Format</a></li>
+              <li><a href="services.html">3D Design</a></li>
+              <li><a href="services.html">T-Shirt Printing</a></li>
+              <li><a href="services.html">Branding &amp; Identity</a></li>
             </ul>
           </div>
           <div>
@@ -574,6 +607,20 @@
     </div>
   </div>
 
+  <!-- Send / What-happens-next Modal -->
+  <div class="send-modal" id="sendModal" hidden>
+    <div class="send-modal__box" role="dialog" aria-modal="true" aria-labelledby="sendModalTitle">
+      <button type="button" class="send-modal__close" id="sendModalClose" aria-label="Close">✕</button>
+      <div class="send-modal__badge">✓</div>
+      <h3 class="send-modal__title" id="sendModalTitle">Your brief is ready</h3>
+      <p class="send-modal__sub" id="sendModalSub"></p>
+      <img class="send-modal__preview" id="sendModalPreview" alt="Your design brief card" />
+      <ol class="send-modal__steps" id="sendModalSteps"></ol>
+      <div class="send-modal__actions" id="sendModalActions"></div>
+      <p class="send-modal__note"><strong>What happens next?</strong> Our team reviews your sketch and replies within 24 hours with ideas and a free quote. Questions? Call <a href="tel:+233266575930">0266 575 930</a>.</p>
+    </div>
+  </div>
+
   <!-- Back to top -->
   <button class="back-top" id="backTop" aria-label="Back to top">
     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
@@ -613,7 +660,12 @@
     snapshot:  null,
     textX:     0, textY:  0,
     canvasBg:  'white',
+    template:  'blank',
+    hasReference: false,
+    dirty:     false,
   };
+
+  let brandColors = [];
 
   const undoStack = [];
   const redoStack = [];
@@ -625,6 +677,179 @@
     cream: '#fdf8f0',
     dark:  '#1a1a2e',
   };
+
+  // ── Product Templates (guide outlines drawn in "units", fitted to the canvas) ──
+  function roundRectPath(c, x, y, w, h, r) {
+    c.beginPath();
+    c.moveTo(x + r, y);
+    c.arcTo(x + w, y, x + w, y + h, r);
+    c.arcTo(x + w, y + h, x, y + h, r);
+    c.arcTo(x, y + h, x, y, r);
+    c.arcTo(x, y, x + w, y, r);
+    c.closePath();
+  }
+
+  const TEMPLATES = {
+    tshirt: {
+      name: 'T-Shirt', caption: 'T-SHIRT · FRONT', w: 100, h: 100,
+      draw(c, u) {
+        u.solid();
+        c.beginPath();
+        c.moveTo(36, 6); c.quadraticCurveTo(50, 20, 64, 6);
+        c.lineTo(84, 13); c.lineTo(99, 35); c.lineTo(83, 44); c.lineTo(78, 37);
+        c.lineTo(78, 97); c.lineTo(22, 97); c.lineTo(22, 37);
+        c.lineTo(17, 44); c.lineTo(1, 35); c.lineTo(16, 13);
+        c.closePath(); c.stroke();
+        u.dashed(); c.strokeRect(34, 28, 32, 38); u.label('PRINT AREA', 50, 47);
+      },
+    },
+    mug: {
+      name: 'Mug', caption: 'MUG · WRAP-AROUND PRINT', w: 122, h: 100,
+      draw(c, u) {
+        u.solid();
+        c.beginPath(); c.ellipse(52, 12, 42, 6, 0, 0, Math.PI * 2); c.stroke();
+        c.beginPath();
+        c.moveTo(10, 12); c.lineTo(10, 88); c.quadraticCurveTo(10, 97, 52, 97);
+        c.quadraticCurveTo(94, 97, 94, 88); c.lineTo(94, 12);
+        c.moveTo(94, 30); c.bezierCurveTo(126, 28, 126, 74, 94, 72);
+        c.moveTo(94, 40); c.bezierCurveTo(112, 40, 112, 62, 94, 62);
+        c.stroke();
+        u.dashed(); c.strokeRect(22, 30, 60, 48); u.label('PRINT AREA', 52, 54);
+      },
+    },
+    tote: {
+      name: 'Tote Bag', caption: 'TOTE BAG', w: 100, h: 112,
+      draw(c, u) {
+        u.solid();
+        c.strokeRect(10, 38, 80, 72);
+        c.beginPath();
+        c.moveTo(26, 38); c.bezierCurveTo(26, 4, 44, 4, 44, 38);
+        c.moveTo(56, 38); c.bezierCurveTo(56, 4, 74, 4, 74, 38);
+        c.stroke();
+        u.dashed(); c.strokeRect(24, 52, 52, 46); u.label('PRINT AREA', 50, 75);
+      },
+    },
+    card: {
+      name: 'Business Card', caption: 'BUSINESS CARD · 85 × 55 mm', w: 155, h: 100,
+      draw(c, u) {
+        u.solid(); roundRectPath(c, 0, 0, 155, 100, 5); c.stroke();
+        u.dashed(); c.strokeRect(8, 8, 139, 84); u.label('SAFE AREA', 77.5, 50);
+      },
+    },
+    flyer: {
+      name: 'A5 Flyer', caption: 'A5 FLYER · 148 × 210 mm', w: 100, h: 141,
+      draw(c, u) {
+        u.solid(); c.strokeRect(0, 0, 100, 141);
+        u.dashed(); c.strokeRect(7, 7, 86, 127);
+        c.strokeRect(14, 14, 72, 24); u.label('HEADLINE', 50, 26);
+        c.strokeRect(14, 46, 72, 56); u.label('IMAGE', 50, 74);
+        u.label('DETAILS · CONTACT', 50, 118);
+      },
+    },
+    rollup: {
+      name: 'Roll-up Banner', caption: 'ROLL-UP BANNER · 85 × 200 cm', w: 50, h: 118,
+      draw(c, u) {
+        u.solid(); c.strokeRect(4, 0, 42, 106);
+        roundRectPath(c, 0, 106, 50, 8, 2); c.stroke();
+        c.beginPath(); c.moveTo(6, 114); c.lineTo(4, 118); c.moveTo(44, 114); c.lineTo(46, 118); c.stroke();
+        u.dashed(); c.strokeRect(10, 6, 30, 20); u.label('LOGO', 25, 16);
+        c.strokeRect(10, 32, 30, 46); u.label('MESSAGE', 25, 55);
+        u.label('CONTACT', 25, 92);
+      },
+    },
+    vehicle: {
+      name: 'Vehicle', caption: 'VEHICLE · SIDE VIEW', w: 200, h: 72,
+      draw(c, u) {
+        u.solid();
+        c.beginPath();
+        c.moveTo(6, 55); c.lineTo(6, 42); c.quadraticCurveTo(8, 36, 20, 34);
+        c.lineTo(52, 31); c.lineTo(72, 12); c.lineTo(136, 12); c.lineTo(160, 31);
+        c.lineTo(186, 34); c.quadraticCurveTo(196, 36, 196, 46); c.lineTo(196, 55);
+        c.lineTo(171, 55); c.arc(156, 55, 15, 0, Math.PI, true);
+        c.lineTo(65, 55); c.arc(50, 55, 15, 0, Math.PI, true);
+        c.closePath(); c.stroke();
+        c.beginPath(); c.arc(50, 57, 11, 0, Math.PI * 2); c.stroke();
+        c.beginPath(); c.arc(156, 57, 11, 0, Math.PI * 2); c.stroke();
+        c.beginPath();
+        c.moveTo(78, 16); c.lineTo(102, 16); c.lineTo(102, 29); c.lineTo(62, 29); c.closePath();
+        c.moveTo(108, 16); c.lineTo(133, 16); c.lineTo(152, 29); c.lineTo(108, 29); c.closePath();
+        c.stroke();
+        u.dashed(); c.strokeRect(24, 34, 152, 14); u.label('BRANDING AREA', 100, 41);
+      },
+    },
+    sign: {
+      name: 'Signboard', caption: 'SIGNBOARD / SHOP FRONT', w: 200, h: 90,
+      draw(c, u) {
+        u.solid(); c.strokeRect(4, 4, 192, 58);
+        c.beginPath();
+        c.moveTo(40, 62); c.lineTo(40, 88); c.moveTo(160, 62); c.lineTo(160, 88);
+        c.moveTo(20, 88); c.lineTo(180, 88);
+        c.stroke();
+        u.dashed(); c.strokeRect(12, 12, 176, 42); u.label('YOUR SIGN', 100, 33);
+      },
+    },
+    logo: {
+      name: 'Logo / Badge', caption: 'LOGO / BADGE', w: 100, h: 100,
+      draw(c, u) {
+        u.solid(); c.beginPath(); c.arc(50, 50, 48, 0, Math.PI * 2); c.stroke();
+        u.dashed(); c.beginPath(); c.arc(50, 50, 36, 0, Math.PI * 2); c.stroke();
+        u.label('LOGO', 50, 50);
+      },
+    },
+  };
+
+  function drawTemplate(key) {
+    const t = TEMPLATES[key];
+    if (!t) return;
+    const pad = 32, captionSpace = 28;
+    const availW = logW - pad * 2, availH = logH - pad * 2 - captionSpace;
+    const s  = Math.min(availW / t.w, availH / t.h);
+    const ox = (logW - t.w * s) / 2;
+    const oy = pad + (availH - t.h * s) / 2;
+    const ink = S.canvasBg === 'dark' ? 'rgba(203,213,225,0.6)' : '#9aa8ba';
+    const font = '600 {px}px "Space Grotesk", system-ui, sans-serif';
+
+    ctx.save();
+    ctx.globalAlpha = 1;
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.translate(ox, oy);
+    ctx.scale(s, s);
+    ctx.strokeStyle = ink; ctx.fillStyle = ink;
+    ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+    const px = v => v / s;   // screen px → template units
+    t.draw(ctx, {
+      solid:  () => { ctx.setLineDash([]); ctx.lineWidth = px(2); },
+      dashed: () => { ctx.setLineDash([px(7), px(6)]); ctx.lineWidth = px(1.5); },
+      label:  (text, x, y) => {
+        ctx.font = font.replace('{px}', px(11));
+        ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillText(text, x, y);
+      },
+    });
+    ctx.restore();
+
+    ctx.save();
+    ctx.fillStyle = ink;
+    ctx.font = font.replace('{px}', 12);
+    ctx.textAlign = 'center';
+    ctx.fillText(t.caption, logW / 2, oy + t.h * s + 22);
+    ctx.restore();
+  }
+
+  function setTemplateChip(key) {
+    document.querySelectorAll('.tpl-chip[data-template]').forEach(b =>
+      b.classList.toggle('active', b.dataset.template === key));
+  }
+
+  function applyTemplate(key) {
+    saveSnapshot();
+    fillBg();
+    drawTemplate(key);
+    S.template = key;
+    setTemplateChip(key);
+    updatePreview();
+    if (TEMPLATES[key]) showToast(`${TEMPLATES[key].name} template ready — sketch on top. Ctrl+Z to undo.`);
+  }
 
   // ── Init Canvas ─────────────────────────────────────────────
   function initCanvas() {
@@ -643,38 +868,56 @@
     document.getElementById('statusSize').textContent = `Canvas: ${W} × ${H} px`;
   }
 
+  // The drawing lives on a transparent layer; the "paper" is painted behind it
+  // with CSS, and only merged in when exporting. That keeps the eraser and the
+  // background switcher working on an existing sketch.
   function fillBg() {
     ctx.save();
     ctx.setTransform(1, 0, 0, 1, 0, 0);
-
-    if (S.canvasBg === 'grid') {
-      ctx.fillStyle = '#ffffff';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.strokeStyle = '#e5e7eb';
-      ctx.lineWidth = 1;
-      const step = 20 * dpr;
-      for (let x = 0; x < canvas.width; x += step) {
-        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke();
-      }
-      for (let y = 0; y < canvas.height; y += step) {
-        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
-      }
-    } else if (S.canvasBg === 'dots') {
-      ctx.fillStyle = '#ffffff';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = '#d1d5db';
-      const step = 20 * dpr;
-      for (let x = step; x < canvas.width; x += step) {
-        for (let y = step; y < canvas.height; y += step) {
-          ctx.beginPath(); ctx.arc(x, y, 1.5 * dpr, 0, Math.PI * 2); ctx.fill();
-        }
-      }
-    } else {
-      ctx.fillStyle = BG[S.canvasBg] || '#ffffff';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-    }
-
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.restore();
+    paintPaper();
+  }
+
+  function paintPaper() {
+    const st = canvas.style;
+    st.backgroundColor = BG[S.canvasBg] || '#ffffff';
+    if (S.canvasBg === 'grid') {
+      st.backgroundImage = 'linear-gradient(#e5e7eb 1px, transparent 1px), linear-gradient(90deg, #e5e7eb 1px, transparent 1px)';
+      st.backgroundSize  = '20px 20px';
+    } else if (S.canvasBg === 'dots') {
+      st.backgroundImage = 'radial-gradient(circle, #d1d5db 1.5px, transparent 1.7px)';
+      st.backgroundSize  = '20px 20px';
+    } else {
+      st.backgroundImage = 'none';
+    }
+  }
+
+  // Paint the paper onto an export canvas (unit = physical px per CSS px)
+  function drawPaper(c, W, H, unit) {
+    c.fillStyle = BG[S.canvasBg] || '#ffffff';
+    c.fillRect(0, 0, W, H);
+    const step = 20 * unit;
+    if (S.canvasBg === 'grid') {
+      c.fillStyle = '#e5e7eb';
+      for (let x = 0; x < W; x += step) c.fillRect(x, 0, Math.max(1, unit), H);
+      for (let y = 0; y < H; y += step) c.fillRect(0, y, W, Math.max(1, unit));
+    } else if (S.canvasBg === 'dots') {
+      c.fillStyle = '#d1d5db';
+      for (let x = step / 2; x < W; x += step)
+        for (let y = step / 2; y < H; y += step) { c.beginPath(); c.arc(x, y, 1.5 * unit, 0, Math.PI * 2); c.fill(); }
+    }
+  }
+
+  // Sketch + paper flattened into one canvas
+  function flattenSketch() {
+    const flat = document.createElement('canvas');
+    flat.width  = canvas.width;
+    flat.height = canvas.height;
+    const fCtx = flat.getContext('2d');
+    drawPaper(fCtx, flat.width, flat.height, dpr);
+    fCtx.drawImage(canvas, 0, 0);
+    return flat;
   }
 
   // ── Undo / Redo ─────────────────────────────────────────────
@@ -682,6 +925,7 @@
     undoStack.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
     if (undoStack.length > MAX_UNDO) undoStack.shift();
     redoStack.length = 0;
+    S.dirty = true;
   }
 
   function undo() {
@@ -702,6 +946,9 @@
     if (!confirm('Clear the canvas? This cannot be undone.')) return;
     saveSnapshot();
     fillBg();
+    S.template = 'blank';
+    S.hasReference = false;
+    setTemplateChip('blank');
     updatePreview();
   }
 
@@ -1076,10 +1323,9 @@
 
   // ── Canvas Background ─────────────────────────────────────────
   document.getElementById('optCanvasBg').addEventListener('change', (e) => {
-    const saved = ctx.getImageData(0, 0, canvas.width, canvas.height);
     S.canvasBg = e.target.value;
-    fillBg();
-    ctx.putImageData(saved, 0, 0);
+    paintPaper();
+    updatePreview();
   });
 
   // ── Undo / Redo / Clear buttons ───────────────────────────────
@@ -1107,124 +1353,405 @@
     previewTimeout = setTimeout(() => {
       const pW = previewCvs.width, pH = previewCvs.height;
       previewCtx.clearRect(0, 0, pW, pH);
-      previewCtx.fillStyle = BG[S.canvasBg] || '#fff';
-      previewCtx.fillRect(0, 0, pW, pH);
-      previewCtx.drawImage(canvas, 0, 0, pW, pH);
+      previewCtx.drawImage(flattenSketch(), 0, 0, pW, pH);
+      scheduleSave();
     }, 200);
   }
 
-  // ── Download Sketch ──────────────────────────────────────────
-  function downloadSketch() {
-    const flat = document.createElement('canvas');
-    flat.width  = canvas.width;
-    flat.height = canvas.height;
-    const fCtx = flat.getContext('2d');
-    fCtx.fillStyle = BG[S.canvasBg] || '#ffffff';
-    fCtx.fillRect(0, 0, flat.width, flat.height);
-    fCtx.drawImage(canvas, 0, 0);
+  // ── Reference Photo ──────────────────────────────────────────
+  const refInput = document.getElementById('refPhotoInput');
+  document.getElementById('refPhotoBtn').addEventListener('click', () => refInput.click());
+  refInput.addEventListener('change', () => {
+    const file = refInput.files && refInput.files[0];
+    refInput.value = '';
+    if (!file || !file.type.startsWith('image/')) return;
+    const url = URL.createObjectURL(file);
+    const img = new Image();
+    img.onload = () => {
+      saveSnapshot();
+      const pad = 24;
+      const s = Math.min((logW - pad * 2) / img.width, (logH - pad * 2) / img.height);
+      const w = img.width * s, h = img.height * s;
+      ctx.save();
+      ctx.globalAlpha = 1;
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.drawImage(img, (logW - w) / 2, (logH - h) / 2, w, h);
+      ctx.restore();
+      URL.revokeObjectURL(url);
+      S.hasReference = true;
+      updatePreview();
+      showToast('Reference photo added — draw or write on top of it.');
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); showToast('Sorry, that image could not be opened.', true); };
+    img.src = url;
+  });
+
+  // ── Templates ────────────────────────────────────────────────
+  document.querySelectorAll('.tpl-chip[data-template]').forEach(btn => {
+    btn.addEventListener('click', () => applyTemplate(btn.dataset.template));
+  });
+
+  // ── Brand Colours ────────────────────────────────────────────
+  const brandWrap  = document.getElementById('brandColors');
+  const brandAdd   = document.getElementById('brandColorAdd');
+  const brandInput = document.getElementById('brandColorInput');
+  const MAX_BRAND_COLORS = 5;
+
+  function renderBrandColors() {
+    brandWrap.querySelectorAll('.brand-chip').forEach(n => n.remove());
+    brandColors.forEach((hex, i) => {
+      const chip = document.createElement('span');
+      chip.className = 'brand-chip';
+      chip.innerHTML = `
+        <button type="button" class="brand-chip__swatch" style="background:${hex}" title="Draw with ${hex.toUpperCase()}"></button>
+        <span class="brand-chip__hex">${hex.toUpperCase()}</span>
+        <button type="button" class="brand-chip__remove" aria-label="Remove ${hex.toUpperCase()}">×</button>`;
+      chip.querySelector('.brand-chip__swatch').addEventListener('click', () => {
+        setColor(hex);
+        showToast(`Drawing with ${hex.toUpperCase()}`);
+      });
+      chip.querySelector('.brand-chip__remove').addEventListener('click', () => {
+        brandColors.splice(i, 1);
+        renderBrandColors();
+        scheduleSave();
+      });
+      brandWrap.insertBefore(chip, brandAdd);
+    });
+    brandAdd.hidden = brandColors.length >= MAX_BRAND_COLORS;
+  }
+
+  brandAdd.addEventListener('click', () => {
+    brandInput.value = S.color;
+    brandInput.click();
+  });
+  brandInput.addEventListener('change', () => {
+    const hex = brandInput.value.toLowerCase();
+    if (!brandColors.includes(hex) && brandColors.length < MAX_BRAND_COLORS) {
+      brandColors.push(hex);
+      renderBrandColors();
+      scheduleSave();
+    }
+  });
+
+  // ── Brief Card (sketch + details band) ───────────────────────
+  function readForm() {
+    const v = id => document.getElementById(id).value.trim();
+    return { name: v('sName'), phone: v('sPhone'), email: v('sEmail'), service: v('sService'), desc: v('sDesc') };
+  }
+
+  function fitText(c, text, maxW) {
+    if (c.measureText(text).width <= maxW) return text;
+    while (text.length > 1 && c.measureText(text + '…').width > maxW) text = text.slice(0, -1);
+    return text + '…';
+  }
+
+  function buildBriefCanvas(d) {
+    const sketch = flattenSketch();
+    const W = sketch.width, H = sketch.height;
+    const k = Math.max(W / 1100, 0.6);
+    const band = Math.round(150 * k);
+
+    const out = document.createElement('canvas');
+    out.width = W; out.height = H + band;
+    const c = out.getContext('2d');
+    c.drawImage(sketch, 0, 0);
+    c.fillStyle = '#062040';
+    c.fillRect(0, H, W, band);
+    c.fillStyle = '#0ea5e9';
+    c.fillRect(0, H, W, Math.max(3 * k, 2));
+
+    const x = 36 * k;
+    const swatchStep = 74 * k;
+    const swatchArea = brandColors.length ? brandColors.length * swatchStep + 16 * k : 0;
+    const maxText = W - x * 2 - swatchArea;
+    const template = TEMPLATES[S.template];
+
+    c.textAlign = 'left'; c.textBaseline = 'alphabetic';
+    let y = H + 40 * k;
+    c.fillStyle = '#38bdf8';
+    c.font = `700 ${13 * k}px "Space Grotesk", system-ui, sans-serif`;
+    c.fillText('HAZELNART  ·  DESIGN BRIEF', x, y);
+
+    y += 38 * k;
+    c.fillStyle = '#ffffff';
+    c.font = `700 ${28 * k}px "Playfair Display", Georgia, serif`;
+    c.fillText(fitText(c, d.name || 'My design idea', maxText), x, y);
+
+    y += 28 * k;
+    c.fillStyle = 'rgba(255,255,255,0.78)';
+    c.font = `500 ${15 * k}px Inter, system-ui, sans-serif`;
+    const line2 = [d.service, template && `${template.name} template`, S.hasReference && 'with reference photo'].filter(Boolean).join('  ·  ');
+    c.fillText(fitText(c, line2 || 'Sketched in the Hazelnart Design Studio', maxText), x, y);
+
+    y += 24 * k;
+    c.fillStyle = 'rgba(255,255,255,0.5)';
+    c.font = `500 ${13 * k}px Inter, system-ui, sans-serif`;
+    const date = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+    c.fillText(fitText(c, [d.phone, d.email, date].filter(Boolean).join('  ·  '), maxText), x, y);
+
+    if (brandColors.length) {
+      const r = 19 * k;
+      const cy = H + band / 2 - 6 * k;
+      c.textAlign = 'center';
+      c.font = `600 ${11 * k}px "Space Grotesk", system-ui, sans-serif`;
+      brandColors.forEach((hex, i) => {
+        const cx = W - x - swatchStep * (brandColors.length - 1 - i) - swatchStep / 2;
+        c.beginPath(); c.arc(cx, cy, r, 0, Math.PI * 2);
+        c.fillStyle = hex; c.fill();
+        c.lineWidth = Math.max(2 * k, 1); c.strokeStyle = 'rgba(255,255,255,0.35)'; c.stroke();
+        c.fillStyle = 'rgba(255,255,255,0.7)';
+        c.fillText(hex.toUpperCase(), cx, cy + r + 18 * k);
+      });
+    }
+    return out;
+  }
+
+  const canvasToBlob = cvs => new Promise(res => cvs.toBlob(res, 'image/png'));
+
+  function briefFileName(d) {
+    const slug = (d.name || 'idea').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    return `hazelnart-brief-${slug || 'idea'}.png`;
+  }
+
+  function downloadCanvas(cvs, filename) {
     const link = document.createElement('a');
-    link.download = 'hazelnart-idea-sketch.png';
-    link.href = flat.toDataURL('image/png');
+    link.download = filename;
+    link.href = cvs.toDataURL('image/png');
     link.click();
+  }
+
+  function downloadSketch() {
+    const d = readForm();
+    downloadCanvas(buildBriefCanvas(d), briefFileName(d));
   }
 
   document.getElementById('downloadBtn').addEventListener('click', downloadSketch);
 
-  // ── Form Validation ──────────────────────────────────────────
-  function validateForm() {
-    const name    = document.getElementById('sName').value.trim();
-    const phone   = document.getElementById('sPhone').value.trim();
-    const service = document.getElementById('sService').value;
-    const desc    = document.getElementById('sDesc').value.trim();
-
-    if (!name)    { showToast('Please enter your name.', true); document.getElementById('sName').focus(); return null; }
-    if (!phone)   { showToast('Please enter your WhatsApp number.', true); document.getElementById('sPhone').focus(); return null; }
-    if (!service) { showToast('Please select a service.', true); document.getElementById('sService').focus(); return null; }
-    if (!desc)    { showToast('Please describe your idea.', true); document.getElementById('sDesc').focus(); return null; }
-
-    return { name, phone, service, desc, email: document.getElementById('sEmail').value.trim() };
+  // Copy the image so it can be pasted straight into WhatsApp Web / Desktop or an email.
+  // Called straight from the click, before anything else takes focus.
+  async function copyImage(blobPromise) {
+    try {
+      if (!navigator.clipboard || !navigator.clipboard.write || !window.ClipboardItem) return false;
+      await navigator.clipboard.write([new ClipboardItem({ 'image/png': blobPromise })]);
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 
-  // ── Send to WhatsApp ─────────────────────────────────────────
-  document.getElementById('sendWhatsappBtn').addEventListener('click', async () => {
-    const data = validateForm(); if (!data) return;
+  // ── Form Validation ──────────────────────────────────────────
+  function validateForm() {
+    const d = readForm();
+    if (!d.name)    { showToast('Please enter your name.', true); document.getElementById('sName').focus(); return null; }
+    if (!d.phone)   { showToast('Please enter your WhatsApp number.', true); document.getElementById('sPhone').focus(); return null; }
+    if (!d.service) { showToast('Please select a service.', true); document.getElementById('sService').focus(); return null; }
+    if (!d.desc)    { showToast('Please describe your idea.', true); document.getElementById('sDesc').focus(); return null; }
+    return d;
+  }
 
-    const msg = [
-      `Hi Hazelnart! 👋 I've sketched my design idea and I'd love a quote.`,
+  function buildMessage(d, channel) {
+    const b = label => channel === 'whatsapp' ? `*${label}:*` : `${label}:`;
+    const template = TEMPLATES[S.template];
+    return [
+      channel === 'whatsapp'
+        ? `Hi Hazelnart! 👋 I've sketched my design idea and I'd love a quote.`
+        : `Hi Hazelnart,\n\nI've sketched my design idea and would love to discuss it with you.`,
       ``,
-      `*Name:* ${data.name}`,
-      `*Phone:* ${data.phone}`,
-      data.email ? `*Email:* ${data.email}` : '',
-      `*Service:* ${data.service}`,
+      `${b('Name')} ${d.name}`,
+      `${b('Phone / WhatsApp')} ${d.phone}`,
+      d.email ? `${b('Email')} ${d.email}` : null,
+      `${b('Service')} ${d.service}`,
+      template ? `${b('Template')} ${template.name}` : null,
+      brandColors.length ? `${b('Brand colours')} ${brandColors.map(c => c.toUpperCase()).join(', ')}` : null,
       ``,
-      `*My Idea:*`,
-      data.desc,
+      b('My idea'),
+      d.desc,
       ``,
-      `_(Sketch attached below — please see image)_`
-    ].filter(l => l !== undefined).join('\n');
+      `(My sketch is attached as an image: ${briefFileName(d)})`,
+      channel === 'email' ? `\nLooking forward to hearing from you!\n${d.name}` : null,
+    ].filter(l => l !== null).join('\n');
+  }
 
-    // Try Web Share API (mobile — can share image directly to WhatsApp)
-    const flat = document.createElement('canvas');
-    flat.width  = canvas.width;
-    flat.height = canvas.height;
-    const fCtx = flat.getContext('2d');
-    fCtx.fillStyle = BG[S.canvasBg] || '#ffffff';
-    fCtx.fillRect(0, 0, flat.width, flat.height);
-    fCtx.drawImage(canvas, 0, 0);
+  // ── Send Modal ───────────────────────────────────────────────
+  const sendModal = document.getElementById('sendModal');
+  const isTouch   = window.matchMedia('(pointer: coarse)').matches;
 
-    flat.toBlob(async (blob) => {
-      const file = new File([blob], 'hazelnart-sketch.png', { type: 'image/png' });
-
-      if (navigator.canShare && navigator.canShare({ files: [file] })) {
-        try {
-          await navigator.share({ files: [file], text: msg, title: 'My Design Idea for Hazelnart' });
-          showToast('Sketch shared! ✓');
-          return;
-        } catch (err) {
-          if (err.name === 'AbortError') return;
-        }
+  function openSendModal({ title, sub, preview, steps, actions }) {
+    document.getElementById('sendModalTitle').textContent = title;
+    document.getElementById('sendModalSub').textContent   = sub || '';
+    document.getElementById('sendModalPreview').src       = preview;
+    document.getElementById('sendModalSteps').innerHTML   = steps.map(s => `<li>${s}</li>`).join('');
+    const actWrap = document.getElementById('sendModalActions');
+    actWrap.innerHTML = '';
+    actions.forEach(a => {
+      const el = document.createElement(a.href ? 'a' : 'button');
+      el.className = `btn ${a.cls || 'btn--ghost'}`;
+      el.innerHTML = a.label;
+      if (a.href) {
+        el.href = a.href;
+        if (a.newTab) { el.target = '_blank'; el.rel = 'noopener'; }
+      } else {
+        el.type = 'button';
       }
+      if (a.onClick) el.addEventListener('click', a.onClick);
+      actWrap.appendChild(el);
+    });
+    sendModal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    document.getElementById('sendModalClose').focus();
+  }
 
-      // Fallback: download sketch + open WhatsApp
-      downloadSketch();
-      showToast('Sketch downloaded! Opening WhatsApp…');
-      setTimeout(() => {
-        window.open(`https://wa.me/${HAZELNART_PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
-      }, 800);
-    }, 'image/png');
-  });
+  function closeSendModal() {
+    sendModal.hidden = true;
+    document.body.style.overflow = '';
+  }
 
-  // ── Send via Email ───────────────────────────────────────────
-  document.getElementById('sendEmailBtn').addEventListener('click', () => {
-    const data = validateForm(); if (!data) return;
+  document.getElementById('sendModalClose').addEventListener('click', closeSendModal);
+  sendModal.addEventListener('click', e => { if (e.target === sendModal) closeSendModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !sendModal.hidden) closeSendModal(); });
 
-    downloadSketch();
+  const KEY_PASTE = /Mac|iPhone|iPad/.test(navigator.platform || '')
+    ? '<kbd>⌘</kbd> + <kbd>V</kbd>' : '<kbd>Ctrl</kbd> + <kbd>V</kbd>';
 
-    const subject = `Design Brief — ${data.service} | ${data.name}`;
-    const body = [
-      `Hi Hazelnart,`,
-      ``,
-      `I've sketched my design idea and would love to discuss it with you.`,
-      ``,
-      `Name: ${data.name}`,
-      `Phone / WhatsApp: ${data.phone}`,
-      data.email ? `Email: ${data.email}` : '',
-      `Service Needed: ${data.service}`,
-      ``,
-      `My Idea:`,
-      data.desc,
-      ``,
-      `I have downloaded my sketch (hazelnart-idea-sketch.png) and will attach it to this email.`,
-      ``,
-      `Looking forward to hearing from you!`,
-      `${data.name}`
-    ].filter(l => l !== undefined).join('\n');
+  async function sendBrief(channel) {
+    const d = validateForm(); if (!d) return;
 
-    showToast('Sketch downloaded! Opening your email client…');
-    setTimeout(() => {
-      window.location.href = `mailto:${HAZELNART_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    }, 600);
-  });
+    const brief    = buildBriefCanvas(d);
+    const blobP    = canvasToBlob(brief);
+    const fileName = briefFileName(d);
+    const msg      = buildMessage(d, channel);
+    const preview  = brief.toDataURL('image/jpeg', 0.85);
+    const isWA     = channel === 'whatsapp';
+    const openUrl  = isWA
+      ? `https://wa.me/${HAZELNART_PHONE}?text=${encodeURIComponent(msg)}`
+      : `mailto:${HAZELNART_EMAIL}?subject=${encodeURIComponent(`Design Brief — ${d.service} | ${d.name}`)}&body=${encodeURIComponent(msg)}`;
+    const openLabel = isWA ? 'Open WhatsApp' : 'Open Email';
+    const openCls   = isWA ? 'btn--whatsapp' : 'btn--gold';
+
+    // Phones: two taps — start the chat with the details, then share the image into it
+    if (isTouch && navigator.canShare) {
+      const file = new File([await blobP], fileName, { type: 'image/png' });
+      if (navigator.canShare({ files: [file] })) {
+        openSendModal({
+          title: 'Your brief is ready',
+          sub: "Two quick taps and it's with our team.",
+          preview,
+          steps: [
+            `Tap <b>${isWA ? 'Open chat' : 'Open email'}</b> and send the message with your details.`,
+            `Come back here, tap <b>Share sketch</b> and choose ${isWA ? 'WhatsApp, then the Hazelnart chat' : 'your email app'}.`,
+          ],
+          actions: [
+            { label: isWA ? 'Open chat' : 'Open email', href: openUrl, newTab: isWA, cls: openCls },
+            { label: 'Share sketch', cls: 'btn--gold', onClick: async () => {
+                try { await navigator.share({ files: [file], title: 'My design brief for Hazelnart' }); showToast('Sketch shared ✓'); }
+                catch (err) { if (err.name !== 'AbortError') { downloadCanvas(brief, fileName); showToast('Sketch downloaded — attach it in the chat.'); } }
+              } },
+          ],
+        });
+        return;
+      }
+    }
+
+    // Desktop: copy the image so it can be pasted into the chat / email
+    const copied = await copyImage(blobP);
+    if (!copied || !isWA) downloadCanvas(brief, fileName);
+
+    const attachStep = copied
+      ? `In the ${isWA ? 'chat' : 'email'}, press ${KEY_PASTE} to paste your sketch — it's already copied.${isWA ? '' : ` It's also in your Downloads as <b>${fileName}</b>.`}`
+      : `Attach <b>${fileName}</b> from your Downloads${isWA ? ' using the 📎 button' : ''}.`;
+
+    openSendModal({
+      title: copied ? 'Sketch copied — almost there!' : 'Your brief is ready',
+      sub: isWA ? 'Your details are already typed into the message.' : 'Your brief is already written into the email.',
+      preview,
+      steps: [
+        `Click <b>${openLabel}</b>${isWA ? ' (WhatsApp Web or the desktop app)' : ''}.`,
+        attachStep,
+        `Hit send — we'll reply with ideas and a free quote.`,
+      ],
+      actions: [
+        { label: openLabel, href: openUrl, newTab: isWA, cls: openCls },
+        { label: 'Download image', onClick: () => downloadCanvas(brief, fileName) },
+      ],
+    });
+  }
+
+  document.getElementById('sendWhatsappBtn').addEventListener('click', () => sendBrief('whatsapp'));
+  document.getElementById('sendEmailBtn').addEventListener('click', () => sendBrief('email'));
+
+  // ── Autosave (this device only) ──────────────────────────────
+  const SAVE_KEY = 'hazelnart-studio-v1';
+  const FORM_IDS = ['sName', 'sPhone', 'sEmail', 'sService', 'sDesc'];
+  const PAPERS   = ['white', 'cream', 'dark', 'grid', 'dots'];
+  let saveTimer;
+  let restoring = false;
+
+  function scheduleSave() {
+    if (restoring) return;
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(saveSession, 700);
+  }
+
+  function saveSession() {
+    const state = {
+      bg: S.canvasBg, template: S.template, hasReference: S.hasReference,
+      brandColors, form: readForm(), img: null,
+    };
+    try {
+      if (S.dirty) state.img = canvas.toDataURL('image/png');
+      localStorage.setItem(SAVE_KEY, JSON.stringify(state));
+    } catch (e) {
+      // Too big for storage — fall back to a flattened JPEG
+      try {
+        state.img = flattenSketch().toDataURL('image/jpeg', 0.8);
+        localStorage.setItem(SAVE_KEY, JSON.stringify(state));
+      } catch (e2) { /* storage unavailable — nothing to do */ }
+    }
+  }
+
+  function restoreSession() {
+    let st = null;
+    try { st = JSON.parse(localStorage.getItem(SAVE_KEY) || 'null'); } catch (e) { return; }
+    if (!st) return;
+    restoring = true;
+
+    if (st.form) {
+      document.getElementById('sName').value    = st.form.name    || '';
+      document.getElementById('sPhone').value   = st.form.phone   || '';
+      document.getElementById('sEmail').value   = st.form.email   || '';
+      document.getElementById('sService').value = st.form.service || '';
+      document.getElementById('sDesc').value    = st.form.desc    || '';
+    }
+    brandColors = Array.isArray(st.brandColors) ? st.brandColors.slice(0, MAX_BRAND_COLORS) : [];
+    renderBrandColors();
+
+    if (PAPERS.includes(st.bg)) {
+      S.canvasBg = st.bg;
+      document.getElementById('optCanvasBg').value = st.bg;
+      paintPaper();
+    }
+    S.template     = TEMPLATES[st.template] ? st.template : 'blank';
+    S.hasReference = !!st.hasReference;
+    setTemplateChip(S.template);
+
+    if (st.img) {
+      const img = new Image();
+      img.onload = () => {
+        ctx.drawImage(img, 0, 0, logW, logH);
+        S.dirty = true;
+        restoring = false;
+        updatePreview();
+        showToast('Welcome back — your last sketch was restored.');
+      };
+      img.onerror = () => { restoring = false; };
+      img.src = st.img;
+    } else {
+      restoring = false;
+    }
+  }
+
+  FORM_IDS.forEach(id => document.getElementById(id).addEventListener('input', scheduleSave));
+  document.getElementById('sService').addEventListener('change', scheduleSave);
 
   // ── Toast ─────────────────────────────────────────────────────
   function showToast(msg, isError = false) {
@@ -1234,6 +1761,20 @@
     t.classList.add('show');
     setTimeout(() => t.classList.remove('show'), 3000);
   }
+
+  // ── Page transition (same curtain as the main site) ──────────
+  window.addEventListener('pageshow', e => { if (e.persisted) document.body.classList.remove('is-leaving'); });
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href]');
+    if (!a || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    if ((a.target && a.target !== '_self') || a.hasAttribute('download')) return;
+    const url = new URL(a.href, location.href);
+    if (url.origin !== location.origin || !/\.html$|\/$/.test(url.pathname) || url.pathname === location.pathname) return;
+    e.preventDefault();
+    document.body.classList.add('is-leaving');
+    setTimeout(() => { location.href = url.href; }, 420);
+  });
 
   // ── Mobile Nav (same script as main site) ────────────────────
   const hamburger  = document.getElementById('hamburger');
@@ -1274,6 +1815,7 @@
   // ── Init ──────────────────────────────────────────────────────
   window.addEventListener('load', () => {
     initCanvas();
+    restoreSession();
     updateBrushPreview();
     updatePreview();
     setColor('#000000');
