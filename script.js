@@ -865,32 +865,103 @@ function initContactForm() {
   const form = document.getElementById('contactForm');
   if (!form) return;
 
+  const $       = id => document.getElementById(id);
+  const select  = $('cService');
+  const status  = $('cStatus');
+  const submit  = $('cSubmit');
+  const success = $('cSuccess');
+
+  // ── Pre-select the service chosen on the Services page ──
   const wanted = new URLSearchParams(location.search).get('service');
-  const select = document.getElementById('cService');
   if (wanted && select) {
-    const key = wanted.toLowerCase().split(/[\s&]+/).filter(Boolean).slice(0, 2).join(' ');
-    const match = [...select.options].find(o =>
-      o.value && o.text.toLowerCase().replace(/&/g, ' ').replace(/\s+/g, ' ').includes(key));
-    if (match) select.value = match.text;
+    const norm = t => t.toLowerCase().replace(/&/g, ' ').replace(/[^a-z0-9]+/g, ' ').trim();
+    const opts = [...select.options].filter(o => o.value);
+    const match = opts.find(o => norm(o.text) === norm(wanted)) ||
+                  opts.find(o => norm(o.text).startsWith(norm(wanted).split(' ').slice(0, 2).join(' ')));
+    if (match) {
+      select.value = match.value;
+      select.classList.add('form-input--prefilled');
+      const note = $('cServiceNote');
+      if (note) { note.textContent = `✓ ${match.text} selected — just add your details.`; note.hidden = false; }
+      select.addEventListener('change', () => {
+        select.classList.remove('form-input--prefilled');
+        if (note) note.hidden = true;
+      }, { once: true });
+      // Bring the form into view once the page has settled
+      setTimeout(() => {
+        form.closest('.contact__card')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        $('cName')?.focus({ preventScroll: true });
+      }, 700);
+    }
   }
 
-  form.addEventListener('submit', e => {
+  const setStatus = (msg, isError) => {
+    status.textContent = msg;
+    status.classList.toggle('form-status--error', !!isError);
+  };
+
+  // ── Send to the company inbox ──
+  form.addEventListener('submit', async e => {
     e.preventDefault();
+    const name    = $('cName').value.trim();
+    const phone   = $('cPhone').value.trim();
+    const email   = $('cEmail').value.trim();
+    const service = select.value;
+    const message = $('cMsg').value.trim();
 
-    const name    = document.getElementById('cName')?.value.trim()    || 'A visitor';
-    const phone   = document.getElementById('cPhone')?.value.trim()   || 'Not provided';
-    const service = document.getElementById('cService')?.value        || 'General enquiry';
-    const message = document.getElementById('cMsg')?.value.trim()     || '';
+    const missing = [[name, 'cName', 'your name'], [phone, 'cPhone', 'your WhatsApp or phone number'],
+                     [service, 'cService', 'a service'], [message, 'cMsg', 'a short message']]
+                    .find(([v]) => !v);
+    if (missing) { setStatus(`Please add ${missing[2]}.`, true); $(missing[1]).focus(); return; }
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setStatus('That email address doesn\'t look right.', true); $('cEmail').focus(); return; }
 
-    const text = encodeURIComponent(
-      `Hello Hazelnart! 👋\n\n` +
-      `My name is *${name}*.\n` +
-      `Phone: ${phone}\n` +
-      `Interested in: *${service}*\n\n` +
-      (message ? `Message:\n${message}` : `I'd like to enquire about your services.`)
-    );
+    if (!window.HazelnartForms) { setStatus('Sending is unavailable right now — please call or WhatsApp us.', true); return; }
 
-    window.open(`https://wa.me/233266575930?text=${text}`, '_blank', 'noopener');
+    submit.disabled = true;
+    submit.querySelector('span').textContent = 'Sending…';
+    setStatus('');
+
+    const res = await window.HazelnartForms.send({
+      'WhatsApp / Phone': phone,
+      'Name': name,
+      'Service': service,
+      'Email': email,
+      'Message': message,
+      'Sent from': 'Website contact page',
+    }, {
+      subject: `New enquiry: ${service} — ${name}`,
+      replyTo: email,
+      honeypot: $('cWebsite')?.value,
+    });
+
+    submit.disabled = false;
+    submit.querySelector('span').textContent = 'Send Message';
+
+    if (!res.ok) {
+      const wa = `https://wa.me/233266575930?text=${encodeURIComponent(`Hello Hazelnart! My name is ${name}. I'm interested in ${service}.\n\n${message}`)}`;
+      status.innerHTML = '';
+      status.append(res.message + ' ');
+      if (res.reason !== 'cooldown') {
+        const link = document.createElement('a');
+        link.href = wa; link.target = '_blank'; link.rel = 'noopener';
+        link.textContent = 'Send it on WhatsApp instead →';
+        status.append(link);
+      }
+      status.classList.add('form-status--error');
+      return;
+    }
+
+    $('cSuccessText').textContent =
+      `Thanks ${name.split(' ')[0]} — we've received your enquiry about ${service}. Our team will reach out on WhatsApp at ${phone}, usually within a few hours.`;
+    form.hidden = true;
+    success.hidden = false;
+    form.reset();
+  });
+
+  $('cAnother')?.addEventListener('click', () => {
+    success.hidden = true;
+    form.hidden = false;
+    setStatus('');
   });
 }
 

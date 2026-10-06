@@ -426,6 +426,10 @@
 
           <div class="brief-form-wrap reveal reveal-d1">
             <form id="studioForm" class="brief-form" novalidate>
+              <div class="form-trap" aria-hidden="true">
+                <label for="sWebsite">Leave this empty</label>
+                <input type="text" id="sWebsite" name="_honey" tabindex="-1" autocomplete="off" />
+              </div>
 
               <div class="form-row">
                 <div class="form-group">
@@ -498,7 +502,7 @@
                 </button>
                 <button type="button" class="btn btn--ghost" id="sendEmailBtn">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                  Send via Email
+                  <span>Email It To Us</span>
                 </button>
               </div>
 
@@ -626,6 +630,7 @@
     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
 
+  <script src="forms.js"></script>
   <script>
   /* ============================================================
      HAZELNART DESIGN STUDIO — Canvas Drawing Engine
@@ -633,8 +638,6 @@
 
   // ── Config ─────────────────────────────────────────────────
   const HAZELNART_PHONE = '233266575930';
-  // UPDATE: replace with actual business email when set up
-  const HAZELNART_EMAIL = 'hazelnart.studio@gmail.com';
 
   // ── DOM refs ────────────────────────────────────────────────
   const canvas     = document.getElementById('sketchCanvas');
@@ -1613,20 +1616,14 @@
   const KEY_PASTE = /Mac|iPhone|iPad/.test(navigator.platform || '')
     ? '<kbd>⌘</kbd> + <kbd>V</kbd>' : '<kbd>Ctrl</kbd> + <kbd>V</kbd>';
 
-  async function sendBrief(channel) {
+  async function sendBrief() {
     const d = validateForm(); if (!d) return;
 
     const brief    = buildBriefCanvas(d);
     const blobP    = canvasToBlob(brief);
     const fileName = briefFileName(d);
-    const msg      = buildMessage(d, channel);
     const preview  = brief.toDataURL('image/jpeg', 0.85);
-    const isWA     = channel === 'whatsapp';
-    const openUrl  = isWA
-      ? `https://wa.me/${HAZELNART_PHONE}?text=${encodeURIComponent(msg)}`
-      : `mailto:${HAZELNART_EMAIL}?subject=${encodeURIComponent(`Design Brief — ${d.service} | ${d.name}`)}&body=${encodeURIComponent(msg)}`;
-    const openLabel = isWA ? 'Open WhatsApp' : 'Open Email';
-    const openCls   = isWA ? 'btn--whatsapp' : 'btn--gold';
+    const waUrl    = `https://wa.me/${HAZELNART_PHONE}?text=${encodeURIComponent(buildMessage(d, 'whatsapp'))}`;
 
     // Phones: two taps — start the chat with the details, then share the image into it
     if (isTouch && navigator.canShare) {
@@ -1637,11 +1634,11 @@
           sub: "Two quick taps and it's with our team.",
           preview,
           steps: [
-            `Tap <b>${isWA ? 'Open chat' : 'Open email'}</b> and send the message with your details.`,
-            `Come back here, tap <b>Share sketch</b> and choose ${isWA ? 'WhatsApp, then the Hazelnart chat' : 'your email app'}.`,
+            'Tap <b>Open chat</b> and send the message with your details.',
+            'Come back here, tap <b>Share sketch</b> and choose WhatsApp, then the Hazelnart chat.',
           ],
           actions: [
-            { label: isWA ? 'Open chat' : 'Open email', href: openUrl, newTab: isWA, cls: openCls },
+            { label: 'Open chat', href: waUrl, newTab: true, cls: 'btn--whatsapp' },
             { label: 'Share sketch', cls: 'btn--gold', onClick: async () => {
                 try { await navigator.share({ files: [file], title: 'My design brief for Hazelnart' }); showToast('Sketch shared ✓'); }
                 catch (err) { if (err.name !== 'AbortError') { downloadCanvas(brief, fileName); showToast('Sketch downloaded — attach it in the chat.'); } }
@@ -1652,32 +1649,85 @@
       }
     }
 
-    // Desktop: copy the image so it can be pasted into the chat / email
+    // Desktop: copy the image so it can be pasted into the chat
     const copied = await copyImage(blobP);
-    if (!copied || !isWA) downloadCanvas(brief, fileName);
-
-    const attachStep = copied
-      ? `In the ${isWA ? 'chat' : 'email'}, press ${KEY_PASTE} to paste your sketch — it's already copied.${isWA ? '' : ` It's also in your Downloads as <b>${fileName}</b>.`}`
-      : `Attach <b>${fileName}</b> from your Downloads${isWA ? ' using the 📎 button' : ''}.`;
+    if (!copied) downloadCanvas(brief, fileName);
 
     openSendModal({
       title: copied ? 'Sketch copied — almost there!' : 'Your brief is ready',
-      sub: isWA ? 'Your details are already typed into the message.' : 'Your brief is already written into the email.',
+      sub: 'Your details are already typed into the message.',
       preview,
       steps: [
-        `Click <b>${openLabel}</b>${isWA ? ' (WhatsApp Web or the desktop app)' : ''}.`,
-        attachStep,
-        `Hit send — we'll reply with ideas and a free quote.`,
+        'Click <b>Open WhatsApp</b> (WhatsApp Web or the desktop app).',
+        copied
+          ? `In the chat, press ${KEY_PASTE} to paste your sketch — it's already copied.`
+          : `Attach <b>${fileName}</b> from your Downloads using the 📎 button.`,
+        "Hit send — we'll reply with ideas and a free quote.",
       ],
       actions: [
-        { label: openLabel, href: openUrl, newTab: isWA, cls: openCls },
+        { label: 'Open WhatsApp', href: waUrl, newTab: true, cls: 'btn--whatsapp' },
         { label: 'Download image', onClick: () => downloadCanvas(brief, fileName) },
       ],
     });
   }
 
-  document.getElementById('sendWhatsappBtn').addEventListener('click', () => sendBrief('whatsapp'));
-  document.getElementById('sendEmailBtn').addEventListener('click', () => sendBrief('email'));
+  // Straight to the company inbox, sketch attached — no email app, no visible address
+  async function sendBriefToInbox() {
+    const d = validateForm(); if (!d) return;
+    if (!window.HazelnartForms) { showToast('Sending is unavailable right now — please use WhatsApp.', true); return; }
+
+    const btn = document.getElementById('sendEmailBtn');
+    const label = btn.querySelector('span');
+    btn.disabled = true;
+    label.textContent = 'Sending…';
+
+    const brief    = buildBriefCanvas(d);
+    const fileName = briefFileName(d);
+    const blob     = await canvasToBlob(brief);
+    const template = TEMPLATES[S.template];
+
+    const res = await window.HazelnartForms.send({
+      'WhatsApp / Phone': d.phone,
+      'Name': d.name,
+      'Service': d.service,
+      'Email': d.email,
+      'Template': template ? template.name : '',
+      'Brand colours': brandColors.map(c => c.toUpperCase()).join(', '),
+      'Idea': d.desc,
+      'Sent from': 'Website design studio (sketch attached)',
+    }, {
+      subject: `Design brief: ${d.service} — ${d.name}`,
+      replyTo: d.email,
+      honeypot: document.getElementById('sWebsite')?.value,
+      files: [{ blob, name: fileName }],
+    });
+
+    btn.disabled = false;
+    label.textContent = 'Email It To Us';
+
+    if (!res.ok) {
+      showToast(res.message, true);
+      if (res.reason !== 'cooldown') sendBrief();   // fall back to the WhatsApp flow
+      return;
+    }
+
+    openSendModal({
+      title: 'Sent! Your brief is with our team',
+      sub: 'Your sketch and details arrived in our inbox.',
+      preview: brief.toDataURL('image/jpeg', 0.85),
+      steps: [
+        'Our designers review your sketch and brief.',
+        `We reach out on WhatsApp at <b>${d.phone.replace(/</g, '&lt;')}</b> with ideas and a free quote.`,
+      ],
+      actions: [
+        { label: 'Keep sketching', cls: 'btn--gold', onClick: closeSendModal },
+        { label: 'Download a copy', onClick: () => downloadCanvas(brief, fileName) },
+      ],
+    });
+  }
+
+  document.getElementById('sendWhatsappBtn').addEventListener('click', () => sendBrief());
+  document.getElementById('sendEmailBtn').addEventListener('click', sendBriefToInbox);
 
   // ── Autosave (this device only) ──────────────────────────────
   const SAVE_KEY = 'hazelnart-studio-v1';
