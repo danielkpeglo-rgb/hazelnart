@@ -322,7 +322,7 @@
                   <div class="panel-swatch" data-color="#f97316" style="background:#f97316;" title="Orange"></div>
                   <div class="panel-swatch" data-color="#eab308" style="background:#eab308;" title="Yellow"></div>
                   <div class="panel-swatch" data-color="#22c55e" style="background:#22c55e;" title="Green"></div>
-                  <div class="panel-swatch" data-color="#0ea5e9" style="background:#0ea5e9;" title="Sky Blue"></div>
+                  <div class="panel-swatch" data-color="#111111" style="background:#111111;" title="Sky Blue"></div>
                   <div class="panel-swatch" data-color="#3b82f6" style="background:#3b82f6;" title="Blue"></div>
                   <div class="panel-swatch" data-color="#8b5cf6" style="background:#8b5cf6;" title="Purple"></div>
                   <div class="panel-swatch" data-color="#ec4899" style="background:#ec4899;" title="Pink"></div>
@@ -471,7 +471,7 @@
                 <div class="brand-colors" id="brandColors">
                   <button type="button" class="brand-color-add" id="brandColorAdd">+ Add colour</button>
                 </div>
-                <input type="color" id="brandColorInput" class="brand-color-input" value="#0ea5e9" tabindex="-1" aria-hidden="true" />
+                <input type="color" id="brandColorInput" class="brand-color-input" value="#111111" tabindex="-1" aria-hidden="true" />
                 <p class="form-hint">Add up to 5. Tap a colour to draw with it on the canvas.</p>
               </div>
 
@@ -678,7 +678,7 @@
   const BG = {
     white: '#ffffff',
     cream: '#fdf8f0',
-    dark:  '#1a1a2e',
+    dark:  '#1a1a1a',
   };
 
   // ── Product Templates (guide outlines drawn in "units", fitted to the canvas) ──
@@ -809,7 +809,7 @@
     const s  = Math.min(availW / t.w, availH / t.h);
     const ox = (logW - t.w * s) / 2;
     const oy = pad + (availH - t.h * s) / 2;
-    const ink = S.canvasBg === 'dark' ? 'rgba(203,213,225,0.6)' : '#9aa8ba';
+    const ink = S.canvasBg === 'dark' ? 'rgba(212,212,212,0.6)' : '#a1a1aa';
     const font = '600 {px}px "Space Grotesk", system-ui, sans-serif';
 
     ctx.save();
@@ -1302,7 +1302,7 @@
     const bCtx = brushPrevCtx;
     const W = brushPrevCvs.width, H = brushPrevCvs.height;
     bCtx.clearRect(0, 0, W, H);
-    bCtx.fillStyle = '#1e1e2e';
+    bCtx.fillStyle = '#1f1f1f';
     bCtx.fillRect(0, 0, W, H);
 
     bCtx.globalAlpha  = S.opacity;
@@ -1458,9 +1458,9 @@
     out.width = W; out.height = H + band;
     const c = out.getContext('2d');
     c.drawImage(sketch, 0, 0);
-    c.fillStyle = '#062040';
+    c.fillStyle = '#2e2e2e';
     c.fillRect(0, H, W, band);
-    c.fillStyle = '#0ea5e9';
+    c.fillStyle = '#111111';
     c.fillRect(0, H, W, Math.max(3 * k, 2));
 
     const x = 36 * k;
@@ -1471,7 +1471,7 @@
 
     c.textAlign = 'left'; c.textBaseline = 'alphabetic';
     let y = H + 40 * k;
-    c.fillStyle = '#38bdf8';
+    c.fillStyle = '#d4d4d4';
     c.font = `700 ${13 * k}px "Space Grotesk", system-ui, sans-serif`;
     c.fillText('HAZELNART  ·  DESIGN BRIEF', x, y);
 

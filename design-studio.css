@@ -34,7 +34,7 @@
 /* ── Studio Section Wrap ──────────────────────────────────────── */
 .studio-section {
   padding: 3rem 0 4rem;
-  background: #11111e;
+  background: #121212;
 }
 .studio-wrap {
   max-width: 1300px; margin: 0 auto; padding: 0 1.5rem;
@@ -44,7 +44,7 @@
    APP WINDOW — Design Software Mockup
    ================================================================ */
 .app-window {
-  background: #1e1e2e;
+  background: #1f1f1f;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.06);
@@ -56,7 +56,7 @@
 /* ── Title Bar ────────────────────────────────────────────────── */
 .app-titlebar {
   display: flex; align-items: center;
-  background: #12121e;
+  background: #151515;
   padding: 0 1rem;
   height: 38px;
   flex-shrink: 0;
@@ -89,7 +89,7 @@
 /* ── Menu Bar ─────────────────────────────────────────────────── */
 .app-menubar {
   display: flex; align-items: center; gap: 0;
-  background: #1a1a2e;
+  background: #1a1a1a;
   padding: 0 1rem;
   height: 28px;
   flex-shrink: 0;
@@ -105,14 +105,14 @@
 }
 .app-menu-item:hover,
 .app-menu-item--active {
-  background: rgba(14,165,233,0.15);
+  background: rgba(0,0,0,0.15);
   color: rgba(255,255,255,0.85);
 }
 
 /* ── Template Bar ─────────────────────────────────────────────── */
 .app-templatebar {
   display: flex; align-items: center; gap: 0.4rem;
-  background: #191927; padding: 0.45rem 0.75rem;
+  background: #1b1b1b; padding: 0.45rem 0.75rem;
   border-bottom: 1px solid rgba(255,255,255,0.05);
   overflow-x: auto; flex-shrink: 0; scrollbar-width: none;
 }
@@ -136,13 +136,13 @@
 }
 .tpl-chip:hover { background: rgba(255,255,255,0.12); color: #fff; }
 .tpl-chip.active { background: var(--gold); border-color: var(--gold); color: #fff; }
-.tpl-chip--photo { border-style: dashed; border-color: rgba(56,189,248,0.5); color: var(--gold-lt); }
-.tpl-chip--photo:hover { background: rgba(14,165,233,0.15); color: #fff; }
+.tpl-chip--photo { border-style: dashed; border-color: rgba(212,212,212,0.5); color: var(--gold-lt); }
+.tpl-chip--photo:hover { background: rgba(0,0,0,0.15); color: #fff; }
 
 /* ── Options Bar ──────────────────────────────────────────────── */
 .app-optionsbar {
   display: flex; align-items: center; gap: 0.6rem;
-  background: #1e1e30;
+  background: #232323;
   padding: 0 0.75rem;
   height: 38px;
   flex-shrink: 0;
@@ -200,7 +200,7 @@
   color: rgba(255,255,255,0.65); cursor: pointer;
   outline: none; flex-shrink: 0;
 }
-.opt-select option { background: #1e1e2e; color: #fff; }
+.opt-select option { background: #1f1f1f; color: #fff; }
 
 .opt-shape-mode {
   display: flex; background: rgba(255,255,255,0.06);
@@ -222,7 +222,7 @@
 
 /* ── Left Toolbar ─────────────────────────────────────────────── */
 .app-toolbar {
-  width: 44px; background: #252536;
+  width: 44px; background: #262626;
   display: flex; flex-direction: column; align-items: center;
   padding: 0.5rem 0; gap: 0;
   border-right: 1px solid rgba(255,255,255,0.05);
@@ -250,9 +250,9 @@
 }
 .tool-btn:hover { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.8); }
 .tool-btn.active {
-  background: rgba(14,165,233,0.2);
+  background: rgba(0,0,0,0.2);
   color: var(--gold);
-  border: 1px solid rgba(14,165,233,0.4);
+  border: 1px solid rgba(0,0,0,0.4);
 }
 .tool-btn svg { pointer-events: none; }
 
@@ -260,7 +260,7 @@
 .tool-btn::after {
   content: attr(data-tip);
   position: absolute; left: calc(100% + 8px); top: 50%; transform: translateY(-50%);
-  background: #0c0c18; color: #fff; border: 1px solid rgba(255,255,255,0.12);
+  background: #0d0d0d; color: #fff; border: 1px solid rgba(255,255,255,0.12);
   padding: 4px 8px; border-radius: 4px;
   font-family: var(--ui); font-size: 0.65rem; white-space: nowrap;
   opacity: 0; pointer-events: none; z-index: 100;
@@ -296,7 +296,7 @@
 
 /* ── Canvas Outer ─────────────────────────────────────────────── */
 .app-canvas-outer {
-  flex: 1; background: #2a2a3e;
+  flex: 1; background: #2b2b2b;
   display: flex; align-items: center; justify-content: center;
   overflow: auto; position: relative;
 }
@@ -316,7 +316,7 @@
 
 /* ── Right Panel ──────────────────────────────────────────────── */
 .app-panel {
-  width: 180px; background: #1e1e2e;
+  width: 180px; background: #1f1f1f;
   border-left: 1px solid rgba(255,255,255,0.05);
   display: flex; flex-direction: column;
   overflow-y: auto; flex-shrink: 0;
@@ -416,8 +416,8 @@
   border: 1px solid transparent;
 }
 .panel-layer.active-layer {
-  background: rgba(14,165,233,0.1);
-  border-color: rgba(14,165,233,0.2);
+  background: rgba(0,0,0,0.1);
+  border-color: rgba(0,0,0,0.2);
 }
 .layer-icon {
   font-size: 0.7rem; opacity: 0.5;
@@ -434,7 +434,7 @@
 /* ── Status Bar ───────────────────────────────────────────────── */
 .app-statusbar {
   display: flex; align-items: center; gap: 1rem;
-  background: #12121e;
+  background: #151515;
   padding: 0 1rem; height: 24px;
   border-top: 1px solid rgba(255,255,255,0.05);
   flex-shrink: 0;
@@ -541,7 +541,7 @@
 .send-modal {
   position: fixed; inset: 0; z-index: 6000;
   display: flex; align-items: center; justify-content: center; padding: 1rem;
-  background: rgba(4,14,30,0.72); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  background: rgba(24,24,24,0.72); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
   animation: sendFade 0.25s var(--ease);
 }
 .send-modal[hidden] { display: none; }
