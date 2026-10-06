@@ -199,6 +199,7 @@ const companySlugs = [
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
   initPageTransitions();
+  initTopnav();
   buildServices();
   buildServicePreview();
   buildShowcase();
@@ -606,6 +607,15 @@ function initSidebarScroll() {
       document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
     });
   });
+}
+
+/* ─── Top navigation: lift with a shadow once scrolled ─────── */
+function initTopnav() {
+  const nav = document.getElementById('topnav');
+  if (!nav) return;
+  const update = () => nav.classList.toggle('is-scrolled', window.scrollY > 8);
+  window.addEventListener('scroll', update, { passive: true });
+  update();
 }
 
 /* ─── Page Transitions (curtain wipe between pages) ────────── */
