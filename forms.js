@@ -1,5 +1,5 @@
 /* ============================================================
-   HAZELNART — Enquiry delivery (FormSubmit → company inbox)
+   HAZELNART: Enquiry delivery (FormSubmit → company inbox)
 
    Every enquiry passes Google reCAPTCHA ("I'm not a robot") on
    FormSubmit's server before it is emailed, then the visitor is
@@ -13,7 +13,7 @@
    The first message sent from the live site makes FormSubmit
    email the inbox an activation link. Once activated, FormSubmit
    also sends a random-like code (e.g. "a1b2c3d4e5f6...").
-   Paste that code into FORM_ALIAS below — the address is then
+   Paste that code into FORM_ALIAS below: the address is then
    removed from the code entirely.
    ============================================================ */
 (function () {
@@ -46,7 +46,7 @@
    *          { ok: false, reason: 'cooldown'|'unsupported', message }
    */
   function submit(fields, opts = {}) {
-    // Bots: filled the hidden field, or submitted impossibly fast — pretend it worked
+    // Bots: filled the hidden field, or submitted impossibly fast: pretend it worked
     if (opts.honeypot || Date.now() - loadedAt < MIN_FILL_MS) return { ok: true, silent: true };
 
     const wait = COOLDOWN_MS - (Date.now() - parseInt(store.get('localStorage', LAST_KEY) || '0', 10));
@@ -70,7 +70,7 @@
     };
 
     Object.entries(fields).forEach(([k, v]) => add(k, v));
-    add('_subject', opts.subject || 'New website enquiry — Hazelnart');
+    add('_subject', opts.subject || 'New enquiry from the Hazelnart website');
     add('_template', 'table');
     add('_captcha', 'true');
     add('_blacklist', BLACKLIST);

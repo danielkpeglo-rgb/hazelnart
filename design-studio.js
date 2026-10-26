@@ -1,9 +1,9 @@
 /* ============================================================
-   HAZELNART DESIGN STUDIO — page script (moved out of the HTML
+   HAZELNART DESIGN STUDIO: page script (moved out of the HTML
    so the site can run under a strict Content-Security-Policy)
    ============================================================ */
 /* ============================================================
-   HAZELNART DESIGN STUDIO — Canvas Drawing Engine
+   HAZELNART DESIGN STUDIO: Canvas Drawing Engine
    ============================================================ */
 
 // ── Config ─────────────────────────────────────────────────
@@ -221,7 +221,7 @@ function applyTemplate(key) {
   S.template = key;
   setTemplateChip(key);
   updatePreview();
-  if (TEMPLATES[key]) showToast(`${TEMPLATES[key].name} template ready — sketch on top. Ctrl+Z to undo.`);
+  if (TEMPLATES[key]) showToast(`${TEMPLATES[key].name} template ready. Sketch on top, or press Ctrl+Z to undo.`);
 }
 
 // ── Init Canvas ─────────────────────────────────────────────
@@ -757,7 +757,7 @@ refInput.addEventListener('change', () => {
     URL.revokeObjectURL(url);
     S.hasReference = true;
     updatePreview();
-    showToast('Reference photo added — draw or write on top of it.');
+    showToast('Reference photo added. Draw or write on top of it.');
   };
   img.onerror = () => { URL.revokeObjectURL(url); showToast('Sorry, that image could not be opened.', true); };
   img.src = url;
@@ -999,7 +999,7 @@ async function sendBrief() {
   const preview  = brief.toDataURL('image/jpeg', 0.85);
   const waUrl    = `https://wa.me/${HAZELNART_PHONE}?text=${encodeURIComponent(buildMessage(d, 'whatsapp'))}`;
 
-  // Phones: two taps — start the chat with the details, then share the image into it
+  // Phones: two taps: start the chat with the details, then share the image into it
   if (isTouch && navigator.canShare) {
     const file = new File([await blobP], fileName, { type: 'image/png' });
     if (navigator.canShare({ files: [file] })) {
@@ -1015,7 +1015,7 @@ async function sendBrief() {
           { label: 'Open chat', href: waUrl, newTab: true, cls: 'btn--whatsapp' },
           { label: 'Share sketch', cls: 'btn--gold', onClick: async () => {
               try { await navigator.share({ files: [file], title: 'My design brief for Hazelnart' }); showToast('Sketch shared ✓'); }
-              catch (err) { if (err.name !== 'AbortError') { downloadCanvas(brief, fileName); showToast('Sketch downloaded — attach it in the chat.'); } }
+              catch (err) { if (err.name !== 'AbortError') { downloadCanvas(brief, fileName); showToast('Sketch downloaded. Attach it in the chat.'); } }
             } },
         ],
       });
@@ -1028,15 +1028,15 @@ async function sendBrief() {
   if (!copied) downloadCanvas(brief, fileName);
 
   openSendModal({
-    title: copied ? 'Sketch copied — almost there!' : 'Your brief is ready',
+    title: copied ? 'Sketch copied, almost there!' : 'Your brief is ready',
     sub: 'Your details are already typed into the message.',
     preview,
     steps: [
       'Click <b>Open WhatsApp</b> (WhatsApp Web or the desktop app).',
       copied
-        ? `In the chat, press ${KEY_PASTE} to paste your sketch — it's already copied.`
+        ? `In the chat, press ${KEY_PASTE} to paste your sketch. It's already copied.`
         : `Attach <b>${fileName}</b> from your Downloads using the 📎 button.`,
-      "Hit send — we'll reply with ideas and a free quote.",
+      "Hit send and we'll reply with ideas and a free quote.",
     ],
     actions: [
       { label: 'Open WhatsApp', href: waUrl, newTab: true, cls: 'btn--whatsapp' },
@@ -1045,13 +1045,13 @@ async function sendBrief() {
   });
 }
 
-// Straight to the company inbox, sketch attached, via a reCAPTCHA check —
+// Straight to the company inbox, sketch attached, via a reCAPTCHA check,
 // no email app, no visible address
 const escapeHtml = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
 async function sendBriefToInbox() {
   const d = validateForm(); if (!d) return;
-  if (!window.HazelnartForms) { showToast('Sending is unavailable right now — please use WhatsApp.', true); return; }
+  if (!window.HazelnartForms) { showToast('Sending is unavailable right now. Please use WhatsApp.', true); return; }
 
   const btn = document.getElementById('sendEmailBtn');
   const label = btn.querySelector('span');
@@ -1073,7 +1073,7 @@ async function sendBriefToInbox() {
     'Idea': d.desc,
     'Sent from': 'Website design studio (sketch attached)',
   }, {
-    subject: `Design brief: ${d.service} — ${d.name}`,
+    subject: `Design brief: ${d.service} from ${d.name}`,
     replyTo: d.email,
     honeypot: document.getElementById('sWebsite')?.value,
     returnTo: 'design-studio.html',
@@ -1148,11 +1148,11 @@ function saveSession() {
     if (S.dirty) state.img = canvas.toDataURL('image/png');
     localStorage.setItem(SAVE_KEY, JSON.stringify(state));
   } catch (e) {
-    // Too big for storage — fall back to a flattened JPEG
+    // Too big for storage: fall back to a flattened JPEG
     try {
       state.img = flattenSketch().toDataURL('image/jpeg', 0.8);
       localStorage.setItem(SAVE_KEY, JSON.stringify(state));
-    } catch (e2) { /* storage unavailable — nothing to do */ }
+    } catch (e2) { /* storage unavailable: nothing to do */ }
   }
 }
 
@@ -1190,7 +1190,7 @@ function restoreSession() {
       S.dirty = true;
       restoring = false;
       updatePreview();
-      showToast('Welcome back — your last sketch was restored.');
+      showToast('Welcome back! Your last sketch was restored.');
     };
     img.onerror = () => { restoring = false; };
     img.src = st.img;

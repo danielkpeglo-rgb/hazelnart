@@ -1,9 +1,9 @@
 /* ============================================================
-   HAZELNART — JavaScript
+   HAZELNART: JavaScript
    ============================================================ */
 
 /* ============================================================
-   ★ PORTFOLIO DATA — ADD YOUR IMAGES HERE ★
+   ★ PORTFOLIO DATA: ADD YOUR IMAGES HERE ★
 
    To add a new image, copy the format below and add a new line.
    Format:
@@ -21,18 +21,18 @@ const portfolioData = [
   { src: 'images/portfolio/nastygirlwrld/nastygirlwrld-3d-wall-letters.jpeg', title: '3D Wall Lettering', company: 'NastyGirlWrld.co', filter: 'nastygirlwrld', tags: ['signage'] },
 
   // ── OKANTA MEDICAL CENTRE ──────────────────────────────────
-  { type: 'video', src: 'images/portfolio/okanta-medical-centre/okanta-medical-centre-pylon-sign-closeup.mp4', poster: 'images/portfolio/okanta-medical-centre/okanta-medical-centre-pylon-sign-closeup-poster.jpg', title: 'Pylon Signage — Video', company: 'Okanta Medical Centre', filter: 'okanta-medical-centre', shape: 'tall', tags: ['signage', 'video'] },
+  { type: 'video', src: 'images/portfolio/okanta-medical-centre/okanta-medical-centre-pylon-sign-closeup.mp4', poster: 'images/portfolio/okanta-medical-centre/okanta-medical-centre-pylon-sign-closeup-poster.jpg', title: 'Pylon Signage (Video)', company: 'Okanta Medical Centre', filter: 'okanta-medical-centre', shape: 'tall', tags: ['signage', 'video'] },
   { src: 'images/portfolio/okanta-medical-centre/okanta-medical-centre-pylon-sign-1.jpeg', title: '24/7 Pylon Signage', company: 'Okanta Medical Centre', filter: 'okanta-medical-centre', shape: 'tall', tags: ['signage'] },
-  { type: 'video', src: 'images/portfolio/nastygirlwrld/nastygirlwrld-3d-wall-letters.mp4', poster: 'images/portfolio/nastygirlwrld/nastygirlwrld-3d-wall-letters-poster.jpg', title: '3D Wall Lettering — Video', company: 'NastyGirlWrld.co', filter: 'nastygirlwrld', tags: ['signage', 'video'] },
+  { type: 'video', src: 'images/portfolio/nastygirlwrld/nastygirlwrld-3d-wall-letters.mp4', poster: 'images/portfolio/nastygirlwrld/nastygirlwrld-3d-wall-letters-poster.jpg', title: '3D Wall Lettering (Video)', company: 'NastyGirlWrld.co', filter: 'nastygirlwrld', tags: ['signage', 'video'] },
   { type: 'video', src: 'images/portfolio/individual/pa-gya-festival-tote-bags.mp4', poster: 'images/portfolio/individual/pa-gya-festival-tote-bags-poster.jpg', title: '10th Anniversary Tote Bags', company: 'Pa Gya! Literary Festival', filter: 'individual', shape: 'tall', tags: ['video'] },
   { src: 'images/portfolio/okanta-medical-centre/okanta-medical-centre-pylon-sign-2.jpeg', title: '24/7 Pylon Signage', company: 'Okanta Medical Centre', filter: 'okanta-medical-centre', shape: 'tall', tags: ['signage'] },
-  { type: 'video', src: 'images/portfolio/okanta-medical-centre/okanta-medical-centre-pylon-sign-site.mp4', poster: 'images/portfolio/okanta-medical-centre/okanta-medical-centre-pylon-sign-site-poster.jpg', title: 'Pylon Signage — On Site', company: 'Okanta Medical Centre', filter: 'okanta-medical-centre', shape: 'tall', tags: ['signage', 'video'] },
+  { type: 'video', src: 'images/portfolio/okanta-medical-centre/okanta-medical-centre-pylon-sign-site.mp4', poster: 'images/portfolio/okanta-medical-centre/okanta-medical-centre-pylon-sign-site-poster.jpg', title: 'Pylon Signage (On Site)', company: 'Okanta Medical Centre', filter: 'okanta-medical-centre', shape: 'tall', tags: ['signage', 'video'] },
 
   // ── FRIMPS OIL ─────────────────────────────────────────────
-  { src: 'images/portfolio/frimps-oil/frimps-oil-flask-white.jpeg',    title: 'Branded Flask — White',  company: 'FRIMPS OIL', filter: 'frimps-oil' },
+  { src: 'images/portfolio/frimps-oil/frimps-oil-flask-white.jpeg',    title: 'Branded Flask (White)',  company: 'FRIMPS OIL', filter: 'frimps-oil' },
   { src: 'images/portfolio/frimps-oil/frimps-oil-packaging-box.jpeg',  title: 'Brand Packaging',        company: 'FRIMPS OIL', filter: 'frimps-oil' },
-  { src: 'images/portfolio/frimps-oil/frimps-oil-flask-black.jpeg',    title: 'Branded Flask — Black',  company: 'FRIMPS OIL', filter: 'frimps-oil' },
-  { src: 'images/portfolio/frimps-oil/frimps-oil-flask-red.jpeg',      title: 'Branded Flask — Red',    company: 'FRIMPS OIL', filter: 'frimps-oil' },
+  { src: 'images/portfolio/frimps-oil/frimps-oil-flask-black.jpeg',    title: 'Branded Flask (Black)',  company: 'FRIMPS OIL', filter: 'frimps-oil' },
+  { src: 'images/portfolio/frimps-oil/frimps-oil-flask-red.jpeg',      title: 'Branded Flask (Red)',    company: 'FRIMPS OIL', filter: 'frimps-oil' },
 
   // ── FUELTRADE ───────────────────────────────────────────────
   { src: 'images/portfolio/fueltrade/fueltrade-workers-day-tshirt-1.jpeg', title: "Workers' Day T-Shirt",  company: 'FUELTRADE', filter: 'fueltrade' },
@@ -57,8 +57,8 @@ const portfolioData = [
   { src: 'images/portfolio/individual/bolivia-2025-caps-2.jpeg',            title: 'Branded Caps',               company: 'Bolivia 2025',             filter: 'individual' },
   { src: 'images/portfolio/individual/bolivia-2025-bottle-opener.jpeg',     title: 'Branded Bottle Opener',      company: 'Bolivia 2025',             filter: 'individual' },
   { src: 'images/portfolio/individual/bolivia-2025-keychains.jpeg',         title: 'Branded Keychains',          company: 'Bolivia 2025',             filter: 'individual' },
-  { src: 'images/portfolio/individual/kwasaf-business-cards-front.jpeg',    title: 'Business Cards — Front',     company: 'Kwasaf',                   filter: 'individual' },
-  { src: 'images/portfolio/individual/kwasaf-business-cards-back.jpeg',     title: 'Business Cards — Back',      company: 'Kwasaf',                   filter: 'individual' },
+  { src: 'images/portfolio/individual/kwasaf-business-cards-front.jpeg',    title: 'Business Cards (Front)',     company: 'Kwasaf',                   filter: 'individual' },
+  { src: 'images/portfolio/individual/kwasaf-business-cards-back.jpeg',     title: 'Business Cards (Back)',      company: 'Kwasaf',                   filter: 'individual' },
   { src: 'images/portfolio/individual/pure-word-ministry-tshirts.jpeg',     title: 'Ministry T-Shirts',          company: 'Pure Word Ministry',       filter: 'individual' },
   { src: 'images/portfolio/individual/pj-cost-business-cards-1.jpeg',       title: 'Business Cards',             company: 'PJ Cost',                  filter: 'individual' },
   { src: 'images/portfolio/individual/pj-cost-business-cards-2.jpeg',       title: 'Business Cards',             company: 'PJ Cost',                  filter: 'individual' },
@@ -68,7 +68,7 @@ const portfolioData = [
   { src: 'images/portfolio/individual/sapore-perfetto-bag-2.jpeg',          title: 'Branded Paper Bag',          company: 'Sapore Perfetto',          filter: 'individual' },
   { src: 'images/portfolio/individual/dna-paper-bag-1.jpeg',                title: 'Branded Paper Bag',          company: 'DNA',                      filter: 'individual' },
   { src: 'images/portfolio/individual/dna-paper-bag-2.jpeg',                title: 'Branded Paper Bag',          company: 'DNA',                      filter: 'individual' },
-  { src: 'images/portfolio/individual/kasani-lux-pouch-red.jpeg',           title: 'Luxury Pouch — Red',         company: 'Kasani Lux',               filter: 'individual' },
+  { src: 'images/portfolio/individual/kasani-lux-pouch-red.jpeg',           title: 'Luxury Pouch (Red)',         company: 'Kasani Lux',               filter: 'individual' },
   { src: 'images/portfolio/individual/kasani-lux-pouches.jpeg',             title: 'Luxury Pouches',             company: 'Kasani Lux',               filter: 'individual' },
   { src: 'images/portfolio/individual/emergency-assembly-signs.jpeg',       title: 'Emergency Assembly Signs',   company: 'Signage',                  filter: 'individual', tags: ['signage'] },
   { src: 'images/portfolio/individual/legal-aid-commission-award.jpeg',     title: 'Award Design',               company: 'Legal Aid Commission',     filter: 'individual' },
@@ -86,7 +86,7 @@ const showcaseData = [
   { area: 'a', type: 'video', src: 'images/portfolio/okanta-medical-centre/okanta-medical-centre-pylon-sign-closeup.mp4', poster: 'images/portfolio/okanta-medical-centre/okanta-medical-centre-pylon-sign-closeup-poster.jpg', title: '24/7 Pylon Signage', company: 'Okanta Medical Centre', tag: 'Outdoor Signage' },
   { area: 'b', type: 'video', src: 'images/portfolio/nastygirlwrld/nastygirlwrld-3d-wall-letters.mp4', poster: 'images/portfolio/nastygirlwrld/nastygirlwrld-3d-wall-letters-poster.jpg', title: '3D Wall Lettering', company: 'NastyGirlWrld.co', tag: '3D Signage' },
   { area: 'c', type: 'video', src: 'images/portfolio/individual/pa-gya-festival-tote-bags.mp4', poster: 'images/portfolio/individual/pa-gya-festival-tote-bags-poster.jpg', title: '10th Anniversary Tote Bags', company: 'Pa Gya! Literary Festival', tag: 'Branded Merchandise' },
-  { area: 'd', type: 'image', src: 'images/portfolio/nastygirlwrld/nastygirlwrld-3d-wall-letters.jpeg', title: '3D Wall Lettering — Detail', company: 'NastyGirlWrld.co', tag: '3D Signage' },
+  { area: 'd', type: 'image', src: 'images/portfolio/nastygirlwrld/nastygirlwrld-3d-wall-letters.jpeg', title: '3D Wall Lettering (Detail)', company: 'NastyGirlWrld.co', tag: '3D Signage' },
 ];
 
 /* ============================================================
@@ -98,7 +98,7 @@ const servicesData = [
   { icon: '🎯', title: '3D Design & Renders',      img: 'images/services/3d-design-renders.jpg', desc: 'Stunning 3D mockups, product visualisations, architectural renders, and dimensional brand materials that bring concepts to life.' },
   { icon: '👕', title: 'T-Shirt & Apparel',        img: 'images/services/tshirt-apparel.jpg', desc: 'DTF printing, screen printing, embroidery, and sublimation for corporate uniforms, branded merchandise, and event apparel.' },
   { icon: '🎁', title: 'Souvenirs & Gift Items',   img: 'images/services/souvenirs-gifts.jpg', desc: 'Branded mugs, pens, notebooks, keychains, tote bags, phone cases, and custom corporate gifts that leave lasting impressions.' },
-  { icon: '🎨', title: 'Brand Identity & Logo',    img: 'images/services/brand-identity.jpg', desc: 'Complete brand identity design — logos, colour systems, typography, and brand guidelines that define and distinguish your business.' },
+  { icon: '🎨', title: 'Brand Identity & Logo',    img: 'images/services/brand-identity.jpg', desc: 'Complete brand identity design: logos, colour systems, typography, and brand guidelines that define and distinguish your business.' },
   { icon: '📋', title: 'Corporate Stationery',     img: 'images/services/corporate-stationery.jpg', desc: 'Letterheads, envelopes, compliment slips, invoice templates, and full stationery packages that project professionalism.' },
   { icon: '🚗', title: 'Vehicle Branding',         img: 'images/services/vehicle-branding.jpg', desc: 'Car wraps, truck graphics, fleet vehicle branding, and mobile advertising that carries your brand wherever the road goes.' },
   { icon: '🎪', title: 'Exhibition & Events',      img: 'images/services/exhibition-events.jpg', desc: 'Trade show booths, pop-up displays, step-and-repeat backdrops, and event branding that makes your brand unforgettable.' },
@@ -120,7 +120,7 @@ const partnersData = [
       'images/portfolio/frimps-oil/frimps-oil-flask-red.jpeg',
       'images/portfolio/frimps-oil/frimps-oil-packaging-box.jpeg',
     ],
-    story: 'From flask to shelf — we built a complete branded merchandise suite for Frimps Oil, turning everyday items into powerful brand ambassadors across their entire network.',
+    story: 'From flask to shelf, we built a complete branded merchandise suite for Frimps Oil, turning everyday items into powerful brand ambassadors across their entire network.',
     work: ['Branded Flasks', 'Packaging Design', 'Brand Merchandise'],
   },
   {
@@ -132,7 +132,7 @@ const partnersData = [
       'images/portfolio/fueltrade/fueltrade-workers-day-tshirt-1.jpeg',
       'images/portfolio/fueltrade/fueltrade-workers-day-tshirt-2.jpeg',
     ],
-    story: "Uniting a workforce through design — Fueltrade's corporate apparel and Workers' Day collection gave every team member a shared sense of pride and identity.",
+    story: "Uniting a workforce through design: Fueltrade's corporate apparel and Workers' Day collection gave every team member a shared sense of pride and identity.",
     work: ['Corporate Uniforms', "Workers' Day Apparel", 'Staff Branding'],
   },
   {
@@ -142,7 +142,7 @@ const partnersData = [
       'images/portfolio/individual/eagle-petroleum-mugs.jpeg',
       'images/portfolio/individual/eagle-petroleum-flasks.jpeg',
     ],
-    story: "From branded mugs to custom flasks — Eagle Petroleum's merchandise programme puts their identity in the hands of staff and clients alike, reinforcing trust and pride across every level of their operations.",
+    story: "From branded mugs to custom flasks, Eagle Petroleum's merchandise programme puts their identity in the hands of staff and clients alike, reinforcing trust and pride across every level of their operations.",
     work: ['Branded Mugs', 'Branded Flasks', 'Corporate Merchandise'],
   },
   {
@@ -151,31 +151,31 @@ const partnersData = [
       'images/portfolio/usuyya-gh/usuyya-hard-hat-1.jpeg',
       'images/portfolio/usuyya-gh/usuyya-hard-hat-2.jpeg',
     ],
-    story: 'Where safety meets brand power — custom branded hard hats that carry the Usuyya GH identity on every job site, turning protective gear into a bold statement of professionalism.',
+    story: 'Where safety meets brand power: custom branded hard hats that carry the Usuyya GH identity on every job site, turning protective gear into a bold statement of professionalism.',
     work: ['Safety Equipment Branding', 'Corporate Identity'],
   },
   {
     name: 'GASO PETROLEUM', sector: 'Petroleum', initial: 'G',
     logo: 'images/individual designs/Gaso-petroleum.png',
-    story: 'A trusted name in Ghana\'s petroleum sector — Hazelnart has partnered with Gaso Petroleum to deliver sharp, consistent brand materials that reinforce their authority and reliability across every touchpoint.',
+    story: 'Gaso Petroleum is a trusted name in Ghana\'s petroleum sector, and Hazelnart has partnered with them to deliver sharp, consistent brand materials that reinforce their authority and reliability across every touchpoint.',
     work: ['Brand Identity', 'Print Collateral', 'Corporate Stationery'],
   },
   {
     name: 'TEMA FUEL COMPANY', sector: 'Energy Sector', initial: 'T',
     logo: 'images/individual designs/tema-fuel-company.png',
-    story: 'Powering Tema\'s energy identity — we work with Tema Fuel Company to ensure every piece of branded material reflects the strength, precision, and professionalism that their clients have come to expect.',
+    story: 'Powering Tema\'s energy identity, we work with Tema Fuel Company to ensure every piece of branded material reflects the strength, precision, and professionalism that their clients have come to expect.',
     work: ['Branded Materials', 'Corporate Branding', 'Print Design'],
   },
   {
     name: 'GOETHE INSTITUT', sector: 'Cultural Institute', initial: 'G',
     logo: 'images/individual designs/Goethe.png',
-    story: 'Bridging cultures through design — Hazelnart has proudly supported the Goethe Institut in Ghana, producing high-quality print and visual materials that honour the institute\'s global standard of cultural excellence.',
+    story: 'Bridging cultures through design, Hazelnart has proudly supported the Goethe Institut in Ghana, producing high-quality print and visual materials that honour the institute\'s global standard of cultural excellence.',
     work: ['Event Materials', 'Print Production', 'Exhibition Graphics'],
   },
   {
     name: 'WPG GHANA', sector: 'Business & Trade', initial: 'W',
     logo: 'images/individual designs/WPG.png',
-    story: 'A partnership built on precision — WPG Ghana relies on Hazelnart to deliver branded materials and design solutions that project confidence and credibility in Ghana\'s competitive business landscape.',
+    story: 'In a partnership built on precision, WPG Ghana relies on Hazelnart to deliver branded materials and design solutions that project confidence and credibility in Ghana\'s competitive business landscape.',
     work: ['Corporate Branding', 'Branded Merchandise', 'Stationery Design'],
   },
 ];
@@ -231,12 +231,12 @@ function buildShowcase() {
     card.className = `sc-card sc-card--${item.area} reveal`;
     card.setAttribute('tabindex', '0');
     card.setAttribute('role', 'button');
-    card.setAttribute('aria-label', `${isVideo ? 'Play' : 'View'} ${item.title} — ${item.company}`);
+    card.setAttribute('aria-label', `${isVideo ? 'Play' : 'View'} ${item.title}, ${item.company}`);
 
     card.innerHTML = `
       ${isVideo
         ? `<video class="sc-card__media" src="${item.src}" poster="${item.poster}" muted loop playsinline preload="metadata" data-autoplay></video>`
-        : `<img class="sc-card__media" src="${item.src}" alt="${item.title} — ${item.company}" loading="lazy" />`}
+        : `<img class="sc-card__media" src="${item.src}" alt="${item.title}, ${item.company}" loading="lazy" />`}
       <span class="sc-card__badge">${isVideo ? '&#9654; Watch in HD' : '&#10530; View in HD'}</span>
       <div class="sc-card__cap">
         <span class="sc-card__tag">${item.tag}</span>
@@ -303,7 +303,7 @@ function buildServices() {
     card.setAttribute('data-num', num);
     card.setAttribute('tabindex', '0');
     card.setAttribute('role', 'button');
-    card.setAttribute('aria-label', `${s.title} — Enquire`);
+    card.setAttribute('aria-label', `Enquire about ${s.title}`);
     card.innerHTML = `
       <img class="svc-story-card__bg" src="${s.img}" alt="" loading="lazy" aria-hidden="true" />
       <span class="svc-story-card__shade" aria-hidden="true"></span>
@@ -359,7 +359,7 @@ function initServicesStorybook() {
     if (fill) fill.style.width = (progress * 100) + '%';
 
     if (isMobile()) {
-      // One card at a time — vertical page-flip
+      // One card at a time: vertical page-flip
       const activeIdx = Math.min(cards.length - 1, Math.floor(progress * cards.length));
       cards.forEach((card, i) => {
         if (i === activeIdx) {
@@ -376,7 +376,7 @@ function initServicesStorybook() {
       if (label) label.textContent =
         `${String(activeIdx + 1).padStart(2, '0')} / ${String(cards.length).padStart(2, '0')}`;
     } else {
-      // Desktop — horizontal track translation
+      // Desktop: horizontal track translation
       const maxTrans = Math.max(0, track.scrollWidth - sticky.clientWidth);
       track.style.transform = `translateX(${-(progress * maxTrans)}px)`;
       if (label) {
@@ -432,7 +432,7 @@ function buildPortfolio() {
     const col = idx % 3;
     el.setAttribute('tabindex', '0');
     el.setAttribute('role', 'button');
-    el.setAttribute('aria-label', `${isVideo ? 'Play' : 'View'} ${item.title} — ${item.company}`);
+    el.setAttribute('aria-label', `${isVideo ? 'Play' : 'View'} ${item.title}, ${item.company}`);
 
     el.style.transitionDelay = `${col * 0.1}s`;
 
@@ -445,7 +445,7 @@ function buildPortfolio() {
            <span class="pf-item__play" aria-hidden="true">&#9654; Video</span>`
         : `<img
         src="${item.src}"
-        alt="${item.title} — ${item.company}"
+        alt="${item.title}, ${item.company}"
         loading="lazy"
       />`}
       <div class="pf-item__overlay">
@@ -472,7 +472,7 @@ function buildPartners() {
   const track         = document.getElementById('partnersTrack');
   const storyBlocksEl = document.getElementById('storyBlocks');
 
-  // Marquee — all partners
+  // Marquee: all partners
   if (track) {
     const chips = partnersData.map(p =>
       p.logo
@@ -815,7 +815,7 @@ function initLightbox() {
   });
 }
 
-// Opened from the portfolio grid — browse whatever is currently visible
+// Opened from the portfolio grid: browse whatever is currently visible
 function openLightbox(dataIdx) {
   const visible = [...document.querySelectorAll('.pf-item:not(.pf-item--ph):not(.hidden)')]
     .map(el => parseInt(el.dataset.idx, 10));
@@ -857,7 +857,7 @@ function renderLightboxImage() {
   const isVideo = item.type === 'video';
   if (lbImg) {
     lbImg.hidden = isVideo;
-    if (!isVideo) { lbImg.src = item.src; lbImg.alt = `${item.title} — ${item.company}`; }
+    if (!isVideo) { lbImg.src = item.src; lbImg.alt = `${item.title}, ${item.company}`; }
   }
   if (lbVideo) {
     lbVideo.hidden = !isVideo;
@@ -896,7 +896,7 @@ function initContactForm() {
       select.value = match.value;
       select.classList.add('form-input--prefilled');
       const note = $('cServiceNote');
-      if (note) { note.textContent = `✓ ${match.text} selected — just add your details.`; note.hidden = false; }
+      if (note) { note.textContent = `✓ ${match.text} selected. Just add your details.`; note.hidden = false; }
       select.addEventListener('change', () => {
         select.classList.remove('form-input--prefilled');
         if (note) note.hidden = true;
@@ -917,7 +917,7 @@ function initContactForm() {
   const showSuccess = ({ name, service, phone } = {}) => {
     const first = (name || '').split(' ')[0];
     $('cSuccessText').textContent =
-      `${first ? `Thanks ${first} — w` : 'W'}e've received your enquiry${service ? ` about ${service}` : ''}. ` +
+      `${first ? `Thanks ${first}! W` : 'W'}e've received your enquiry${service ? ` about ${service}` : ''}. ` +
       `Our team will reach out on WhatsApp${phone ? ` at ${phone}` : ''}, usually within a few hours.`;
     form.hidden = true;
     success.hidden = false;
@@ -947,7 +947,7 @@ function initContactForm() {
     if (!/^[+\d][\d\s()-]{6,19}$/.test(phone)) { setStatus('Please enter a valid phone number.', true); $('cPhone').focus(); return; }
     if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setStatus('That email address doesn\'t look right.', true); $('cEmail').focus(); return; }
 
-    if (!window.HazelnartForms) { setStatus('Sending is unavailable right now — please call or WhatsApp us.', true); return; }
+    if (!window.HazelnartForms) { setStatus('Sending is unavailable right now. Please call or WhatsApp us.', true); return; }
 
     setStatus('');
     const res = window.HazelnartForms.submit({
@@ -958,7 +958,7 @@ function initContactForm() {
       'Message': message,
       'Sent from': 'Website contact page',
     }, {
-      subject: `New enquiry: ${service} — ${name}`,
+      subject: `New enquiry: ${service} from ${name}`,
       replyTo: email,
       honeypot: $('cWebsite')?.value,
       returnTo: 'contact.html',
