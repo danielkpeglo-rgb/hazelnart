@@ -1,6 +1,10 @@
 /* ============================================================
    HAZELNART — Enquiry delivery (FormSubmit → company inbox)
 
+   Every enquiry passes Google reCAPTCHA ("I'm not a robot") on
+   FormSubmit's server before it is emailed, then the visitor is
+   sent back to the page they came from with ?sent=1.
+
    The inbox address is never shown on the site and never sits
    in the code as readable text, so it can't be clicked, copied
    or harvested by spam bots.
@@ -23,60 +27,93 @@
   const BLACKLIST = 'casino, crypto, bitcoin, forex, viagra, loan offer, seo services, backlinks, porn, betting';
 
   const MIN_FILL_MS = 4000;   // humans take longer than this to fill a form
-  const COOLDOWN_MS = 60000;  // one enquiry per minute per browser
+  const COOLDOWN_MS = 30000;  // one enquiry per 30 seconds per browser
   const LAST_KEY    = 'hazelnart-last-enquiry';
+  const PENDING_KEY = 'hazelnart-pending-enquiry';
   const loadedAt    = Date.now();
 
-  function lastSent() {
-    try { return parseInt(localStorage.getItem(LAST_KEY) || '0', 10); } catch (e) { return 0; }
-  }
-  function markSent() {
-    try { localStorage.setItem(LAST_KEY, String(Date.now())); } catch (e) { /* ignore */ }
-  }
+  const store = {
+    get(area, key) { try { return window[area].getItem(key); } catch (e) { return null; } },
+    set(area, key, v) { try { window[area].setItem(key, v); } catch (e) { /* ignore */ } },
+    del(area, key) { try { window[area].removeItem(key); } catch (e) { /* ignore */ } },
+  };
 
   /**
-   * Send an enquiry to the company inbox.
-   * fields:  plain key/value pairs shown in the email (in order)
-   * opts:    { subject, replyTo, honeypot, files: [{ blob, name }] }
-   * Resolves to { ok: true } or { ok: false, reason: 'spam'|'cooldown'|'network'|'rejected', message }
+   * Send an enquiry. Leaves the page for FormSubmit's reCAPTCHA check.
+   * fields:  key/value pairs shown in the email (in order)
+   * opts:    { subject, replyTo, honeypot, returnTo, pending, files: [{ blob, name }] }
+   * Returns  { ok: true, redirecting } | { ok: true, silent } |
+   *          { ok: false, reason: 'cooldown'|'unsupported', message }
    */
-  async function send(fields, opts = {}) {
+  function submit(fields, opts = {}) {
     // Bots: filled the hidden field, or submitted impossibly fast — pretend it worked
     if (opts.honeypot || Date.now() - loadedAt < MIN_FILL_MS) return { ok: true, silent: true };
 
-    const wait = COOLDOWN_MS - (Date.now() - lastSent());
+    const wait = COOLDOWN_MS - (Date.now() - parseInt(store.get('localStorage', LAST_KEY) || '0', 10));
     if (wait > 0) {
       return { ok: false, reason: 'cooldown', message: `Please wait ${Math.ceil(wait / 1000)} seconds before sending another message.` };
     }
 
-    const fd = new FormData();
-    Object.entries(fields).forEach(([k, v]) => { if (v) fd.append(k, v); });
-    fd.append('_subject', opts.subject || 'New website enquiry — Hazelnart');
-    fd.append('_template', 'table');
-    fd.append('_captcha', 'false');
-    fd.append('_blacklist', BLACKLIST);
-    if (opts.replyTo) fd.append('_replyto', opts.replyTo);
-    (opts.files || []).forEach(f => fd.append('attachment', f.blob, f.name));
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = `https://formsubmit.co/${target()}`;
+    form.enctype = 'multipart/form-data';
+    form.acceptCharset = 'UTF-8';
+    form.hidden = true;
 
-    let res;
-    try {
-      res = await fetch(`https://formsubmit.co/ajax/${target()}`, {
-        method: 'POST',
-        headers: { Accept: 'application/json' },
-        body: fd,
-      });
-    } catch (e) {
-      return { ok: false, reason: 'network', message: 'We could not reach our mail server. Check your connection and try again.' };
+    const add = (name, value) => {
+      if (!value) return;
+      const el = document.createElement('textarea');   // keeps line breaks intact
+      el.name = name;
+      el.value = String(value);
+      form.appendChild(el);
+    };
+
+    Object.entries(fields).forEach(([k, v]) => add(k, v));
+    add('_subject', opts.subject || 'New website enquiry — Hazelnart');
+    add('_template', 'table');
+    add('_captcha', 'true');
+    add('_blacklist', BLACKLIST);
+    add('_replyto', opts.replyTo);
+
+    const next = new URL(opts.returnTo || location.pathname, location.href);
+    next.search = ''; next.hash = '';
+    next.searchParams.set('sent', '1');
+    add('_next', next.href);
+
+    if (opts.files && opts.files.length) {
+      const unsupported = { ok: false, reason: 'unsupported', message: 'This browser can\'t attach your sketch automatically.' };
+      if (typeof DataTransfer === 'undefined') return unsupported;
+      try {
+        const dt = new DataTransfer();
+        opts.files.forEach(f => dt.items.add(new File([f.blob], f.name, { type: f.blob.type || 'image/png' })));
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.name = 'attachment';
+        input.files = dt.files;
+        if (!input.files || !input.files.length) return unsupported;
+        form.appendChild(input);
+      } catch (e) {
+        return unsupported;
+      }
     }
 
-    let data = {};
-    try { data = await res.json(); } catch (e) { /* non-JSON reply */ }
-    const ok = res.ok && (data.success === true || data.success === 'true');
-    if (!ok) return { ok: false, reason: 'rejected', message: data.message || 'Your message could not be delivered.' };
-
-    markSent();
-    return { ok: true };
+    store.set('sessionStorage', PENDING_KEY, JSON.stringify(opts.pending || {}));
+    store.set('localStorage', LAST_KEY, String(Date.now()));
+    document.body.appendChild(form);
+    form.submit();
+    return { ok: true, redirecting: true };
   }
 
-  window.HazelnartForms = { send };
+  /** On the return trip (?sent=1): details saved before leaving, then tidy the URL. */
+  function takeSent() {
+    if (new URLSearchParams(location.search).get('sent') !== '1') return null;
+    let data = {};
+    try { data = JSON.parse(store.get('sessionStorage', PENDING_KEY) || '{}') || {}; } catch (e) { data = {}; }
+    store.del('sessionStorage', PENDING_KEY);
+    history.replaceState(null, '', location.pathname);
+    return data;
+  }
+
+  window.HazelnartForms = { submit, takeSent };
 })();

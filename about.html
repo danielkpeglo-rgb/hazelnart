@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob:; frame-src https://www.google.com https://maps.google.com; connect-src 'self'; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'; upgrade-insecure-requests" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
 
   <title>About Hazelnart | 20+ Years of Design & Printing in Accra</title>
   <meta name="description" content="The story behind Hazelnart — over 20 years of graphic design and printing excellence from Accra Newtown, Ghana." />
@@ -132,7 +134,7 @@
 
           <div class="about__visual reveal reveal-d2">
             <div class="about__frame">
-              <img src="images/about/hazelnart-creative-studio.jpg" alt="Hazelnart creatives reviewing a design together in the studio" onerror="this.remove()" />
+              <img src="images/about/hazelnart-creative-studio.jpg" alt="Hazelnart creatives reviewing a design together in the studio" />
               <div class="about__frame-placeholder">
                 <span>🎨</span>
                 <p>Drop studio photo at<br><code>images/about/studio.jpg</code></p>
@@ -180,21 +182,29 @@
         </div>
         <ol class="process__grid">
           <li class="process__step reveal">
+            <img class="process__img" src="images/process/consult.jpg" alt="A client consultation across a table" loading="lazy" />
+            <span class="process__shade" aria-hidden="true"></span>
             <span class="process__num">01</span>
             <h3 class="process__title">Consult</h3>
             <p class="process__desc">We listen first — your goals, audience, budget and deadline — and recommend the right materials and finish.</p>
           </li>
           <li class="process__step reveal reveal-d1">
+            <img class="process__img" src="images/process/design.jpg" alt="A designer drawing on a pen tablet" loading="lazy" />
+            <span class="process__shade" aria-hidden="true"></span>
             <span class="process__num">02</span>
             <h3 class="process__title">Design</h3>
             <p class="process__desc">Our designers turn the brief into concepts, then refine with you until every detail feels right.</p>
           </li>
           <li class="process__step reveal reveal-d2">
+            <img class="process__img" src="images/process/produce.jpg" alt="Colourful posters printing on a wide-format printer" loading="lazy" />
+            <span class="process__shade" aria-hidden="true"></span>
             <span class="process__num">03</span>
             <h3 class="process__title">Produce</h3>
             <p class="process__desc">Approved artwork goes to print in-house — paper, large format, apparel, signage and more — with quality checks at every stage.</p>
           </li>
           <li class="process__step reveal reveal-d3">
+            <img class="process__img" src="images/process/deliver.jpg" alt="A courier handing over a finished order" loading="lazy" />
+            <span class="process__shade" aria-hidden="true"></span>
             <span class="process__num">04</span>
             <h3 class="process__title">Deliver</h3>
             <p class="process__desc">Finished work is packed and delivered on time, ready to make an impression.</p>

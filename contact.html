@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob:; frame-src https://www.google.com https://maps.google.com; connect-src 'self'; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'; upgrade-insecure-requests" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
 
   <title>Contact Hazelnart | Get a Quote — Accra Newtown</title>
   <meta name="description" content="Call or WhatsApp 0266 575 930 / 0544 055 060, or visit Hazelnart at Accra Newtown, Raaco Down." />
@@ -220,6 +222,10 @@
                   <span>Send Message</span>
                 </button>
                 <p class="form-status" id="cStatus" role="status" aria-live="polite"></p>
+                <p class="form-captcha-note">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  Protected by reCAPTCHA — you'll tick "I'm not a robot", then come straight back here.
+                </p>
               </form>
               <div class="form-success" id="cSuccess" hidden>
                 <div class="form-success__badge" aria-hidden="true">✓</div>

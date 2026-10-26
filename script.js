@@ -447,13 +447,17 @@ function buildPortfolio() {
         src="${item.src}"
         alt="${item.title} — ${item.company}"
         loading="lazy"
-        onerror="this.closest('.pf-item').classList.add('pf-item--ph'); this.remove();"
       />`}
       <div class="pf-item__overlay">
         <p class="pf-item__title">${item.title}</p>
         <p class="pf-item__co">${item.company}</p>
       </div>
     `;
+
+    el.querySelector('img')?.addEventListener('error', e => {
+      el.classList.add('pf-item--ph');
+      e.target.remove();
+    });
 
     el.addEventListener('click', () => openLightbox(idx));
     el.addEventListener('keydown', e => {
@@ -910,8 +914,25 @@ function initContactForm() {
     status.classList.toggle('form-status--error', !!isError);
   };
 
-  // ── Send to the company inbox ──
-  form.addEventListener('submit', async e => {
+  const showSuccess = ({ name, service, phone } = {}) => {
+    const first = (name || '').split(' ')[0];
+    $('cSuccessText').textContent =
+      `${first ? `Thanks ${first} — w` : 'W'}e've received your enquiry${service ? ` about ${service}` : ''}. ` +
+      `Our team will reach out on WhatsApp${phone ? ` at ${phone}` : ''}, usually within a few hours.`;
+    form.hidden = true;
+    success.hidden = false;
+    form.reset();
+  };
+
+  // Back from the reCAPTCHA check → show the confirmation
+  const returned = window.HazelnartForms?.takeSent();
+  if (returned) {
+    showSuccess(returned);
+    setTimeout(() => success.scrollIntoView({ behavior: 'smooth', block: 'center' }), 500);
+  }
+
+  // ── Send to the company inbox (via reCAPTCHA) ──
+  form.addEventListener('submit', e => {
     e.preventDefault();
     const name    = $('cName').value.trim();
     const phone   = $('cPhone').value.trim();
@@ -923,15 +944,13 @@ function initContactForm() {
                      [service, 'cService', 'a service'], [message, 'cMsg', 'a short message']]
                     .find(([v]) => !v);
     if (missing) { setStatus(`Please add ${missing[2]}.`, true); $(missing[1]).focus(); return; }
+    if (!/^[+\d][\d\s()-]{6,19}$/.test(phone)) { setStatus('Please enter a valid phone number.', true); $('cPhone').focus(); return; }
     if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setStatus('That email address doesn\'t look right.', true); $('cEmail').focus(); return; }
 
     if (!window.HazelnartForms) { setStatus('Sending is unavailable right now — please call or WhatsApp us.', true); return; }
 
-    submit.disabled = true;
-    submit.querySelector('span').textContent = 'Sending…';
     setStatus('');
-
-    const res = await window.HazelnartForms.send({
+    const res = window.HazelnartForms.submit({
       'WhatsApp / Phone': phone,
       'Name': name,
       'Service': service,
@@ -942,30 +961,33 @@ function initContactForm() {
       subject: `New enquiry: ${service} — ${name}`,
       replyTo: email,
       honeypot: $('cWebsite')?.value,
+      returnTo: 'contact.html',
+      pending: { name, service, phone },
     });
 
-    submit.disabled = false;
-    submit.querySelector('span').textContent = 'Send Message';
-
-    if (!res.ok) {
-      const wa = `https://wa.me/233266575930?text=${encodeURIComponent(`Hello Hazelnart! My name is ${name}. I'm interested in ${service}.\n\n${message}`)}`;
-      status.innerHTML = '';
-      status.append(res.message + ' ');
-      if (res.reason !== 'cooldown') {
-        const link = document.createElement('a');
-        link.href = wa; link.target = '_blank'; link.rel = 'noopener';
-        link.textContent = 'Send it on WhatsApp instead →';
-        status.append(link);
-      }
-      status.classList.add('form-status--error');
+    if (res.ok && res.silent) { showSuccess({ name, service, phone }); return; }
+    if (res.ok) {
+      submit.disabled = true;
+      submit.querySelector('span').textContent = 'Opening security check…';
       return;
     }
 
-    $('cSuccessText').textContent =
-      `Thanks ${name.split(' ')[0]} — we've received your enquiry about ${service}. Our team will reach out on WhatsApp at ${phone}, usually within a few hours.`;
-    form.hidden = true;
-    success.hidden = false;
-    form.reset();
+    status.innerHTML = '';
+    status.append(res.message + ' ');
+    if (res.reason !== 'cooldown') {
+      const link = document.createElement('a');
+      link.href = `https://wa.me/233266575930?text=${encodeURIComponent(`Hello Hazelnart! My name is ${name}. I'm interested in ${service}.\n\n${message}`)}`;
+      link.target = '_blank'; link.rel = 'noopener';
+      link.textContent = 'Send it on WhatsApp instead →';
+      status.append(link);
+    }
+    status.classList.add('form-status--error');
+  });
+
+  // Returning with the browser's Back button: re-enable the button
+  window.addEventListener('pageshow', () => {
+    submit.disabled = false;
+    submit.querySelector('span').textContent = 'Send Message';
   });
 
   $('cAnother')?.addEventListener('click', () => {
