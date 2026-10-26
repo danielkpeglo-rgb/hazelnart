@@ -84,7 +84,7 @@ The website will automatically show it in the navigation header.
 
 Place a photo in `images/about/` and name it exactly:
 ```
-studio.jpg
+hazelnart-creative-studio.jpg
 ```
 
 This appears in the "About" section of the website.
