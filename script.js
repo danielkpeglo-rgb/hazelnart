@@ -919,7 +919,7 @@ function initContactForm() {
     const first = (name || '').split(' ')[0];
     $('cSuccessText').textContent =
       `${first ? `Thanks ${first}! W` : 'W'}e've received your enquiry${service ? ` about ${service}` : ''}. ` +
-      `We typically reply within 24 to 48 hours${phone ? `, by email or on WhatsApp at ${phone}` : ''}.`;
+      'We typically reply within 24 to 48 hours.';
     form.hidden = true;
     success.hidden = false;
     form.reset();
