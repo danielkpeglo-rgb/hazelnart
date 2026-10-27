@@ -1721,3 +1721,45 @@ html { scroll-padding-top: calc(var(--topbar-h) + 1rem); }
 .form-captcha-note { display: flex; align-items: center; justify-content: center; gap: 0.4rem; margin-top: 0.6rem; font-size: 0.75rem; color: var(--text-3); text-align: center; }
 .form-captcha-note svg { flex-shrink: 0; }
 .process__img[src*="deliver"] { object-position: 18% center; }
+
+/* ════════════════════════════════════════════════════════════
+   UX POLISH — native cursor, quicker transitions, focus rings
+   ════════════════════════════════════════════════════════ */
+body { cursor: auto; }
+.cursor, .cursor-ring { display: none !important; }
+
+/* Quicker page change */
+.page-transition, .page-transition__logo { animation-duration: 0.45s; }
+body.is-leaving .page-transition { transition-duration: 0.3s; }
+
+/* Clear focus ring for keyboard users */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible,
+textarea:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 3px;
+}
+
+/* Hero "20+ Years" badge as one tidy card */
+.hero__badge {
+  flex-direction: row; flex-wrap: wrap; align-items: flex-start; justify-content: center;
+  width: 9.5rem; padding: 1.1rem 1rem 1rem;
+  background: #fff; border: 1px solid var(--line); border-radius: 20px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+}
+.hero__badge-num  { font-size: 3.25rem; color: #222; }
+.hero__badge-plus { font-size: 2rem; color: var(--accent); margin: 0.1rem 0 0 0.1rem; }
+.hero__badge-label { flex-basis: 100%; text-align: center; margin-top: 0.35rem; color: var(--text-3); }
+@media (max-width: 768px) {
+  .hero__badge { width: 7rem; padding: 0.75rem; border-radius: 16px; }
+  .hero__badge-num { font-size: 2.25rem; }
+  .hero__badge-plus { font-size: 1.4rem; }
+}
+
+/* 404 page */
+.notfound { min-height: calc(80svh - var(--topbar-h)); display: flex; align-items: center; padding: 6rem 0; background: var(--tint); }
+.notfound__inner { text-align: center; }
+.notfound .label { justify-content: center; }
+.notfound__title { font-family: var(--serif); font-size: clamp(2.25rem, 5vw, 3.75rem); font-weight: 800; letter-spacing: -0.035em; line-height: 1.1; margin-bottom: 1rem; }
+.notfound__title em { font-weight: 600; }
+.notfound__text { color: var(--text-2); margin-bottom: 2rem; }
+.notfound__links { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+.notfound__links .btn { width: auto; }

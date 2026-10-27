@@ -644,7 +644,7 @@ function initPageTransitions() {
 
     e.preventDefault();
     document.body.classList.add('is-leaving');
-    setTimeout(() => { location.href = url.href; }, 420);
+    setTimeout(() => { location.href = url.href; }, 300);
   });
 }
 
@@ -699,6 +699,7 @@ function animateCounter(el, target) {
 
 /* ─── Custom Cursor ─────────────────────────────────────────── */
 function initCursor() {
+  return; // native cursor is friendlier and more precise
   if (window.innerWidth < 768 || window.matchMedia('(pointer: coarse)').matches) return;
 
   const dot  = document.getElementById('cursor');
@@ -918,7 +919,7 @@ function initContactForm() {
     const first = (name || '').split(' ')[0];
     $('cSuccessText').textContent =
       `${first ? `Thanks ${first}! W` : 'W'}e've received your enquiry${service ? ` about ${service}` : ''}. ` +
-      `Our team will reach out on WhatsApp${phone ? ` at ${phone}` : ''}, usually within a few hours.`;
+      `We typically reply within 24 to 48 hours${phone ? `, by email or on WhatsApp at ${phone}` : ''}.`;
     form.hidden = true;
     success.hidden = false;
     form.reset();

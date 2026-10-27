@@ -1228,7 +1228,7 @@ document.addEventListener('click', e => {
   if (url.origin !== location.origin || !/\.html$|\/$/.test(url.pathname) || url.pathname === location.pathname) return;
   e.preventDefault();
   document.body.classList.add('is-leaving');
-  setTimeout(() => { location.href = url.href; }, 420);
+  setTimeout(() => { location.href = url.href; }, 300);
 });
 
 // ── Mobile Nav (same script as main site) ────────────────────

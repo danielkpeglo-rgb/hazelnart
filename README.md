@@ -116,10 +116,8 @@ Simply double-click `index.html` to open the website in your browser. No server 
 
 ## Contact & Phone
 
-- **Phone 1:** 0266 575 930
-- **Phone 2:** 0544 055 060
+- **Phone / WhatsApp:** +233 26 657 5930
 - **Location:** Accra Newtown, Raaco Down, Accra, Ghana
-- **WhatsApp:** Both numbers are linked to WhatsApp buttons on the site
 
 ---
 
