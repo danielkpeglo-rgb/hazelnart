@@ -1764,3 +1764,7 @@ textarea:focus-visible, [tabindex]:focus-visible {
 .notfound__links { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
 .notfound__links .btn { width: auto; }
 .map-card__note { color: var(--text-3); font-size: 0.875rem; margin: -0.25rem 0 0.75rem; }
+
+/* Footer credit link */
+.footer__credit { color: rgba(255,255,255,0.6); border-bottom: 1px solid rgba(255,255,255,0.25); transition: color 0.2s, border-color 0.2s; }
+.footer__credit:hover { color: #fff; border-color: var(--accent); }
