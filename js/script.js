@@ -113,7 +113,7 @@ const servicesData = [
 const partnersData = [
   {
     name: 'FRIMPS OIL', sector: 'Oil & Gas', initial: 'F',
-    logo: 'images/individual designs/frimps.png',
+    logo: 'images/partners/frimps-oil.png',
     images: [
       'images/portfolio/frimps-oil/frimps-oil-flask-white.jpeg',
       'images/portfolio/frimps-oil/frimps-oil-flask-black.jpeg',
@@ -125,7 +125,7 @@ const partnersData = [
   },
   {
     name: 'FUELTRADE', sector: 'Energy Trading', initial: 'F',
-    logo: 'images/individual designs/fuel-trade.png',
+    logo: 'images/partners/fueltrade.png',
     images: [
       'images/portfolio/fueltrade/fueltrade-branded-tshirt-1.jpeg',
       'images/portfolio/fueltrade/fueltrade-branded-tshirt-2.jpeg',
@@ -137,7 +137,7 @@ const partnersData = [
   },
   {
     name: 'EAGLE PETROLEUM', sector: 'Petroleum', initial: 'E',
-    logo: 'images/individual designs/Eagle petroleum.png',
+    logo: 'images/partners/eagle-petroleum.png',
     images: [
       'images/portfolio/individual/eagle-petroleum-mugs.jpeg',
       'images/portfolio/individual/eagle-petroleum-flasks.jpeg',
@@ -156,25 +156,25 @@ const partnersData = [
   },
   {
     name: 'GASO PETROLEUM', sector: 'Petroleum', initial: 'G',
-    logo: 'images/individual designs/Gaso-petroleum.png',
+    logo: 'images/partners/gaso-petroleum.png',
     story: 'Gaso Petroleum is a trusted name in Ghana\'s petroleum sector, and Hazelnart has partnered with them to deliver sharp, consistent brand materials that reinforce their authority and reliability across every touchpoint.',
     work: ['Brand Identity', 'Print Collateral', 'Corporate Stationery'],
   },
   {
     name: 'TEMA FUEL COMPANY', sector: 'Energy Sector', initial: 'T',
-    logo: 'images/individual designs/tema-fuel-company.png',
+    logo: 'images/partners/tema-fuel-company.png',
     story: 'Powering Tema\'s energy identity, we work with Tema Fuel Company to ensure every piece of branded material reflects the strength, precision, and professionalism that their clients have come to expect.',
     work: ['Branded Materials', 'Corporate Branding', 'Print Design'],
   },
   {
     name: 'GOETHE INSTITUT', sector: 'Cultural Institute', initial: 'G',
-    logo: 'images/individual designs/Goethe.png',
+    logo: 'images/partners/goethe-institut.png',
     story: 'Bridging cultures through design, Hazelnart has proudly supported the Goethe Institut in Ghana, producing high-quality print and visual materials that honour the institute\'s global standard of cultural excellence.',
     work: ['Event Materials', 'Print Production', 'Exhibition Graphics'],
   },
   {
     name: 'WPG GHANA', sector: 'Business & Trade', initial: 'W',
-    logo: 'images/individual designs/WPG.png',
+    logo: 'images/partners/wpg-ghana.png',
     story: 'In a partnership built on precision, WPG Ghana relies on Hazelnart to deliver branded materials and design solutions that project confidence and credibility in Ghana\'s competitive business landscape.',
     work: ['Corporate Branding', 'Branded Merchandise', 'Stationery Design'],
   },

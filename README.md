@@ -1,4 +1,18 @@
-# Hazelnart Website — Image Guide
+# Hazelnart Website
+
+## Folder layout
+
+```
+*.html          Pages (kept in the main folder so their web addresses never change)
+css/            Stylesheets
+js/             Scripts (site, forms, design studio)
+api/            send.php emails enquiries; send-config.php holds the reCAPTCHA secret (not in git)
+images/         All pictures and videos, one folder per use (see below)
+favicon.ico     Browser icon (Google looks for it in the main folder)
+.htaccess, robots.txt, sitemap.xml   Server and Google settings
+```
+
+## Image Guide
 
 ## How to Add Your Portfolio Images
 
@@ -8,9 +22,15 @@ Each company has its own folder inside `images/portfolio/`:
 
 ```
 images/
-├── logo/                          ← Drop your Hazelnart logo here (name it hazelnart-logo.png)
-├── about/                         ← Drop a studio or profile photo here (name it studio.jpg)
-├── hero/                          ← Optional hero/background images
+├── logo/                          ← Hazelnart logo (hazelnart-logo.png)
+├── icons/                         ← Browser and phone icons (favicon.ico stays in the main folder)
+├── social/                        ← Image shown when the site is shared (og-share.jpg)
+├── hero/                          ← Home page background videos
+├── about/                         ← Studio photo for the About page
+├── banners/                       ← Page banner images
+├── process/                       ← "How we work" step photos
+├── services/                      ← One photo per service
+├── partners/                      ← Client and partner logos
 └── portfolio/
     ├── frimps-oil/                ← Work done for FRIMPS OIL
     ├── fueltrade/                 ← Work done for FUELTRADE
@@ -24,9 +44,9 @@ images/
     └── individual/                ← Any individual / personal works
 ```
 
-### 2. Edit script.js to register each image
+### 2. Edit js/script.js to register each image
 
-Open `script.js` and find the `portfolioData` section at the top.
+Open `js/script.js` and find the `portfolioData` section at the top.
 
 For each image you add, **remove the two slashes `//`** at the start of a line and update the filename.
 
@@ -57,7 +77,7 @@ whole piece is shown. Add `tags: ['signage']` or `tags: ['video']` to show it un
 { type: 'video', src: 'images/portfolio/FOLDER/clip.mp4', poster: 'images/portfolio/FOLDER/clip-poster.jpg', title: 'Your Title', company: 'COMPANY NAME', filter: 'folder-name', shape: 'tall', tags: ['video'] },
 ```
 
-The dark **Latest Projects** strip at the top of the Portfolio section is controlled by `showcaseData` in `script.js`.
+The dark **Latest Projects** strip at the top of the Portfolio section is controlled by `showcaseData` in `js/script.js`.
 
 ### 3. Supported image formats
 

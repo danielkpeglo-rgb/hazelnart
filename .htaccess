@@ -37,6 +37,9 @@ ErrorDocument 404 /404.html
 </IfModule>
 
 # Never serve hidden or helper files
+<Files "send-config.php">
+  Require all denied
+</Files>
 <FilesMatch "^(\.|README|.*\.(md|py|zip|bak|log)$)">
   Require all denied
 </FilesMatch>

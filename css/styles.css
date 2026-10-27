@@ -1746,10 +1746,21 @@ textarea:focus-visible, [tabindex]:focus-visible {
 .hero__badge-num  { font-size: 3.25rem; color: #222; }
 .hero__badge-plus { font-size: 2rem; color: var(--accent); margin: 0.1rem 0 0 0.1rem; }
 .hero__badge-label { flex-basis: 100%; text-align: center; margin-top: 0.35rem; color: var(--text-3); }
+/* Phones: the badge joins the flow as a pill above the heading, so it never covers the title */
 @media (max-width: 768px) {
-  .hero__badge { width: 7rem; padding: 0.75rem; border-radius: 16px; }
-  .hero__badge-num { font-size: 2.25rem; }
-  .hero__badge-plus { font-size: 1.4rem; }
+  .hero__badge {
+    position: relative; top: auto; right: auto; order: -1; align-self: flex-start;
+    flex-wrap: nowrap; align-items: center; width: auto;
+    margin: 2.25rem 1.5rem 0; padding: 0.5rem 1rem; border-radius: 999px;
+  }
+  .hero__badge-num { font-size: 1.5rem; }
+  .hero__badge-plus { font-size: 1.1rem; margin: 0 0.5rem 0 0.05rem; }
+  .hero__badge-label { flex-basis: auto; margin-top: 0; text-align: left; }
+  .hero__body { padding-top: 1.75rem; }
+  .hero__scroll { display: none; }   /* sat on top of the buttons */
+}
+@media (max-width: 480px) {
+  .hero__badge { margin-left: 1.25rem; margin-right: 1.25rem; }
 }
 
 /* 404 page */

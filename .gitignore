@@ -11,8 +11,8 @@ desktop.ini
 *.swp
 
 # Raw WhatsApp exports (large files not used by the website)
-images/individual designs/WhatsApp*
+_originals/
 hazelnart-upload.zip
 
 # Server secrets
-send-config.php
+api/send-config.php

@@ -9,7 +9,7 @@
    The inbox address is never on the site or in this code.
    ============================================================ */
 (function () {
-  const ENDPOINT = 'send.php';
+  const ENDPOINT = 'api/send.php';
 
   const MIN_FILL_MS = 4000;   // humans take longer than this to fill a form
   const COOLDOWN_MS = 30000;  // one enquiry per 30 seconds per browser
