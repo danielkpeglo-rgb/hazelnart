@@ -1045,7 +1045,7 @@ async function sendBrief() {
   });
 }
 
-// Straight to the company inbox, sketch attached, via a reCAPTCHA check,
+// Straight to the company inbox in the background,
 // no email app, no visible address
 const escapeHtml = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
@@ -1056,14 +1056,14 @@ async function sendBriefToInbox() {
   const btn = document.getElementById('sendEmailBtn');
   const label = btn.querySelector('span');
   btn.disabled = true;
-  label.textContent = 'Opening security check…';
+  label.textContent = 'Sending…';
 
   const brief    = buildBriefCanvas(d);
   const fileName = briefFileName(d);
   const blob     = await canvasToBlob(brief);
   const template = TEMPLATES[S.template];
 
-  const res = window.HazelnartForms.submit({
+  const res = await window.HazelnartForms.submit({
     'WhatsApp / Phone': d.phone,
     'Name': d.name,
     'Service': d.service,
@@ -1071,30 +1071,31 @@ async function sendBriefToInbox() {
     'Template': template ? template.name : '',
     'Brand colours': brandColors.map(c => c.toUpperCase()).join(', '),
     'Idea': d.desc,
-    'Sent from': 'Website design studio (sketch attached)',
+    'Sent from': 'Website design studio',
   }, {
     subject: `Design brief: ${d.service} from ${d.name}`,
     replyTo: d.email,
     honeypot: document.getElementById('sWebsite')?.value,
-    returnTo: 'design-studio.html',
-    pending: { phone: d.phone },
     files: [{ blob, name: fileName }],
   });
 
-  if (res.ok && res.redirecting) return;   // leaving for the reCAPTCHA page
-
   btn.disabled = false;
   label.textContent = 'Email It To Us';
-  if (res.ok) { showSentModal({ phone: d.phone }); return; }
+  if (res.ok) {
+    showSentModal({ phone: d.phone, attached: res.attached });
+    ['sName', 'sPhone', 'sEmail', 'sDesc'].forEach(id => { document.getElementById(id).value = ''; });
+    saveSession();
+    return;
+  }
 
   showToast(res.message, true);
-  if (res.reason !== 'cooldown') sendBrief();   // fall back to the WhatsApp flow
+  if (res.reason === 'failed') sendBrief();   // fall back to the WhatsApp flow
 }
 
-function showSentModal({ phone } = {}) {
+function showSentModal({ phone, attached } = {}) {
   openSendModal({
     title: 'Sent! Your brief is with our team',
-    sub: 'Your sketch and details arrived in our inbox.',
+    sub: attached ? 'Your sketch and details arrived in our inbox.' : 'Your details arrived in our inbox.',
     preview: buildBriefCanvas(readForm()).toDataURL('image/jpeg', 0.85),
     steps: [
       'Our designers review your sketch and brief.',
@@ -1105,23 +1106,6 @@ function showSentModal({ phone } = {}) {
     ],
   });
 }
-
-// Back from the reCAPTCHA check: confirm, then forget the personal details on this device
-function handleSentReturn() {
-  const sent = window.HazelnartForms?.takeSent();
-  if (!sent) return;
-  setTimeout(() => {
-    showSentModal(sent);
-    ['sName', 'sPhone', 'sEmail', 'sDesc'].forEach(id => { document.getElementById(id).value = ''; });
-    saveSession();
-  }, 700);
-}
-
-window.addEventListener('pageshow', () => {
-  const btn = document.getElementById('sendEmailBtn');
-  btn.disabled = false;
-  btn.querySelector('span').textContent = 'Email It To Us';
-});
 
 document.getElementById('sendWhatsappBtn').addEventListener('click', () => sendBrief());
 document.getElementById('sendEmailBtn').addEventListener('click', sendBriefToInbox);
@@ -1271,7 +1255,6 @@ document.getElementById('yr').textContent = new Date().getFullYear();
 window.addEventListener('load', () => {
   initCanvas();
   restoreSession();
-  handleSentReturn();
   updateBrushPreview();
   updatePreview();
   setColor('#000000');

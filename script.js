@@ -925,15 +925,13 @@ function initContactForm() {
     form.reset();
   };
 
-  // Back from the reCAPTCHA check → show the confirmation
-  const returned = window.HazelnartForms?.takeSent();
-  if (returned) {
-    showSuccess(returned);
-    setTimeout(() => success.scrollIntoView({ behavior: 'smooth', block: 'center' }), 500);
-  }
+  const setSending = on => {
+    submit.disabled = on;
+    submit.querySelector('span').textContent = on ? 'Sending…' : 'Send Message';
+  };
 
-  // ── Send to the company inbox (via reCAPTCHA) ──
-  form.addEventListener('submit', e => {
+  // ── Send to the company inbox (in the background) ──
+  form.addEventListener('submit', async e => {
     e.preventDefault();
     const name    = $('cName').value.trim();
     const phone   = $('cPhone').value.trim();
@@ -951,7 +949,8 @@ function initContactForm() {
     if (!window.HazelnartForms) { setStatus('Sending is unavailable right now. Please call or WhatsApp us.', true); return; }
 
     setStatus('');
-    const res = window.HazelnartForms.submit({
+    setSending(true);
+    const res = await window.HazelnartForms.submit({
       'WhatsApp / Phone': phone,
       'Name': name,
       'Service': service,
@@ -962,20 +961,18 @@ function initContactForm() {
       subject: `New enquiry: ${service} from ${name}`,
       replyTo: email,
       honeypot: $('cWebsite')?.value,
-      returnTo: 'contact.html',
-      pending: { name, service, phone },
     });
+    setSending(false);
 
-    if (res.ok && res.silent) { showSuccess({ name, service, phone }); return; }
     if (res.ok) {
-      submit.disabled = true;
-      submit.querySelector('span').textContent = 'Opening security check…';
+      showSuccess({ name, service, phone });
+      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
 
     status.innerHTML = '';
     status.append(res.message + ' ');
-    if (res.reason !== 'cooldown') {
+    if (res.reason === 'failed') {
       const link = document.createElement('a');
       link.href = `https://wa.me/233266575930?text=${encodeURIComponent(`Hello Hazelnart! My name is ${name}. I'm interested in ${service}.\n\n${message}`)}`;
       link.target = '_blank'; link.rel = 'noopener';
@@ -983,12 +980,6 @@ function initContactForm() {
       status.append(link);
     }
     status.classList.add('form-status--error');
-  });
-
-  // Returning with the browser's Back button: re-enable the button
-  window.addEventListener('pageshow', () => {
-    submit.disabled = false;
-    submit.querySelector('span').textContent = 'Send Message';
   });
 
   $('cAnother')?.addEventListener('click', () => {

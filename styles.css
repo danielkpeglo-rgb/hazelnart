@@ -1718,8 +1718,6 @@ html { scroll-padding-top: calc(var(--topbar-h) + 1rem); }
 .process__step:hover .process__img { transform: scale(1.07); }
 @media (max-width: 640px) { .process__step { min-height: 320px; } }
 
-.form-captcha-note { display: flex; align-items: center; justify-content: center; gap: 0.4rem; margin-top: 0.6rem; font-size: 0.75rem; color: var(--text-3); text-align: center; }
-.form-captcha-note svg { flex-shrink: 0; }
 .process__img[src*="deliver"] { object-position: 18% center; }
 
 /* ════════════════════════════════════════════════════════════
@@ -1768,3 +1766,10 @@ textarea:focus-visible, [tabindex]:focus-visible {
 /* Footer credit link */
 .footer__credit { color: rgba(255,255,255,0.6); border-bottom: 1px solid rgba(255,255,255,0.25); transition: color 0.2s, border-color 0.2s; }
 .footer__credit:hover { color: #fff; border-color: var(--accent); }
+
+/* "I'm not a robot" check (Google reCAPTCHA) */
+.form-captcha { display: flex; justify-content: center; min-height: 78px; margin-bottom: 1rem; }
+@media (max-width: 380px) {
+  .form-captcha .g-recaptcha { transform: scale(0.86); transform-origin: center top; }
+  .form-captcha { min-height: 68px; }
+}

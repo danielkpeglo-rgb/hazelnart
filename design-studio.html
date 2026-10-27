@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob:; frame-src https://www.google.com https://maps.google.com; connect-src 'self'; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'; upgrade-insecure-requests" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob:; frame-src https://www.google.com https://maps.google.com https://recaptcha.google.com; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <title>Design Studio: Sketch Your Print Idea | Hazelnart Accra</title>
   <meta name="description" content="Sketch your T-shirt, banner, signage or logo idea online and send it to Hazelnart in Accra for a free quote." />
@@ -507,6 +507,7 @@
                 <canvas id="previewCanvas" width="120" height="75"></canvas>
               </div>
 
+              <div class="form-captcha"><div class="g-recaptcha" data-sitekey="6LdzRAMuAAAAAFXMIngmsnDjmmoHlmY2uohjCf9s"></div></div>
               <!-- Buttons -->
               <div class="brief-actions">
                 <button type="button" class="btn btn--ghost" id="downloadBtn">
@@ -646,6 +647,7 @@
     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
 
+  <script src="https://www.google.com/recaptcha/api.js?hl=en" async defer></script>
   <script src="forms.js"></script>
   <script src="design-studio.js"></script>
 
