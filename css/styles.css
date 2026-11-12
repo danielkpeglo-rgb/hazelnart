@@ -1784,3 +1784,12 @@ textarea:focus-visible, [tabindex]:focus-visible {
   .form-captcha .g-recaptcha { transform: scale(0.86); transform-origin: center top; }
   .form-captcha { min-height: 68px; }
 }
+
+/* ── Suppliers (partners page) ──────────────────────────────── */
+.suppliers { padding: 6rem 0 7rem; background: var(--surface-2); }
+.suppliers__list { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 2.25rem 0 2.5rem; }
+.suppliers__list li {
+  font-family: var(--ui); font-size: 0.9rem; font-weight: 500; color: var(--text);
+  background: var(--surface); border: 1px solid var(--border-sub); border-radius: 999px; padding: 0.55rem 1.1rem;
+}
+@media (max-width: 768px) { .suppliers { padding: 4rem 0 4.5rem; } }
