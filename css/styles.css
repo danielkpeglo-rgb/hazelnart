@@ -1789,3 +1789,4 @@ textarea:focus-visible, [tabindex]:focus-visible {
 .suppliers { padding: 4rem 0 4.5rem; background: var(--surface-2); }
 .suppliers__text { max-width: 760px; margin-top: 1rem; font-size: 1.05rem; color: var(--text-2); line-height: 1.8; }
 .suppliers__text a { color: var(--text); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.suppliers__title { line-height: 1.4; }
