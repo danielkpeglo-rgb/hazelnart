@@ -1786,10 +1786,6 @@ textarea:focus-visible, [tabindex]:focus-visible {
 }
 
 /* ── Suppliers (partners page) ──────────────────────────────── */
-.suppliers { padding: 6rem 0 7rem; background: var(--surface-2); }
-.suppliers__list { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 2.25rem 0 2.5rem; }
-.suppliers__list li {
-  font-family: var(--ui); font-size: 0.9rem; font-weight: 500; color: var(--text);
-  background: var(--surface); border: 1px solid var(--border-sub); border-radius: 999px; padding: 0.55rem 1.1rem;
-}
-@media (max-width: 768px) { .suppliers { padding: 4rem 0 4.5rem; } }
+.suppliers { padding: 4rem 0 4.5rem; background: var(--surface-2); }
+.suppliers__text { max-width: 760px; margin-top: 1rem; font-size: 1.05rem; color: var(--text-2); line-height: 1.8; }
+.suppliers__text a { color: var(--text); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
